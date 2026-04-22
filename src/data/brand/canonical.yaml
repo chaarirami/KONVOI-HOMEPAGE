@@ -1,0 +1,71 @@
+# src/data/brand/canonical.yaml
+# Single source of truth for Konvoi legal entity, contact, and pricing data.
+# Sourced from: .planning/current-site-overview.md (2026-04-20 snapshot)
+# Last updated: Phase 2 Brand & Design System
+#
+# USAGE: import this file in Astro components via:
+#   import brand from '~/data/brand/canonical.yaml';
+#
+# USER REVIEW REQUIRED: Verify all fields before Phase 3 merges.
+
+legal:
+  entity: KONVOI GmbH
+  address: "Harburger Schlossstraße 6-12, 21079 Hamburg, Germany"
+  address_de: "Harburger Schlossstraße 6-12, 21079 Hamburg, Deutschland"
+  phone: "+49 40 766293660"
+  website: "https://www.konvoi.eu"
+
+contacts:
+  customer_advisor:
+    name: Justus Männinghoff
+    role_de: Kundenberatung
+    role_en: Customer Advisor
+    email: justus@konvoi.eu
+  marketing:
+    name: Heinz Luckhardt
+    role_de: "Investoren, Marketing & Bewerber"
+    role_en: "Investors, Marketing & Applicants"
+    email: heinz@konvoi.eu
+  general:
+    email: info@konvoi.eu
+  applications:
+    email: applications@konvoi.eu
+
+pricing:
+  currency: EUR
+  billing_period_de: Monat
+  billing_period_en: month
+  tiers:
+    # IMPORTANT: Tier slugs are stable references for Phase 5 ROI calculator.
+    # Do NOT rename slugs without updating the ROI calculator (REQUIREMENTS.md PRICE-03).
+    - slug: standard
+      de_name: "KONVOI Standard"
+      en_name: "KONVOI Standard"
+      de_price_display: "auf Anfrage"
+      en_price_display: "on request"
+      de_description: "GPS + LTE, Schock- und Bewegungssensoren, KI-Klassifizierung, Alarmkette"
+      en_description: "GPS + LTE, shock and motion sensors, AI classification, alarm chain"
+    - slug: camera-module
+      de_name: "+ KONVOI Camera Module"
+      en_name: "+ KONVOI Camera Module"
+      de_price_display: "auf Anfrage"
+      en_price_display: "on request"
+      de_description: "Cloud-Clips bei Ereignissen"
+      en_description: "Cloud clips on security events"
+    - slug: logbook
+      de_name: "+ KONVOI Logbook"
+      en_name: "+ KONVOI Logbook"
+      de_price_display: "auf Anfrage"
+      en_price_display: "on request"
+      de_description: "PDF-Zusammenfassung der Stopps und Anomalien je Fahrt"
+      en_description: "PDF summary of stops and anomalies per trip"
+
+funding:
+  de_minimis_max_percent: 80
+  de_catalog_ref: "Aufwendungen für Maßnahmen zur Vermeidung von Diebstählen"
+  de_catalog_section: "1.10"
+
+install:
+  max_minutes: 120
+  de_promise: "Installation in unter 120 Minuten"
+  en_promise: "Installation in under 120 minutes"
