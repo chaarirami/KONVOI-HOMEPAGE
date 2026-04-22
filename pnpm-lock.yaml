@@ -17,6 +17,12 @@ importers:
       '@astrolib/seo':
         specifier: ^1.0.0-beta.8
         version: 1.0.0-beta.8(astro@6.1.8(@types/node@25.6.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(terser@5.46.1)(typescript@6.0.3)(yaml@2.8.3))
+      '@fontsource/montserrat':
+        specifier: ^5.2.8
+        version: 5.2.8
+      '@fontsource/pt-serif':
+        specifier: ^5.2.8
+        version: 5.2.8
       astro:
         specifier: ^6.1.8
         version: 6.1.8(@types/node@25.6.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(terser@5.46.1)(typescript@6.0.3)(yaml@2.8.3)
@@ -492,6 +498,12 @@ packages:
   '@eslint/plugin-kit@0.7.1':
     resolution: {integrity: sha512-rZAP3aVgB9ds9KOeUSL+zZ21hPmo8dh6fnIFwRQj5EAZl9gzR7wxYbYXYysAM8CTqGmUGyp2S4kUdV17MnGuWQ==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
+
+  '@fontsource/montserrat@5.2.8':
+    resolution: {integrity: sha512-xTjLxSbSfCycDB0pwmNsfNvdfWPaDaRQ2LC6yt/ZI7SdvXG52zHnzNYC/09mzuAuWNJyShkteutfCoDgym56hQ==}
+
+  '@fontsource/pt-serif@5.2.8':
+    resolution: {integrity: sha512-iqzFEfZOI1DOIhHEFAvU6vvbd6UGb3yVnGpZc63YIaa64/sRF8Fo0BHB6HB3/mJuVI/7Mq4AV+WQCBCY4c3d3w==}
 
   '@humanfs/core@0.19.2':
     resolution: {integrity: sha512-UhXNm+CFMWcbChXywFwkmhqjs3PRCmcSa/hfBgLIb7oQ5HNb1wS0icWsGtSAUNgefHeI+eBrA8I1fxmbHsGdvA==}
@@ -3512,6 +3524,10 @@ snapshots:
     dependencies:
       '@eslint/core': 1.2.1
       levn: 0.4.1
+
+  '@fontsource/montserrat@5.2.8': {}
+
+  '@fontsource/pt-serif@5.2.8': {}
 
   '@humanfs/core@0.19.2':
     dependencies:
