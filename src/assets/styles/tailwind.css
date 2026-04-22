@@ -1,8 +1,18 @@
+@import '@fontsource/montserrat/400.css';
+@import '@fontsource/montserrat/500.css';
+@import '@fontsource/montserrat/600.css';
+@import '@fontsource/montserrat/700.css';
+
+@import '@fontsource/pt-serif/400.css';
+@import '@fontsource/pt-serif/700.css';
+
 @import 'tailwindcss';
 
 @plugin '@tailwindcss/typography';
 
+/* LOAD-BEARING: dark mode variant — do NOT remove or modify (PR #646 flicker fix) */
 @custom-variant dark (&:where(.dark, .dark *));
+/* end dark mode variant */
 @custom-variant intersect (&:not([no-intersect]));
 
 @theme {
