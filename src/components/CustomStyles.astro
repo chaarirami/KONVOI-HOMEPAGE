@@ -1,24 +1,23 @@
 ---
-// Font imports will be added in Phase 2 (BRAND-01)
+// Phase 2: Font vars set here; font files imported in src/assets/styles/tailwind.css (BRAND-01)
 ---
 
 <style is:inline>
   :root {
-    /* Fonts -- Phase 2 will replace with Montserrat + PT Serif (BRAND-01) */
-    --aw-font-sans: system-ui, sans-serif;
-    --aw-font-serif: Georgia, serif;
-    --aw-font-heading: system-ui, sans-serif;
+    /* Typography — Montserrat (headings/sans) + PT Serif (body/serif) per D-05 */
+    --aw-font-sans: 'Montserrat', sans-serif;
+    --aw-font-serif: 'PT Serif', serif;
+    --aw-font-heading: 'Montserrat', sans-serif;
 
-    --aw-color-primary: rgb(1 97 239);
-    --aw-color-secondary: rgb(1 84 207);
-    --aw-color-accent: rgb(109 40 217);
-
-    --aw-color-text-heading: rgb(0 0 0);
-    --aw-color-text-default: rgb(16 16 16);
-    --aw-color-text-muted: rgb(16 16 16 / 66%);
-    --aw-color-bg-page: rgb(255 255 255);
-
-    --aw-color-bg-page-dark: rgb(3 6 32);
+    /* Light mode colours — Konvoi dashboard palette per D-02 */
+    --aw-color-primary: hsl(214.48 38.33% 55.49%);
+    --aw-color-secondary: hsl(217 60% 93%);
+    --aw-color-accent: hsl(217.14 42% 80.39%);
+    --aw-color-bg-page: hsl(220 100% 98.04%);
+    --aw-color-bg-page-dark: hsl(220 35% 10%);
+    --aw-color-text-heading: hsl(215 20% 25%);
+    --aw-color-text-default: hsl(215 20% 25%);
+    --aw-color-text-muted: hsl(215 20% 25% / 66%);
 
     ::selection {
       background-color: lavender;
@@ -26,19 +25,21 @@
   }
 
   .dark {
-    /* Fonts -- Phase 2 will replace with Montserrat + PT Serif (BRAND-01) */
-    --aw-font-sans: system-ui, sans-serif;
-    --aw-font-serif: Georgia, serif;
-    --aw-font-heading: system-ui, sans-serif;
+    /* Typography — same fonts in dark mode per D-05 */
+    --aw-font-sans: 'Montserrat', sans-serif;
+    --aw-font-serif: 'PT Serif', serif;
+    --aw-font-heading: 'Montserrat', sans-serif;
 
-    --aw-color-primary: rgb(1 97 239);
-    --aw-color-secondary: rgb(1 84 207);
-    --aw-color-accent: rgb(109 40 217);
-
-    --aw-color-text-heading: rgb(247, 248, 248);
-    --aw-color-text-default: rgb(229 236 246);
-    --aw-color-text-muted: rgb(229 236 246 / 66%);
-    --aw-color-bg-page: rgb(3 6 32);
+    /* Dark mode colours — Konvoi dashboard dark theme per D-03 */
+    --aw-color-primary: hsl(217 60% 70%);
+    --aw-color-secondary: hsl(217 40% 90%);
+    --aw-color-accent: hsl(217.14 42% 80.39%);
+    --aw-color-bg-page: hsl(220 35% 10%);
+    --aw-color-bg-page-dark: hsl(220 35% 10%);
+    --aw-color-card: hsl(220 32% 14%);
+    --aw-color-text-heading: hsl(217 40% 90%);
+    --aw-color-text-default: hsl(217 40% 90%);
+    --aw-color-text-muted: hsl(217 40% 90% / 66%);
 
     ::selection {
       background-color: black;
