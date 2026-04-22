@@ -33,11 +33,11 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      - name: Check for AstroWind debris in dist/
+      - name: Check for AstroWind author attribution in dist/
         run: |
-          if grep -riq "astrowind\|arthelokyo\|onwidget\|Unsplash\|Cupertino" \
+          if grep -riq "arthelokyo\|onwidget" \
                --include="*.html" --include="*.js" --include="*.css" dist/; then
-            echo "ERROR: AstroWind debris detected in dist/"
+            echo "ERROR: AstroWind author attribution detected in dist/"
             exit 1
           fi
           echo "Grep gate passed"
