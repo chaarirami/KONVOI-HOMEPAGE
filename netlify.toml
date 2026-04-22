@@ -1,8 +1,15 @@
 [build]
   publish = "dist"
-  command = "npm run build"
+  command = "pnpm run build"
+
 [build.processing.html]
   pretty_urls = false
+
+# Only deploy main branch as a branch deploy.
+# All other branches only get a Deploy Preview when a PR is opened.
+[context.branch-deploy]
+  command = "echo 'Branch deploy disabled — open a PR for a Deploy Preview'"
+
 [[headers]]
   for = "/_astro/*"
   [headers.values]

@@ -23,6 +23,8 @@ export interface Props {
 
 const { metadata = {} } = Astro.props;
 const { language, textDirection } = I18N;
+const netlifyContext = import.meta.env.CONTEXT ?? process.env.CONTEXT ?? 'production';
+const isNonProduction = netlifyContext === 'deploy-preview' || netlifyContext === 'branch-deploy';
 ---
 
 <!doctype html>
@@ -35,6 +37,7 @@ const { language, textDirection } = I18N;
     <Metadata {...metadata} />
     <SiteVerification />
     <Analytics />
+    {isNonProduction && <meta name="robots" content="noindex, nofollow" />}
 
     <!-- Comment the line below to disable View Transitions -->
     <ClientRouter fallback="swap" />
