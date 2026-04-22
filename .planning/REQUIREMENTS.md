@@ -30,7 +30,8 @@
 - [ ] **BRAND-04**: Keep `@custom-variant dark (&:where(.dark, .dark *))` in `src/assets/styles/tailwind.css` pinned with a comment -- load-bearing invariant for dark mode
 - [ ] **BRAND-05**: `src/data/brand/canonical.yaml` holds legal entity, address, phone, contact emails, and tier prices -- single source of truth
 - [ ] **BRAND-06**: `src/data/brand/voice.md` codifies approved vs banned verbs for the preventive-vs-reactive positioning
-- [ ] **BRAND-07**: Baseline Axe / Lighthouse accessibility audit passes with no critical findings (contrast, focus-visible, keyboard nav) on the design-system primitives
+- [x] **BRAND-07
+**: Baseline Axe / Lighthouse accessibility audit passes with no critical findings (contrast, focus-visible, keyboard nav) on the design-system primitives
 
 ### i18n & content collections
 

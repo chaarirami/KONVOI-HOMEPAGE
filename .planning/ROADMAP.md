@@ -13,7 +13,7 @@ Transform the AstroWind-forked repo into a bilingual (DE/EN) Konvoi corporate ma
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation Scrub** - Remove all AstroWind debris, replace licence, add CI gates, lock Netlify deploy policy
-- [ ] **Phase 2: Brand & Design System** - Apply Konvoi visual identity, brand tokens, self-hosted typography, accessibility baseline
+- [x] **Phase 2: Brand & Design System** - Apply Konvoi visual identity, brand tokens, self-hosted typography, accessibility baseline
 - [ ] **Phase 3: i18n & Content Collections** - Wire Astro native i18n routing, register 7 content collections, build language switcher, CI parity check
 - [ ] **Phase 4: Core Marketing Pages** - Homepage, product page, 7 use-case pages with shared SensorDataViz island, 4 industry verticals -- all DE + EN
 - [ ] **Phase 5: Conversion Funnel** - Pricing tiers, ROI calculator, funding eligibility, lead-capture forms with DSGVO compliance
@@ -53,7 +53,7 @@ Plans:
 - [x] 02-01-PLAN.md -- Install @fontsource packages, wire font imports, apply Konvoi HSL colour palette to CustomStyles.astro (BRAND-01, BRAND-02, BRAND-04)
 - [x] 02-02-PLAN.md -- Extract Konvoi favicon and logo assets from live site, sanitize SVGs, update Logo.astro (BRAND-03)
 - [x] 02-03-PLAN.md -- Create src/data/brand/canonical.yaml and voice.md brand data files (BRAND-05, BRAND-06)
-- [ ] 02-04-PLAN.md -- Lighthouse + Axe accessibility audit, fix any critical findings, declare Phase 2 complete (BRAND-07)
+- [x] 02-04-PLAN.md -- Lighthouse + Axe accessibility audit, fix any critical findings, declare Phase 2 complete (BRAND-07)
 **UI hint**: yes
 
 ### Phase 3: i18n & Content Collections
@@ -126,7 +126,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation Scrub | 3/3 | Complete | 2026-04-22 |
-| 2. Brand & Design System | 0/4 | Planned | - |
+| 2. Brand & Design System | 4/4 | Complete | 2026-04-22 |
 | 3. i18n & Content Collections | 0/? | Not started | - |
 | 4. Core Marketing Pages | 0/? | Not started | - |
 | 5. Conversion Funnel | 0/? | Not started | - |
