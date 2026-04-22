@@ -32,7 +32,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. `src/config.yaml` reflects Konvoi identity and `astro.config.ts` `image.domains` contains only hosts Konvoi actually uses -- AstroWind site URL, Twitter handle, Google verification token, `@astrolib/analytics`, `@astrojs/partytown`, `@fontsource-variable/inter`, and Unsplash/Pixabay/Shields hosts are all removed
   4. Every Netlify Deploy Preview and Branch Deploy URL renders with `<meta name="robots" content="noindex, nofollow">`; only the `main` branch triggers branch deploys
   5. GitHub Actions workflow uses `pnpm` (not `npm ci`) and the build completes green
-**Plans**: TBD
+**Plans:** 3 plans
+Plans:
+- [ ] 01-01-PLAN.md -- Delete all AstroWind demo pages, blog posts, DecapCMS, Announcement.astro, replace LICENSE.md
+- [ ] 01-02-PLAN.md -- Rewrite config.yaml/navigation.ts to Konvoi identity, clean astro.config.ts, remove unused packages
+- [ ] 01-03-PLAN.md -- Rewrite GitHub Actions CI for pnpm + grep gate, add noindex meta, update netlify.toml
 
 ### Phase 2: Brand & Design System
 **Goal**: Konvoi brand identity (typography, colour, logo, favicons) is applied site-wide via reusable design tokens, with dark mode stable and accessibility baseline passing
@@ -116,7 +120,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation Scrub | 0/? | Not started | - |
+| 1. Foundation Scrub | 0/3 | Planned | - |
 | 2. Brand & Design System | 0/? | Not started | - |
 | 3. i18n & Content Collections | 0/? | Not started | - |
 | 4. Core Marketing Pages | 0/? | Not started | - |
