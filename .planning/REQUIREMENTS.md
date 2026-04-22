@@ -13,10 +13,14 @@
 - [ ] **FND-04**: Remove `@astrolib/analytics`, `@astrojs/partytown`, `@fontsource-variable/inter` from `package.json`
 - [ ] **FND-05**: Replace `LICENSE.md` with a Konvoi-owned private notice (no MIT)
 - [ ] **FND-06**: Trim `astro.config.ts` `image.domains` -- remove `cdn.pixabay.com`, `images.unsplash.com`, `plus.unsplash.com`, `img.shields.io`; keep only hosts Konvoi actually uses
-- [ ] **FND-07**: Replace `.github/workflows/actions.yaml` to use pnpm instead of `npm ci`
-- [ ] **FND-08**: Post-build grep CI gate fails the build if `astrowind|arthelokyo|onwidget|Unsplash|Cupertino` appears anywhere in `dist/`
-- [ ] **FND-09**: Netlify context-aware `<meta name="robots">` -- `noindex` on Deploy Preview and Branch Deploy URLs; production only indexes
-- [ ] **FND-10**: Branch deploy policy -- only `main` triggers branch deploys; PR branches render as Deploy Previews
+- [x] **FND-07
+**: Replace `.github/workflows/actions.yaml` to use pnpm instead of `npm ci`
+- [x] **FND-08
+**: Post-build grep CI gate fails the build if `astrowind|arthelokyo|onwidget|Unsplash|Cupertino` appears anywhere in `dist/`
+- [x] **FND-09
+**: Netlify context-aware `<meta name="robots">` -- `noindex` on Deploy Preview and Branch Deploy URLs; production only indexes
+- [x] **FND-10
+**: Branch deploy policy -- only `main` triggers branch deploys; PR branches render as Deploy Previews
 
 ### Brand & design system
 

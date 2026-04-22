@@ -12,7 +12,7 @@ Transform the AstroWind-forked repo into a bilingual (DE/EN) Konvoi corporate ma
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation Scrub** - Remove all AstroWind debris, replace licence, add CI gates, lock Netlify deploy policy
+- [x] **Phase 1: Foundation Scrub** - Remove all AstroWind debris, replace licence, add CI gates, lock Netlify deploy policy
 - [ ] **Phase 2: Brand & Design System** - Apply Konvoi visual identity, brand tokens, self-hosted typography, accessibility baseline
 - [ ] **Phase 3: i18n & Content Collections** - Wire Astro native i18n routing, register 7 content collections, build language switcher, CI parity check
 - [ ] **Phase 4: Core Marketing Pages** - Homepage, product page, 7 use-case pages with shared SensorDataViz island, 4 industry verticals -- all DE + EN
@@ -34,9 +34,9 @@ Decimal phases appear between their surrounding integers in numeric order.
   5. GitHub Actions workflow uses `pnpm` (not `npm ci`) and the build completes green
 **Plans:** 3 plans
 Plans:
-- [ ] 01-01-PLAN.md -- Delete all AstroWind demo pages, blog posts, DecapCMS, Announcement.astro, replace LICENSE.md
-- [ ] 01-02-PLAN.md -- Rewrite config.yaml/navigation.ts to Konvoi identity, clean astro.config.ts, remove unused packages
-- [ ] 01-03-PLAN.md -- Rewrite GitHub Actions CI for pnpm + grep gate, add noindex meta, update netlify.toml
+- [x] 01-01-PLAN.md -- Delete all AstroWind demo pages, blog posts, DecapCMS, Announcement.astro, replace LICENSE.md
+- [x] 01-02-PLAN.md -- Rewrite config.yaml/navigation.ts to Konvoi identity, clean astro.config.ts, remove unused packages
+- [x] 01-03-PLAN.md -- Rewrite GitHub Actions CI for pnpm + grep gate, add noindex meta, update netlify.toml
 
 ### Phase 2: Brand & Design System
 **Goal**: Konvoi brand identity (typography, colour, logo, favicons) is applied site-wide via reusable design tokens, with dark mode stable and accessibility baseline passing
