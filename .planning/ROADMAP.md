@@ -65,7 +65,12 @@ Plans:
   2. `LanguageSwitcher.astro` in the header preserves the current route via `routeMap.ts` -- clicking DE/EN on any page navigates to its translated equivalent without auto-redirecting
   3. All 7 content collections (`post`, `caseStudy`, `useCase`, `industry`, `event`, `job`, `team`) are registered in `src/content.config.ts` with long-form collections using `de/` + `en/` subdirectories + `locale` Zod enum + `translationKey` + `canonicalKey`, and short-form collections (`event`, `team`) using `{de, en}` sibling fields
   4. CI translation-parity check fails the build when a long-form entry has a DE sibling without an EN sibling (or vice versa) sharing the same `translationKey`
-**Plans**: TBD
+**Plans:** 4 plans
+Plans:
+- [ ] 03-01-PLAN.md -- Add i18n config to astro.config.ts, create routeMap.ts and translations.ts (I18N-01, I18N-02, I18N-03)
+- [ ] 03-02-PLAN.md -- Expand content.config.ts to 7 collections, scaffold src/content/ directory tree (I18N-05, I18N-06, I18N-07)
+- [ ] 03-03-PLAN.md -- Create translation parity check script, add tsx, wire into pnpm build (I18N-08)
+- [ ] 03-04-PLAN.md -- Wire Layout.astro lang attribute and LanguageSwitcher.astro with routeMap (I18N-01, I18N-04)
 
 ### Phase 4: Core Marketing Pages
 **Goal**: A visitor landing on the homepage can navigate through the product story, any of 7 theft-type use cases with interactive sensor-data visualization, or any of 4 industry verticals -- all in DE and EN with consistent Konvoi narrative
