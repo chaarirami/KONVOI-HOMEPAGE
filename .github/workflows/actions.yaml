@@ -1,4 +1,4 @@
-name: GitHub Actions
+name: CI
 
 on:
   pull_request:
@@ -9,33 +9,35 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-check:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version:
-          - 18
-          - 20
-          - 22
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js v${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: npm
-      - run: npm ci
-      - run: npm run build
-      # - run: npm test
 
-  check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
       - name: Use Node.js 22
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-      - run: npm ci
-      - run: npm run check
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Type-check
+        run: pnpm run check
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Check for AstroWind debris in dist/
+        run: |
+          if grep -riq "astrowind\|arthelokyo\|onwidget\|Unsplash\|Cupertino" \
+               --include="*.html" --include="*.js" --include="*.css" dist/; then
+            echo "ERROR: AstroWind debris detected in dist/"
+            exit 1
+          fi
+          echo "Grep gate passed"
