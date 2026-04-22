@@ -24,3 +24,6 @@ pnpm-debug.log*
 # Claude Code / oh-my-claudecode local state
 .claude/
 .omc/
+
+# Crawled site snapshots (working files for planning)
+_crawl/
