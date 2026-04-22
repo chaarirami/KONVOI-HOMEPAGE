@@ -50,9 +50,9 @@ Plans:
   5. Axe/Lighthouse accessibility audit on baseline page scaffolds returns zero critical findings for contrast, focus-visible, and keyboard navigation
 **Plans:** 4 plans
 Plans:
-- [ ] 02-01-PLAN.md -- Install @fontsource packages, wire font imports, apply Konvoi HSL colour palette to CustomStyles.astro (BRAND-01, BRAND-02, BRAND-04)
-- [ ] 02-02-PLAN.md -- Extract Konvoi favicon and logo assets from live site, sanitize SVGs, update Logo.astro (BRAND-03)
-- [ ] 02-03-PLAN.md -- Create src/data/brand/canonical.yaml and voice.md brand data files (BRAND-05, BRAND-06)
+- [x] 02-01-PLAN.md -- Install @fontsource packages, wire font imports, apply Konvoi HSL colour palette to CustomStyles.astro (BRAND-01, BRAND-02, BRAND-04)
+- [x] 02-02-PLAN.md -- Extract Konvoi favicon and logo assets from live site, sanitize SVGs, update Logo.astro (BRAND-03)
+- [x] 02-03-PLAN.md -- Create src/data/brand/canonical.yaml and voice.md brand data files (BRAND-05, BRAND-06)
 - [ ] 02-04-PLAN.md -- Lighthouse + Axe accessibility audit, fix any critical findings, declare Phase 2 complete (BRAND-07)
 **UI hint**: yes
 
