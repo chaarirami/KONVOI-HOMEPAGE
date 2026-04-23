@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "tsx scripts/check-translation-parity.ts && astro build",
+    "build": "tsx scripts/check-translation-parity.ts && tsx scripts/validate-crosslinks.ts && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "check": "pnpm run check:astro && pnpm run check:eslint && pnpm run check:prettier",
