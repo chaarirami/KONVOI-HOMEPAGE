@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '~/layouts/PageLayout.astro';
+import TeamGrid from '~/components/widgets/TeamGrid.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const members = await getCollection('team');
+
+const metadata = {
+  title: 'Team — KONVOI GmbH',
+  description: 'The team behind KONVOI: nine experts in hardware, AI, logistics, and sales, redefining preventive fleet security.',
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:py-24">
+    <div class="mb-12 text-center">
+      <p class="mb-2 text-sm font-medium uppercase tracking-widest text-[hsl(214.48_38.33%_55.49%)]">
+        Our People
+      </p>
+      <h1 class="text-4xl font-bold font-heading text-slate-900 dark:text-white">Our Team</h1>
+      <p class="mt-4 text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+        Founded in 2020 as a spin-off from Hamburg University of Technology. Nine specialists in hardware, AI, logistics, and sales building preventive security for the transport industry.
+      </p>
+    </div>
+    <TeamGrid members={members} locale="en" />
+  </section>
+  <CallToAction
+    title="Meet the team"
+    subtitle="Book a consultation and speak directly with the people behind KONVOI."
+    actions={[{ variant: 'primary', text: 'Book a consult', href: '/en/contact' }]}
+  />
+</Layout>
