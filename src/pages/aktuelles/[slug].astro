@@ -1,0 +1,52 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import Layout from '~/layouts/PageLayout.astro';
+import SinglePost from '~/components/blog/SinglePost.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('post', (e) => e.data.locale === 'de' && !e.data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.data.canonicalKey },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'post'>;
+}
+
+const { post } = Astro.props;
+const { Content, remarkPluginFrontmatter } = await render(post);
+
+const permalink = `/aktuelles/${post.data.canonicalKey}/`;
+const metadata = {
+  title: post.data.metadata?.title ?? `${post.data.title} | KONVOI`,
+  description: post.data.metadata?.description ?? post.data.excerpt,
+};
+---
+
+<Layout metadata={metadata}>
+  <SinglePost
+    post={{
+      id: post.id,
+      slug: post.data.canonicalKey,
+      permalink,
+      title: post.data.title,
+      excerpt: post.data.excerpt,
+      image: post.data.image,
+      publishDate: post.data.publishDate ?? new Date(),
+      updateDate: post.data.updateDate,
+      author: post.data.author,
+      tags: post.data.tags?.map((t) => ({ slug: t.toLowerCase().replace(/\s+/g, '-'), title: t })),
+      category: post.data.category
+        ? { slug: post.data.category.toLowerCase().replace(/\s+/g, '-'), title: post.data.category }
+        : undefined,
+      metadata: post.data.metadata,
+      readingTime: remarkPluginFrontmatter?.readingTime,
+    }}
+    url={permalink}
+  >
+    <Content />
+  </SinglePost>
+</Layout>
