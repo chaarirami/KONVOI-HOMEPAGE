@@ -1,0 +1,23 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Careers — KONVOI GmbH',
+  description: 'Open positions at KONVOI. Our job listings are currently available in German only.',
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="mx-auto max-w-2xl px-4 py-16 sm:py-24 text-center">
+    <h1 class="text-4xl font-bold font-heading text-slate-900 dark:text-white mb-6">Careers</h1>
+    <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 font-body leading-relaxed">
+      Our job listings are currently available in German only. Please visit the German careers page to see all open positions and apply.
+    </p>
+    <a
+      href="/karriere/"
+      class="inline-flex min-h-[44px] items-center rounded-lg bg-[hsl(214.48_38.33%_55.49%)] px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-[hsl(214.48_38.33%_45%)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[hsl(214.48_38.33%_55.49%)]"
+    >
+      Go to German careers page / Zur deutschen Karriereseite
+    </a>
+  </section>
+</Layout>
