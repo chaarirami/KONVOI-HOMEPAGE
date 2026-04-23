@@ -1,0 +1,87 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '~/layouts/PageLayout.astro';
+
+// Fetch active DE job listings only (D-11, CAREER-01)
+const jobs = await getCollection('job', (e) => e.data.locale === 'de' && e.data.active !== false);
+
+// Sort: fulltime first, then internship, then initiative
+const typeOrder = { fulltime: 0, internship: 1, initiative: 2 };
+const sorted = jobs.sort((a, b) => {
+  const ao = typeOrder[a.data.type ?? 'initiative'] ?? 2;
+  const bo = typeOrder[b.data.type ?? 'initiative'] ?? 2;
+  return ao - bo;
+});
+
+// Type badge labels (DE)
+const typeLabelDe: Record<string, string> = {
+  fulltime: 'Vollzeit',
+  internship: 'Praktikum',
+  initiative: 'Initiativbewerbung',
+};
+
+const metadata = {
+  title: 'Karriere bei KONVOI — Offene Stellen',
+  description: 'Werden Sie Teil des KONVOI-Teams. Offene Stellen in Engineering, Data Science, Vertrieb und Operations.',
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="mx-auto max-w-3xl px-4 py-16 sm:py-24">
+    <div class="mb-12 text-center">
+      <p class="mb-2 text-sm font-medium uppercase tracking-widest text-[hsl(214.48_38.33%_55.49%)]">
+        Jobs
+      </p>
+      <h1 class="text-4xl font-bold font-heading text-slate-900 dark:text-white">Karriere</h1>
+      <p class="mt-4 text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+        Wir bauen das fuhrende Praventionssystem fur Flottensicherheit in Europa. Werden Sie Teil des Teams.
+      </p>
+    </div>
+
+    {sorted.length === 0 && (
+      <p class="text-center text-slate-500 dark:text-slate-400 py-16">
+        Derzeit keine offenen Stellen — schauen Sie bald wieder vorbei oder senden Sie eine Initiativbewerbung.
+      </p>
+    )}
+
+    <ul class="space-y-4">
+      {sorted.map((job) => {
+        const typeLabel = typeLabelDe[job.data.type ?? 'initiative'] ?? job.data.type;
+        // CAREER-02: mailto with prefilled subject per role (D-11)
+        const subject = encodeURIComponent(`${job.data.title} - Bewerbung`);
+        const mailtoHref = `mailto:${job.data.applyEmail ?? 'applications@konvoi.eu'}?subject=${subject}`;
+
+        return (
+          <li class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm">
+            <div class="flex flex-wrap items-start justify-between gap-4">
+              <div class="flex-1 min-w-0">
+                <h2 class="text-xl font-semibold font-heading text-slate-900 dark:text-white">
+                  {job.data.title}
+                </h2>
+                <div class="mt-2 flex flex-wrap gap-2">
+                  {job.data.department && (
+                    <span class="inline-block rounded px-2 py-0.5 text-xs font-medium bg-[hsl(217.14_42%_80.39%)] text-slate-900">
+                      {job.data.department}
+                    </span>
+                  )}
+                  {job.data.type && (
+                    <span class="inline-block rounded px-2 py-0.5 text-xs font-medium bg-[hsl(217_60%_93%)] text-slate-700 dark:bg-slate-700 dark:text-slate-300">
+                      {typeLabel}
+                    </span>
+                  )}
+                </div>
+              </div>
+              {/* CAREER-02 — Apply button: mailto with prefilled subject */}
+              <a
+                href={mailtoHref}
+                class="inline-flex min-h-[44px] shrink-0 items-center rounded-lg bg-[hsl(214.48_38.33%_55.49%)] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[hsl(214.48_38.33%_45%)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[hsl(214.48_38.33%_55.49%)]"
+              >
+                Bewerben
+              </a>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+</Layout>
