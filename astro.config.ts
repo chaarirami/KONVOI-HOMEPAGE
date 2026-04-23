@@ -1,5 +1,7 @@
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
+import yaml from 'js-yaml';
 
 import { defineConfig } from 'astro/config';
 
@@ -15,6 +17,16 @@ import astrowind from './vendor/integration';
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const yamlPlugin = {
+  name: 'vite-plugin-yaml',
+  transform(_code: string, id: string) {
+    if (!id.endsWith('.yaml') && !id.endsWith('.yml')) return null;
+    const content = fs.readFileSync(id, 'utf-8');
+    const data = yaml.load(content);
+    return { code: `export default ${JSON.stringify(data)};`, map: null };
+  },
+};
 
 export default defineConfig({
   output: 'static',
@@ -77,7 +89,7 @@ export default defineConfig({
   },
 
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindcss(), yamlPlugin],
     resolve: {
       alias: {
         '~': path.resolve(__dirname, './src'),
