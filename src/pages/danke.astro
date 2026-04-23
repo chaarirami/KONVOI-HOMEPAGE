@@ -1,0 +1,37 @@
+---
+// src/pages/danke.astro
+// DE thank-you page — Formspree POST success redirects here from both ConsultForm
+// and FundingQualifierForm when the current page locale is DE.
+// Per D-18: simple confirmation with 24-hour SLA message and homepage link.
+
+import PageLayout from '~/layouts/PageLayout.astro';
+import { t } from '~/i18n/translations';
+
+const locale = 'de';
+const metadata = {
+  title: 'Vielen Dank — KONVOI',
+  description: 'Ihre Anfrage ist eingegangen. Wir melden uns innerhalb von 24 Stunden.',
+  robots: { index: false, follow: false }, // thank-you pages must not be indexed
+};
+---
+
+<PageLayout metadata={metadata}>
+  <section class="py-24 px-4 text-center max-w-2xl mx-auto">
+    <div class="mb-8 text-5xl" aria-hidden="true">✓</div>
+    <h1 class="text-3xl font-bold font-heading mb-4">
+      {t('thanks.title', locale)}
+    </h1>
+    <p class="text-xl text-slate-600 dark:text-slate-300 mb-4">
+      {t('thanks.subtitle', locale)}
+    </p>
+    <p class="text-slate-500 dark:text-slate-400 mb-10">
+      {t('thanks.body', locale)}
+    </p>
+    <a
+      href="/"
+      class="inline-block rounded-lg bg-primary px-6 py-3 text-white font-semibold hover:bg-primary/90 transition-colors"
+    >
+      {t('thanks.back_home', locale)}
+    </a>
+  </section>
+</PageLayout>
