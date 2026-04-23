@@ -12,7 +12,7 @@ A full rebuild of www.konvoi.eu — the corporate marketing site for **KONVOI Gm
 
 ### Validated
 
-<!-- Shipped and confirmed valuable in the existing production site at konvoi.eu -->
+<!-- Shipped and confirmed valuable in the existing production site at konvoi.eu or validated in rebuild phases -->
 
 - ✓ Static marketing site with SEO meta, sitemap, OG images — existing
 - ✓ Bilingual DE / EN content (DE primary) — existing
@@ -48,7 +48,7 @@ A full rebuild of www.konvoi.eu — the corporate marketing site for **KONVOI Gm
 - [ ] **REQ-FORMS-01** Lead-capture form (consult booking + funding pre-qual) backed by Formspree / FormSubmit / equivalent — no custom backend
 - [ ] **REQ-LEGAL-01** Impressum, Datenschutz, cookie-consent banner, Konvoi licence (private, remove AstroWind MIT licence)
 - [ ] **REQ-DEPLOY-01** Deploy to Netlify on a custom domain (`konvoi.eu` DNS cutover is the final launch step)
-- [ ] **REQ-I18N-01** Astro i18n routing with DE default + `/en/` prefix, locale-aware URLs, and i18n-ready content collections
+- [x] **REQ-I18N-01** Astro i18n routing with DE default + `/en/` prefix, locale-aware URLs, and i18n-ready content collections — Validated in Phase 3
 - [ ] **REQ-CONTENT-01** Markdown-based content-authoring workflow in `src/data/**` — editors ship copy via pull requests, no CMS
 - [ ] **REQ-BRAND-01** Apply existing Konvoi brand (Montserrat + PT Serif, current colour palette) and strip AstroWind template scaffolding
 
@@ -128,4 +128,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-20 after initialization*
+*Last updated: 2026-04-23 after Phase 3 completion (i18n & Content Collections)*
