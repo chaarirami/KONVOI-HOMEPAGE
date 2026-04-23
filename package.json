@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "tsx scripts/check-translation-parity.ts && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "check": "pnpm run check:astro && pnpm run check:eslint && pnpm run check:prettier",
@@ -60,6 +60,7 @@
     "sharp": "^0.34.5",
     "tailwind-merge": "^3.5.0",
     "tailwindcss": "^4.2.2",
+    "tsx": "^4.19.2",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.58.2",
     "unist-util-visit": "^5.1.0"
