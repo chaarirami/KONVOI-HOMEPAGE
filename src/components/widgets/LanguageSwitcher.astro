@@ -10,7 +10,7 @@ const currentLocale = Astro.currentLocale ?? 'de';
 
 // Resolve target paths via routeMap; fall back to locale roots if path not in map
 const dePath = getLocalePath(currentPath, 'de') ?? '/';
-const enPath = getLocalePath(currentPath, 'en') ?? '/en/';
+const enPath = getLocalePath(currentPath, 'en') ?? '/en';
 ---
 
 <div class="flex items-center gap-1 ml-2 text-sm font-medium" aria-label="Language switcher">
