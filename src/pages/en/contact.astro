@@ -1,0 +1,198 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '~/layouts/PageLayout.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+// Build-time event filtering (CONT-03, D-16)
+const allEvents = await getCollection('event');
+const now = new Date();
+const upcomingEvents = allEvents
+  .filter((e) => {
+    const end = e.data.endDate ? new Date(e.data.endDate.toISOString().split('T')[0] + 'T23:59:59Z') : null;
+    return end === null || end >= now;
+  })
+  .sort((a, b) => a.data.startDate.getTime() - b.data.startDate.getTime());
+
+const metadata = {
+  title: 'Contact — KONVOI GmbH',
+  description: 'Contact KONVOI: Justus Maenninghoff for customer enquiries, Heinz Luckhardt for investors and marketing. Office in Hamburg, Germany.',
+};
+
+// Maps embed URL — stored here so it never appears in initial HTML (CONT-02)
+const mapsEmbedUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2372.4!2d9.9947!3d53.4677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b18f5a20c9a1c5%3A0xb5d0b51c28b2c0d5!2sHarburger+Schlossstra%C3%9Fe+6-12%2C+21079+Hamburg!5e0!3m2!1sen!2sde!4v1714000000000!5m2!1sen!2sde';
+---
+
+<Layout metadata={metadata}>
+  <section class="mx-auto max-w-5xl px-4 py-16 sm:py-24">
+
+    <!-- Page heading -->
+    <div class="mb-12 text-center">
+      <p class="mb-2 text-sm font-medium uppercase tracking-widest text-[hsl(214.48_38.33%_55.49%)]">
+        Contact
+      </p>
+      <h1 class="text-4xl font-bold font-heading text-slate-900 dark:text-white">Get in touch</h1>
+    </div>
+
+    <!-- CONT-01 D-14: Two contact cards side by side (stacked mobile) -->
+    <div class="grid gap-6 sm:grid-cols-2 mb-16">
+
+      <!-- Justus — customer advisor -->
+      <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-8 shadow-sm">
+        <div class="mb-4 h-24 w-24 rounded-full bg-[hsl(217_60%_93%)] dark:bg-slate-700 flex items-center justify-center text-2xl font-bold font-heading text-slate-600">
+          JM
+        </div>
+        <h2 class="text-2xl font-bold font-heading text-slate-900 dark:text-white mb-1">
+          Justus Maenninghoff
+        </h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400 font-body mb-4">
+          Customer Advisor
+        </p>
+        <div class="space-y-2 text-sm font-body">
+          <p>
+            <a href="tel:+4915751959636" class="font-semibold text-slate-900 dark:text-white hover:underline">
+              +49 157 51959636
+            </a>
+          </p>
+          <p>
+            <a href="mailto:justus@konvoi.eu" class="text-[hsl(214.48_38.33%_55.49%)] hover:underline">
+              justus@konvoi.eu
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Heinz — investors/marketing -->
+      <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-8 shadow-sm">
+        <div class="mb-4 h-24 w-24 rounded-full bg-[hsl(217_60%_93%)] dark:bg-slate-700 flex items-center justify-center text-2xl font-bold font-heading text-slate-600">
+          HL
+        </div>
+        <h2 class="text-2xl font-bold font-heading text-slate-900 dark:text-white mb-1">
+          Heinz Luckhardt
+        </h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400 font-body mb-4">
+          Investors, Marketing &amp; Applicants
+        </p>
+        <div class="space-y-2 text-sm font-body">
+          <p>
+            <a href="tel:+4916390670600" class="font-semibold text-slate-900 dark:text-white hover:underline">
+              +49 163 9067060
+            </a>
+          </p>
+          <p>
+            <a href="mailto:heinz@konvoi.eu" class="text-[hsl(214.48_38.33%_55.49%)] hover:underline">
+              heinz@konvoi.eu
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONT-02 D-15: Office address + click-to-load Maps -->
+    <div class="mb-16">
+      <h2 class="mb-6 text-2xl font-bold font-heading text-slate-900 dark:text-white">Office</h2>
+      <p class="mb-6 text-base font-body text-slate-700 dark:text-slate-300">
+        Harburger Schlossstrasse 6-12<br />
+        21079 Hamburg, Germany
+      </p>
+
+      <!-- Click-to-load Google Maps — CONT-02, D-15 -->
+      <!-- SECURITY: iframe src NOT set initially. data-src copied to src only on explicit click. -->
+      <div id="map-container" class="relative overflow-hidden rounded-xl bg-[hsl(217_60%_93%)] dark:bg-slate-700 h-72 flex items-center justify-center">
+        <p id="map-placeholder-text" class="text-sm text-slate-500 dark:text-slate-400 text-center px-4">
+          Click "Load map" to activate Google Maps.<br />
+          <span class="text-xs">By loading the map you consent to data being shared with Google.</span>
+        </p>
+        <!-- iframe: data-src holds URL; src is empty until user clicks -->
+        <iframe
+          id="map-iframe"
+          data-src={mapsEmbedUrl}
+          title="KONVOI office location Hamburg"
+          class="absolute inset-0 w-full h-full border-0 hidden"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          loading="lazy"
+        ></iframe>
+      </div>
+      <button
+        id="load-map-btn"
+        class="mt-3 inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-5 py-2.5 text-sm font-semibold text-slate-700 dark:text-slate-200 transition-colors hover:bg-slate-50 dark:hover:bg-slate-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[hsl(214.48_38.33%_55.49%)]"
+        type="button"
+      >
+        Load map
+      </button>
+    </div>
+
+    <!-- CONT-03 D-16: Upcoming events (build-time filtered) -->
+    <div class="mb-16">
+      <h2 class="mb-6 text-2xl font-bold font-heading text-slate-900 dark:text-white">
+        Upcoming Events
+      </h2>
+      {upcomingEvents.length === 0 && (
+        <p class="text-slate-500 dark:text-slate-400 font-body">
+          No upcoming events.
+        </p>
+      )}
+      {upcomingEvents.length > 0 && (
+        <ul class="space-y-4">
+          {upcomingEvents.map((event) => {
+            const name = event.data.name.en;
+            const desc = event.data.description?.en;
+            const start = event.data.startDate.toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
+            const end = event.data.endDate?.toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
+            const dateStr = end && end !== start ? `${start} – ${end}` : start;
+
+            return (
+              <li class="flex flex-col sm:flex-row sm:items-start gap-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
+                <div class="flex-1 min-w-0">
+                  <h3 class="font-semibold font-heading text-slate-900 dark:text-white">
+                    {event.data.url ? (
+                      <a href={event.data.url} class="hover:underline" target="_blank" rel="noopener noreferrer">{name}</a>
+                    ) : name}
+                  </h3>
+                  <p class="mt-1 text-sm text-slate-500 dark:text-slate-400 font-body">
+                    {dateStr}{event.data.location ? ` · ${event.data.location}` : ''}
+                  </p>
+                  {desc && (
+                    <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 font-body">{desc}</p>
+                  )}
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </div>
+
+  </section>
+
+  <!-- CONT-04 D-17: Consult CTA at end of page -->
+  <CallToAction
+    title="Ready to talk?"
+    subtitle="Book a no-obligation consultation with Justus or Heinz."
+    actions={[{ variant: 'primary', text: 'Book a consult', href: 'mailto:info@konvoi.eu?subject=Consultation+Request' }]}
+  />
+</Layout>
+
+<!-- Click-to-load Maps script (is:inline — no hydration needed) -->
+<script is:inline>
+  (function () {
+    var btn = document.getElementById('load-map-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var iframe = document.getElementById('map-iframe');
+      var placeholder = document.getElementById('map-placeholder-text');
+      if (!iframe) return;
+      // Copy data-src to src — this is the first and only time the Maps URL is loaded
+      iframe.src = iframe.dataset.src || '';
+      iframe.classList.remove('hidden');
+      if (placeholder) placeholder.style.display = 'none';
+      btn.textContent = 'Hide map';
+      btn.addEventListener('click', function hide() {
+        iframe.classList.add('hidden');
+        if (placeholder) placeholder.style.display = '';
+        btn.textContent = 'Load map';
+        btn.removeEventListener('click', hide);
+      }, { once: true });
+    }, { once: true });
+  })();
+</script>
