@@ -3,11 +3,14 @@ import { fileURLToPath } from 'url';
 
 import { defineConfig } from 'astro/config';
 
+import preact from '@astrojs/preact';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
 import icon from 'astro-icon';
 import compress from 'astro-compress';
+
+import yaml from '@modyfi/vite-plugin-yaml';
 
 import astrowind from './vendor/integration';
 
@@ -19,6 +22,7 @@ export default defineConfig({
   output: 'static',
 
   integrations: [
+    preact(),
     sitemap(),
     mdx(),
     icon({
@@ -66,7 +70,7 @@ export default defineConfig({
   },
 
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindcss(), yaml()],
     resolve: {
       alias: {
         '~': path.resolve(__dirname, './src'),
