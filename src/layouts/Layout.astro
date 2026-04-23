@@ -1,6 +1,8 @@
 ---
 import '~/assets/styles/tailwind.css';
 
+import { I18N } from 'astrowind:config';
+
 import CommonMeta from '~/components/common/CommonMeta.astro';
 import Favicons from '~/components/Favicons.astro';
 import CustomStyles from '~/components/CustomStyles.astro';
@@ -20,14 +22,13 @@ export interface Props {
 }
 
 const { metadata = {} } = Astro.props;
-const currentLocale = Astro.currentLocale ?? 'de'; // Provided by i18n config in astro.config.ts (Plan 03-01)
-const textDirection = 'ltr'; // Both DE and EN use left-to-right text direction
+const { language, textDirection } = I18N;
 const netlifyContext = import.meta.env.CONTEXT ?? process.env.CONTEXT ?? 'production';
 const isNonProduction = netlifyContext === 'deploy-preview' || netlifyContext === 'branch-deploy';
 ---
 
 <!doctype html>
-<html lang={currentLocale} dir={textDirection} class="2xl:text-[20px]">
+<html lang={language} dir={textDirection} class="2xl:text-[20px]">
   <head>
     <CommonMeta />
     <Favicons />
