@@ -50,24 +50,24 @@ created: 2026-04-23
 
 ## Typography
 
-**Established scale (from Phase 2):**
+**Consolidated scale (4 sizes, 2 weights maximum):**
 
 | Role | Size | Weight | Line Height | Font | Usage |
 |------|------|--------|-------------|------|-------|
-| Body | 16px | 400 | 1.5 | PT Serif | Blog posts, case study detail text, team bios |
-| Label | 14px | 400 | 1.5 | PT Serif | Blog metadata (date, author), event details |
-| Heading 3 | 20px | 600 | 1.2 | Montserrat | Case study card titles, blog post titles in grid |
-| Heading 2 | 28px | 600 | 1.2 | Montserrat | Blog post single-post headline, case study detail title |
-| Heading 1 | 32px+ | 700 | 1.2 | Montserrat | Page hero/breadcrumb titles |
+| Label | 14px | 400 | 1.5 | PT Serif | Blog metadata (date, author), event details, team titles, career type badges |
+| Body | 16px | 400 | 1.5 | PT Serif | Blog posts, case study detail text, team bios, case study quotes, excerpts |
+| Heading 3 | 20px | 600 | 1.2 | Montserrat | Case study card titles, blog post titles in grid, team member names, career role titles |
+| Heading 1/2 | 28px | 600 | 1.2 | Montserrat | Page hero/breadcrumb titles, blog post single-post headline, case study detail title, contact names |
 
 **Phase 6 specific applications:**
 - **Blog grid titles:** 20px, 600 weight, 1.2 line-height
 - **Case study card titles:** 20px, 600 weight, 1.2 line-height
-- **Team member names:** 18px, 600 weight
+- **Team member names:** 20px, 600 weight
 - **Team member titles:** 14px, 400 weight, text-muted color
-- **Case study quotes:** 18px, 400 weight, PT Serif (italic preferred)
+- **Case study quotes:** 16px, 400 weight, PT Serif (italic preferred)
 - **Career role titles:** 20px, 600 weight
-- **Contact names (Justus/Heinz):** 24px, 600 weight
+- **Contact names (Justus/Heinz):** 28px, 600 weight
+- **Blog post metadata (author, date):** 14px, 400 weight, muted color
 
 ---
 
@@ -196,7 +196,7 @@ created: 2026-04-23
 **Visual structure:**
 - Container: 2 columns mobile, 3 columns tablet, 4 columns desktop
 - Photo: Square aspect ratio, centered, consistent crop (headshot or full-shoulder)
-- Name: 18px, 600 weight, Montserrat, centered below photo
+- Name: 20px, 600 weight, Montserrat, centered below photo
 - Title: 14px, 400 weight, muted color, centered
 - Bio: 14px, 400 weight, PT Serif, 2-3 lines, centered
 - Spacing: md (16px) between cards
@@ -245,7 +245,7 @@ created: 2026-04-23
 - [ ] Dimension 1 Copywriting: PASS
 - [ ] Dimension 2 Visuals: PASS
 - [ ] Dimension 3 Color: PASS
-- [ ] Dimension 4 Typography: PASS
+- [ ] Dimension 4 Typography: PASS (4 sizes, 2 weights)
 - [ ] Dimension 5 Spacing: PASS
 - [ ] Dimension 6 Registry Safety: PASS
 
@@ -288,5 +288,5 @@ created: 2026-04-23
 ---
 
 *Generated: 2026-04-23*
-*Updated: N/A (first draft)*
+*Updated: 2026-04-23 (typography consolidation: 7→4 sizes, 2 weights)*
 *Pre-populated from: CONTEXT.md (D-01 through D-17), REQUIREMENTS.md (CASE-01..04, BLOG-01..04, TEAM-01..03, CAREER-01..03, CONT-01..04), CustomStyles.astro (color tokens), tailwind.css (spacing scale), voice.md (copywriting)*
