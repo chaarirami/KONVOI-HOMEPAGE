@@ -1,0 +1,21 @@
+{
+  "scenarioId": "equipment-theft",
+  "title": "Equipment Theft Prevention Scenario",
+  "description": "Sensor trace showing tyre and trailer equipment removal attempt",
+  "timeline": [
+    { "t": 1713870000, "motion": 2, "shock": 1, "gps": 0 },
+    { "t": 1713870060, "motion": 3, "shock": 2, "gps": 0 },
+    { "t": 1713870120, "motion": 5, "shock": 18, "gps": 0 },
+    { "t": 1713870180, "motion": 9, "shock": 44, "gps": 0 },
+    { "t": 1713870240, "motion": 18, "shock": 66, "gps": 0 },
+    { "t": 1713870300, "motion": 25, "shock": 82, "gps": 0 },
+    { "t": 1713870360, "motion": 30, "shock": 88, "gps": 1 },
+    { "t": 1713870420, "motion": 6, "shock": 10, "gps": 0 },
+    { "t": 1713870480, "motion": 2, "shock": 2, "gps": 0 }
+  ],
+  "phases": [
+    { "name": "Detection",      "start": 1713870120, "end": 1713870240, "color": "#f59e0b" },
+    { "name": "Classification", "start": 1713870240, "end": 1713870360, "color": "#3b82f6" },
+    { "name": "Measures",       "start": 1713870360, "end": 1713870420, "color": "#10b981" }
+  ]
+}
