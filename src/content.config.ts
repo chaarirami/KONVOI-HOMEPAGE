@@ -2,6 +2,10 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
+// ---------------------------------------------------------------------------
+// Shared Zod helpers
+// ---------------------------------------------------------------------------
+
 const metadataDefinition = () =>
   z
     .object({
@@ -47,9 +51,20 @@ const metadataDefinition = () =>
     })
     .optional();
 
+// ---------------------------------------------------------------------------
+// Long-form collections (I18N-06)
+// Each entry lives in src/content/{collection}/de/ or en/
+// Required fields: locale (enum), translationKey, canonicalKey
+// ---------------------------------------------------------------------------
+
+// blog posts (migrated from Jimdo in Phase 6)
 const postCollection = defineCollection({
-  loader: glob({ pattern: ['*.md', '*.mdx'], base: 'src/data/post' }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: 'src/content/post' }),
   schema: z.object({
+    locale: z.enum(['de', 'en']),
+    translationKey: z.string(),
+    canonicalKey: z.string(),
+
     publishDate: z.date().optional(),
     updateDate: z.date().optional(),
     draft: z.boolean().optional(),
@@ -66,12 +81,14 @@ const postCollection = defineCollection({
   }),
 });
 
+// customer case studies (Phase 6 — Schumacher, JJX, Greilmeier)
 const caseStudyCollection = defineCollection({
-  loader: glob({ pattern: ['**/*.md', '**/*.mdx'], base: 'src/content/caseStudy' }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: 'src/content/caseStudy' }),
   schema: z.object({
     locale: z.enum(['de', 'en']),
     translationKey: z.string(),
     canonicalKey: z.string(),
+
     title: z.string(),
     customer: z.string(),
     vertical: z.string(),
@@ -82,11 +99,142 @@ const caseStudyCollection = defineCollection({
     quoteAttribution: z.string().optional(),
     logo: z.string().optional(),
     publishDate: z.date().optional(),
+
     metadata: metadataDefinition(),
   }),
 });
 
+// product use-case pages (Phase 4 — 7 use cases)
+const useCaseCollection = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: 'src/content/useCase' }),
+  schema: z.object({
+    locale: z.enum(['de', 'en']),
+    translationKey: z.string(),
+    canonicalKey: z.string(),
+
+    title: z.string(),
+    slug: z.string(),
+    problemStatement: z.string().optional(),
+    costAnchor: z.string().optional(),
+    konvoiApproach: z.string().optional(),
+    relatedIndustries: z.array(z.string()).optional(),
+    publishDate: z.date().optional(),
+
+    metadata: metadataDefinition(),
+  }),
+});
+
+// industry vertical landing pages (Phase 4 — 4 verticals)
+// Custom generateId uses locale+slug to avoid duplicate IDs when DE and EN
+// share the same slug value (e.g. both have slug: intermodal).
+const industryCollection = defineCollection({
+  loader: glob({
+    pattern: '**/*.{md,mdx}',
+    base: 'src/content/industry',
+    generateId: ({ entry, data }) => {
+      // entry is the relative file path, e.g. "de/intermodal.md"
+      // Use locale prefix + slug for a guaranteed-unique collection ID
+      const locale = (data as { locale?: string }).locale ?? 'unknown';
+      const slug = (data as { slug?: string }).slug ?? entry.replace(/\.[^.]+$/, '');
+      return `${locale}/${slug}`;
+    },
+  }),
+  schema: z.object({
+    locale: z.enum(['de', 'en']),
+    translationKey: z.string(),
+    canonicalKey: z.string(),
+
+    title: z.string(),
+    slug: z.string(),
+    riskProfile: z.string().optional(),
+    relatedUseCases: z.array(z.string()).optional(),
+    publishDate: z.date().optional(),
+
+    metadata: metadataDefinition(),
+  }),
+});
+
+// job listings (Phase 6 — 8 open roles)
+const jobCollection = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: 'src/content/job' }),
+  schema: z.object({
+    locale: z.enum(['de', 'en']),
+    translationKey: z.string(),
+    canonicalKey: z.string(),
+
+    title: z.string(),
+    department: z.string().optional(),
+    type: z.enum(['fulltime', 'internship', 'initiative']).optional(),
+    applyEmail: z.string().optional(),
+    publishDate: z.date().optional(),
+    active: z.boolean().default(true),
+
+    metadata: metadataDefinition(),
+  }),
+});
+
+// ---------------------------------------------------------------------------
+// Short-form collections (I18N-07)
+// Each entry is a single file with {de, en} sibling fields for bilingual content.
+// Shared metadata (photo, dates) uses singular fields (not bilingual).
+// ---------------------------------------------------------------------------
+
+// events (Phase 6 — upcoming events list on contact page)
+const eventCollection = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: 'src/content/event' }),
+  schema: z.object({
+    name: z.object({
+      de: z.string(),
+      en: z.string(),
+    }),
+    description: z
+      .object({
+        de: z.string(),
+        en: z.string(),
+      })
+      .optional(),
+    // Shared singular fields (same for both locales)
+    startDate: z.date(),
+    endDate: z.date().optional(),
+    location: z.string().optional(),
+    url: z.string().optional(),
+  }),
+});
+
+// team members (Phase 6 — 9 members)
+const teamCollection = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: 'src/content/team' }),
+  schema: z.object({
+    name: z.object({
+      de: z.string(),
+      en: z.string(),
+    }),
+    title: z.object({
+      de: z.string(),
+      en: z.string(),
+    }),
+    bio: z.object({
+      de: z.string(),
+      en: z.string(),
+    }),
+    // Shared singular fields
+    photo: z.string(),
+    email: z.string().optional(),
+    phone: z.string().optional(),
+    order: z.number().optional(),
+  }),
+});
+
+// ---------------------------------------------------------------------------
+// Export (I18N-05)
+// ---------------------------------------------------------------------------
+
 export const collections = {
   post: postCollection,
   caseStudy: caseStudyCollection,
+  useCase: useCaseCollection,
+  industry: industryCollection,
+  job: jobCollection,
+  event: eventCollection,
+  team: teamCollection,
 };

@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" style="font-family:sans-serif;background:#f8fafc">
-  <rect width="600" height="300" fill="#f8fafc" rx="8"/>
-  <text x="300" y="140" text-anchor="middle" font-size="16" fill="#64748b">Installationsvideo</text>
-  <text x="300" y="168" text-anchor="middle" font-size="13" fill="#94a3b8">Wird vor Launch hinzugefügt — unter 120 Minuten</text>
-  <circle cx="300" cy="80" r="36" fill="none" stroke="#3b82f6" stroke-width="2.5"/>
-  <polygon points="290,65 290,95 320,80" fill="#3b82f6"/>
-</svg>

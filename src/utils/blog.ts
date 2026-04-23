@@ -243,6 +243,28 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
   );
 };
 
+// ---------------------------------------------------------------------------
+// Phase 6: Locale-aware post fetching
+// Use these helpers in locale-specific blog routes (/aktuelles/, /en/news/)
+// instead of the locale-agnostic fetchPosts() above.
+// ---------------------------------------------------------------------------
+
+/**
+ * Fetch posts filtered by locale, sorted by publishDate descending.
+ * Returns raw CollectionEntry<'post'> objects (not normalised Post type)
+ * to avoid the APP_BLOG config dependency.
+ */
+export const fetchPostsByLocale = async (locale: 'de' | 'en') => {
+  const { getCollection } = await import('astro:content');
+  const posts = await getCollection('post', (entry) => {
+    return entry.data.locale === locale && entry.data.draft !== true;
+  });
+  return posts.sort(
+    (a, b) =>
+      (b.data.publishDate?.getTime() ?? 0) - (a.data.publishDate?.getTime() ?? 0)
+  );
+};
+
 /** */
 export async function getRelatedPosts(originalPost: Post, maxResults: number = 4): Promise<Post[]> {
   const allPosts = await fetchPosts();

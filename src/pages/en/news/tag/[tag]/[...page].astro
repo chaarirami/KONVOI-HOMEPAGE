@@ -1,0 +1,68 @@
+---
+import type { PaginateFunction } from 'astro';
+import { getCollection } from 'astro:content';
+import Layout from '~/layouts/PageLayout.astro';
+import Grid from '~/components/blog/Grid.astro';
+import Pagination from '~/components/blog/Pagination.astro';
+
+export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
+  const posts = await getCollection('post', (e) => e.data.locale === 'en' && !e.data.draft);
+
+  // Collect all unique tags
+  const tagSet = new Set<string>();
+  posts.forEach((p) => p.data.tags?.forEach((t) => tagSet.add(t)));
+
+  // For each tag, return paginated paths
+  const paths: unknown[] = [];
+  for (const tag of tagSet) {
+    const tagSlug = tag.toLowerCase().replace(/\s+/g, '-');
+    const tagged = posts
+      .filter((p) => p.data.tags?.includes(tag))
+      .sort((a, b) => (b.data.publishDate?.getTime() ?? 0) - (a.data.publishDate?.getTime() ?? 0));
+    const pages = paginate(tagged, {
+      params: { tag: tagSlug },
+      pageSize: 6,
+    });
+    paths.push(...pages);
+  }
+  return paths;
+}
+
+const { page } = Astro.props;
+const { tag } = Astro.params;
+
+const metadata = {
+  title: `Tag: ${tag} — KONVOI News`,
+  description: `Posts tagged ${tag} from KONVOI.`,
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:py-24">
+    <div class="mb-12">
+      <a href="/en/news/" class="text-sm text-[hsl(214.48_38.33%_55.49%)] hover:underline">← All posts</a>
+      <h1 class="mt-4 text-3xl font-bold font-heading text-slate-900 dark:text-white">Tag: {tag}</h1>
+    </div>
+    {page.data.length === 0 && (
+      <p class="text-center text-slate-500 py-16">No articles found.</p>
+    )}
+    {page.data.length > 0 && (
+      <Grid posts={page.data.map((e) => ({
+        id: e.id,
+        slug: e.data.canonicalKey,
+        permalink: `/en/news/${e.data.canonicalKey}/`,
+        title: e.data.title,
+        excerpt: e.data.excerpt,
+        image: e.data.image,
+        publishDate: e.data.publishDate ?? new Date(),
+        author: e.data.author,
+        tags: e.data.tags?.map((t) => ({ slug: t.toLowerCase().replace(/\s+/g, '-'), title: t })),
+        category: e.data.category ? { slug: e.data.category.toLowerCase().replace(/\s+/g, '-'), title: e.data.category } : undefined,
+        metadata: e.data.metadata,
+      }))} />
+    )}
+    <div class="mt-8">
+      <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+    </div>
+  </section>
+</Layout>
