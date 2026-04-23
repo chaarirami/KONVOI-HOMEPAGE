@@ -1,0 +1,171 @@
+---
+import PageLayout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { t } from '~/i18n/translations';
+import brand from '~/data/brand/canonical.yaml';
+
+const locale = 'de';
+
+const metadata = {
+  title: 'KONVOI Produkt — Sensor-basiertes Sicherheitssystem für Trailer',
+  description:
+    'Das KONVOI System: GPS, Schock- und Bewegungssensoren, KI-Klassifizierung und sofortige Abschreckungskette. Installation in unter 120 Minuten.',
+};
+---
+
+<PageLayout metadata={metadata}>
+
+  {/* Hero — PROD-01 */}
+  <Hero
+    tagline={t('product.hero_tagline', locale)}
+    title={t('product.hero_title', locale)}
+    subtitle={t('product.hero_subtitle', locale)}
+    videoPoster="/images/hero-poster.jpg"
+    actions={[
+      {
+        variant: 'primary',
+        text: t('cta.book_consult', locale),
+        href: '#consult',
+      },
+    ]}
+  />
+
+  {/* Hardware spec + sensor positions diagram — PROD-01, PROD-02 */}
+  <Content
+    id="hardware"
+    tagline={t('product.hardware_tagline', locale)}
+    title={t('product.hardware_title', locale)}
+    subtitle={t('product.hardware_subtitle', locale)}
+    items={[
+      {
+        title: 'GPS + LTE Konnektivität',
+        description: 'Echtzeit-Ortung und Datenübertragung auch in Gebieten mit schwachem Signal.',
+        icon: 'tabler:map-pin',
+      },
+      {
+        title: 'Schock- und Bewegungssensoren',
+        description: 'Erkennen verdächtige Muster — von abnormalen Türbewegungen bis zu unerwarteten Erschütterungen.',
+        icon: 'tabler:wave-sine',
+      },
+      {
+        title: '7-Tage Akku',
+        description: 'Selbstversorgend. Kein Anschluss an die Fahrzeugelektrik nötig. Funktioniert auch wenn der Trailer abgekoppelt ist.',
+        icon: 'tabler:battery',
+      },
+      {
+        title: 'Verdecktes Gehäuse',
+        description: 'Kompakt und unauffällig montiert. Kein sichtbarer Hinweis auf das Sicherheitssystem für potenzielle Diebe.',
+        icon: 'tabler:eye-off',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/sensor-positions-placeholder.svg',
+      alt: 'Sensorpositionen am Trailer — KONVOI Systemübersicht',
+    }}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  {/* Detection → Classification → Measures — PROD-03 */}
+  <Steps
+    id="so-funktioniert-es"
+    tagline={t('product.steps_tagline', locale)}
+    title={t('product.steps_title', locale)}
+    items={[
+      {
+        title: 'Erkennung',
+        description:
+          'Schock-, Bewegungs- und GPS-Sensoren erfassen kontinuierlich Daten. Anomalien werden sofort registriert — z. B. abnormale Türbewegungen um 2 Uhr nachts auf einem Rastplatz.',
+        icon: 'tabler:radar',
+      },
+      {
+        title: 'Klassifizierung',
+        description:
+          'Die KONVOI KI analysiert die Sensormuster und klassifiziert das Ereignis als Bedrohung oder Fehlalarm. Kein menschliches Eingreifen nötig — die Entscheidung dauert Sekunden.',
+        icon: 'tabler:brain',
+      },
+      {
+        title: 'Maßnahmen',
+        description:
+          'Bei bestätigter Bedrohung löst KONVOI sofort die Abschreckungskette aus: Sirene, Benachrichtigung des Fahrers, Alarmierung der Einsatzkräfte. Der Diebstahl wird verhindert, nicht nur dokumentiert.',
+        icon: 'tabler:shield-check',
+      },
+    ]}
+  />
+
+  {/* Add-on modules: Camera Module + Logbook — PROD-04 */}
+  <Features2
+    id="erweiterungen"
+    tagline={t('product.addons_tagline', locale)}
+    title={t('product.addons_title', locale)}
+    subtitle="Ergänzen Sie das KONVOI Standard-System nach Bedarf."
+    columns={2}
+    items={[
+      {
+        title: brand.pricing.tiers[1].de_name,
+        description:
+          `${brand.pricing.tiers[1].de_description} — Bei jedem klassifizierten Ereignis wird automatisch ein Video-Clip in der Cloud gespeichert. Lückenlose Beweissicherung für Versicherung und Ermittlungsbehörden.`,
+        icon: 'tabler:video',
+      },
+      {
+        title: brand.pricing.tiers[2].de_name,
+        description:
+          `${brand.pricing.tiers[2].de_description} — Ideal für Compliance-Anforderungen und die Kommunikation mit Auftraggebern. Jede Fahrt transparent dokumentiert.`,
+        icon: 'tabler:file-description',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  {/* Installation + 120-minute promise + video slot — PROD-05 */}
+  <Content
+    id="installation"
+    tagline={t('product.install_tagline', locale)}
+    title={t('product.install_title', locale)}
+    isReversed
+    items={[
+      {
+        title: 'Eigenes Installationsteam',
+        description: 'Kein Fremddienstleister. Unser Team kennt das System in- und auswendig und garantiert eine saubere, verdeckte Montage.',
+        icon: 'tabler:tool',
+      },
+      {
+        title: brand.install.de_promise,
+        description: 'Kein Trailer muss den Betrieb länger als nötig unterbrechen. Keine Terminabhängigkeit von Werkstätten.',
+        icon: 'tabler:clock',
+      },
+      {
+        title: 'Full-Service inklusive',
+        description: 'Hardware, Software, Wartung und Support — alles in einem Jahresvertrag. Keine versteckten Kosten.',
+        icon: 'tabler:package',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/installation-placeholder.svg',
+      alt: 'KONVOI Installation — unter 120 Minuten pro Trailer',
+    }}
+  />
+
+  {/* End CTA */}
+  <CallToAction
+    id="consult"
+    title={t('homepage.cta_title', locale)}
+    subtitle={t('homepage.cta_subtitle', locale)}
+    actions={[
+      {
+        variant: 'primary',
+        text: t('cta.book_consult', locale),
+        href: 'mailto:info@konvoi.eu?subject=Produktberatung',
+      },
+    ]}
+  />
+</PageLayout>

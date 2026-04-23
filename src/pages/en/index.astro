@@ -1,0 +1,171 @@
+---
+import PageLayout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Brands from '~/components/widgets/Brands.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import Features from '~/components/widgets/Features.astro';
+import Content from '~/components/widgets/Content.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { t } from '~/i18n/translations';
+
+const locale = 'en';
+
+const metadata = {
+  title: 'KONVOI — Security Tech Made in Germany',
+  description:
+    'The first preventive security solution for your fleet — against cargo theft, diesel theft, sabotage and driver assaults. KONVOI GmbH, Hamburg.',
+  ignoreTitleTemplate: true,
+};
+
+const testimonials = [
+  {
+    name: 'Katrin Sophie Schumacher',
+    job: 'Schumacher Group',
+    testimonial:
+      'Installation was completed within a week. Since then, the system detects suspicious patterns immediately — before anything happens.',
+  },
+  {
+    name: 'JJX Logistics',
+    job: 'High-Value Cargo Transport',
+    testimonial:
+      'With KONVOI we finally have a solution that genuinely protects our high-value shipments — not just documents them.',
+  },
+  {
+    name: 'Greilmeier Spedition & Logistik',
+    job: 'Freight Forwarding',
+    testimonial:
+      'KONVOI gives us the transparency we need for compliance and damage claims. Incident documentation now runs automatically.',
+  },
+];
+---
+
+<PageLayout metadata={metadata}>
+  {/* 1. Hero with video background (D-01, D-02, HOME-02) */}
+  <Hero
+    tagline={t('homepage.hero_tagline', locale)}
+    title={t('homepage.hero_title', locale)}
+    subtitle={t('homepage.hero_subtitle', locale)}
+    videoPoster="/images/hero-poster.jpg"
+    actions={[
+      {
+        variant: 'primary',
+        text: t('cta.book_consult', locale),
+        href: '#consult',
+      },
+      {
+        variant: 'secondary',
+        text: t('cta.learn_more', locale),
+        href: '/en/product',
+      },
+    ]}
+  />
+
+  {/* 2. Customer logo wall (D-03, HOME-03) — placeholders until real assets provided */}
+  <Brands
+    title={t('homepage.logos_title', locale)}
+    images={[
+      { src: '/images/logos/schumacher.svg', alt: 'Schumacher Group' },
+      { src: '/images/logos/jjx.svg', alt: 'JJX Logistics' },
+      { src: '/images/logos/greilmeier.svg', alt: 'Greilmeier Spedition & Logistik' },
+    ]}
+  />
+
+  {/* 3. Testimonials — Schumacher, JJX, Greilmeier (D-03, HOME-04) */}
+  <Testimonials
+    title={t('homepage.testimonials_title', locale)}
+    testimonials={testimonials}
+  />
+
+  {/* 4. 3-column value props: Preventive / Learning / Independent (D-03, HOME-05) */}
+  <Features
+    id="values"
+    title={t('homepage.values_title', locale)}
+    columns={3}
+    items={[
+      {
+        title: t('homepage.values_preventive_title', locale),
+        description: t('homepage.values_preventive_desc', locale),
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: t('homepage.values_learning_title', locale),
+        description: t('homepage.values_learning_desc', locale),
+        icon: 'tabler:brain',
+      },
+      {
+        title: t('homepage.values_independent_title', locale),
+        description: t('homepage.values_independent_desc', locale),
+        icon: 'tabler:wifi-off',
+      },
+    ]}
+  />
+
+  {/* 5. Preventive-vs-reactive explainer (D-03) */}
+  <Content
+    id="prevention"
+    tagline={t('homepage.explainer_tagline', locale)}
+    title={t('homepage.explainer_title', locale)}
+    items={[
+      {
+        title: 'Traditional GPS trackers',
+        description:
+          'Show you where the trailer was stolen — after the fact. No prevention, just documentation.',
+      },
+      {
+        title: 'KONVOI',
+        description:
+          'Classifies motion, shock, and GPS patterns in real time. Triggers a deterrence chain before cargo leaves the trailer.',
+      },
+    ]}
+    image={{
+      src: '/images/preventive-vs-reactive.svg',
+      alt: 'Prevention vs Reaction — KONVOI comparison',
+    }}
+    callToAction={{
+      text: t('cta.learn_more', locale),
+      href: '/en/product',
+      variant: 'link',
+    }}
+  >
+    <Fragment slot="content">
+      <p class="text-muted">{t('homepage.explainer_body', locale)}</p>
+    </Fragment>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  {/* 6. Press mentions strip (D-03, HOME-06) — placeholders */}
+  <Brands
+    title={t('homepage.press_title', locale)}
+    images={[
+      { src: '/images/logos/press-placeholder-1.svg', alt: 'Press mention 1' },
+      { src: '/images/logos/press-placeholder-2.svg', alt: 'Press mention 2' },
+      { src: '/images/logos/press-placeholder-3.svg', alt: 'Press mention 3' },
+    ]}
+  />
+
+  {/* 7. Partners / investors strip (D-03, HOME-07) — placeholders */}
+  <Brands
+    title={t('homepage.partners_title', locale)}
+    images={[
+      { src: '/images/logos/startup-port.svg', alt: 'Startup Port' },
+      { src: '/images/logos/1750-ventures.svg', alt: '1750 Ventures' },
+      { src: '/images/logos/vgh.svg', alt: 'VGH Versicherungen' },
+    ]}
+  />
+
+  {/* 8. End-of-page consult CTA (D-03, HOME-08) */}
+  <CallToAction
+    id="consult"
+    title={t('homepage.cta_title', locale)}
+    subtitle={t('homepage.cta_subtitle', locale)}
+    actions={[
+      {
+        variant: 'primary',
+        text: t('cta.book_consult', locale),
+        href: 'mailto:info@konvoi.eu?subject=Consult+Request',
+      },
+    ]}
+  />
+</PageLayout>
