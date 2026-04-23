@@ -125,8 +125,20 @@ const useCaseCollection = defineCollection({
 });
 
 // industry vertical landing pages (Phase 4 — 4 verticals)
+// Custom generateId uses locale+slug to avoid duplicate IDs when DE and EN
+// share the same slug value (e.g. both have slug: intermodal).
 const industryCollection = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: 'src/content/industry' }),
+  loader: glob({
+    pattern: '**/*.{md,mdx}',
+    base: 'src/content/industry',
+    generateId: ({ entry, data }) => {
+      // entry is the relative file path, e.g. "de/intermodal.md"
+      // Use locale prefix + slug for a guaranteed-unique collection ID
+      const locale = (data as { locale?: string }).locale ?? 'unknown';
+      const slug = (data as { slug?: string }).slug ?? entry.replace(/\.[^.]+$/, '');
+      return `${locale}/${slug}`;
+    },
+  }),
   schema: z.object({
     locale: z.enum(['de', 'en']),
     translationKey: z.string(),
