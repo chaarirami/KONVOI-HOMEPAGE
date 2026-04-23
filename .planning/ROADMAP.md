@@ -84,13 +84,13 @@ Plans:
   5. All cross-links work: use-case pages link to relevant verticals and vice versa; homepage teasers link through to use cases and case studies
 **Plans:** 7 plans
 Plans:
-- [ ] 04-01-PLAN.md -- Install Preact + uPlot, wire Preact integration, populate navigation.ts, add Phase 4 UI strings to translations.ts (HOME-01, HOME-08, UC-01, VERT-01)
-- [ ] 04-02-PLAN.md -- Build DE + EN homepages with 8-section D-03 order, extend Hero.astro for video background (HOME-01 through HOME-08)
-- [ ] 04-03-PLAN.md -- Build DE + EN product pages with hardware spec, steps flow, add-ons, install promise (PROD-01 through PROD-05)
-- [ ] 04-04-PLAN.md -- Build SensorDataViz Preact island with uPlot, create 7 sensor scenario fixture JSON files (UC-03, UC-04)
-- [ ] 04-05-PLAN.md -- Write 14 use-case markdown entries + dynamic page templates with SensorDataViz island (UC-01 through UC-05)
-- [ ] 04-06-PLAN.md -- Write 8 industry vertical markdown entries + dynamic page templates with use-case cross-links (VERT-01 through VERT-04)
-- [ ] 04-07-PLAN.md -- Build cross-link validation script, wire into pnpm build, run full phase gate + human verification (all Phase 4 requirements)
+- [x] 04-01-PLAN.md -- Install Preact + uPlot, wire Preact integration, populate navigation.ts, add Phase 4 UI strings to translations.ts (HOME-01, HOME-08, UC-01, VERT-01)
+- [x] 04-02-PLAN.md -- Build DE + EN homepages with 8-section D-03 order, extend Hero.astro for video background (HOME-01 through HOME-08)
+- [x] 04-03-PLAN.md -- Build DE + EN product pages with hardware spec, steps flow, add-ons, install promise (PROD-01 through PROD-05)
+- [x] 04-04-PLAN.md -- Build SensorDataViz Preact island with uPlot, create 7 sensor scenario fixture JSON files (UC-03, UC-04)
+- [x] 04-05-PLAN.md -- Write 14 use-case markdown entries + dynamic page templates with SensorDataViz island (UC-01 through UC-05)
+- [x] 04-06-PLAN.md -- Write 8 industry vertical markdown entries + dynamic page templates with use-case cross-links (VERT-01 through VERT-04)
+- [x] 04-07-PLAN.md -- Build cross-link validation script, wire into pnpm build, run full phase gate + human verification (all Phase 4 requirements)
 **UI hint**: yes
 
 ### Phase 5: Conversion Funnel
