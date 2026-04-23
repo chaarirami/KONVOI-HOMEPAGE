@@ -1,0 +1,75 @@
+---
+// src/pages/en/pricing.astro — EN pricing page
+// Per D-01: three side-by-side tier cards, stacked on mobile.
+// Per D-02: tier data from src/data/pricing.ts (re-exports canonical.yaml).
+// Per D-03: embeds RoiCalculator island below tiers, ends with ConsultForm.
+import PageLayout from '~/layouts/PageLayout.astro';
+import { pricingTiers } from '~/data/pricing';
+import RoiCalculator from '~/components/islands/RoiCalculator';
+import ConsultForm from '~/components/islands/ConsultForm';
+import { t } from '~/i18n/translations';
+
+const locale = 'en';
+const metadata = {
+  title: 'Pricing — KONVOI GmbH',
+  description: 'Three packages for your fleet. Standard, Camera Module, Logbook. Prices on request.',
+};
+---
+<PageLayout metadata={metadata}>
+  <!-- Turnstile script — explicit render mode required per D-11 / RESEARCH.md Pattern 2 -->
+  <script
+    is:inline
+    src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+  ></script>
+
+  <!-- Hero -->
+  <section class="mx-auto max-w-5xl px-4 py-16 text-center">
+    <p class="mb-3 text-sm font-semibold uppercase tracking-wider text-konvoi-primary">
+      {t('pricing.hero_tagline', locale)}
+    </p>
+    <h1 class="font-heading text-4xl font-bold text-slate-900 dark:text-white">
+      {t('pricing.hero_title', locale)}
+    </h1>
+    <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
+      {t('pricing.hero_subtitle', locale)}
+    </p>
+  </section>
+
+  <!-- Tier cards: 3-column on lg, 1-column on mobile (D-01) -->
+  <section class="mx-auto max-w-6xl px-4 pb-20">
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+      {pricingTiers.map((tier, i) => (
+        <div class={`flex flex-col rounded-2xl border p-8 shadow-sm ${i === 0 ? 'border-konvoi-primary/30 bg-white dark:bg-slate-900' : 'border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900'}`}>
+          <h2 class="text-xl font-semibold text-slate-900 dark:text-white">{tier.en_name}</h2>
+          <p class="mt-2 text-2xl font-bold text-konvoi-primary">{tier.en_price_display}</p>
+          <p class="mt-1 text-xs text-slate-400">{t('pricing.tier_price_period', locale)}</p>
+          <p class="mt-4 flex-1 text-sm text-slate-600 dark:text-slate-300">{tier.en_description}</p>
+          <a
+            href="#consult"
+            class="mt-6 inline-block rounded-lg bg-konvoi-primary px-5 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-konvoi-primary/90"
+          >
+            {t('pricing.tier_cta', locale)}
+          </a>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ROI Calculator embedded per D-03, ROI-01 -->
+  <section class="bg-slate-50 py-16 dark:bg-slate-800/50">
+    <div class="mx-auto max-w-4xl px-4 text-center">
+      <h2 class="font-heading text-3xl font-bold text-slate-900 dark:text-white">
+        {t('pricing.roi_section_title', locale)}
+      </h2>
+      <p class="mt-3 text-slate-600 dark:text-slate-300">{t('pricing.roi_section_subtitle', locale)}</p>
+    </div>
+    <div class="mx-auto mt-10 max-w-3xl px-4">
+      <RoiCalculator locale={locale} client:visible />
+    </div>
+  </section>
+
+  <!-- ConsultForm anchored for ROI CTA link (D-03, PRICE-04) -->
+  <section id="consult" class="mx-auto max-w-2xl px-4 py-20">
+    <ConsultForm locale={locale} client:visible />
+  </section>
+</PageLayout>
