@@ -13,34 +13,16 @@ const {
   actions = await Astro.slots.render('actions'),
   image = await Astro.slots.render('image'),
 
-  videoSrc,
-  videoPoster,
-
   id,
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
 ---
 
 <section class="relative md:-mt-[76px] not-prose" {...id ? { id } : {}}>
-  <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-    {(videoSrc || videoPoster) ? (
-      <>
-        <video
-          class="absolute inset-0 w-full h-full object-cover"
-          poster={videoPoster}
-          {...(videoSrc ? { src: videoSrc } : {})}
-          autoplay
-          muted
-          loop
-          playsinline
-        />
-        <div class="absolute inset-0 bg-black/60" />
-      </>
-    ) : (
-      <slot name="bg">
-        {bg ? <Fragment set:html={bg} /> : null}
-      </slot>
-    )}
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <slot name="bg">
+      {bg ? <Fragment set:html={bg} /> : null}
+    </slot>
   </div>
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
     <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
@@ -57,7 +39,7 @@ const {
         {
           title && (
             <h1
-              class={`text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade ${(videoSrc || videoPoster) ? 'text-white dark:text-white' : 'dark:text-gray-200'}`}
+              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
               set:html={title}
             />
           )
@@ -66,7 +48,7 @@ const {
           {
             subtitle && (
               <p
-                class={`text-xl mb-6 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade ${(videoSrc || videoPoster) ? 'text-gray-200' : 'text-muted dark:text-slate-300'}`}
+                class="text-xl text-muted mb-6 dark:text-slate-300 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
                 set:html={subtitle}
               />
             )

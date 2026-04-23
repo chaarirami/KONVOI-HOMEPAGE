@@ -1,14 +1,11 @@
 import path from 'path';
-import fs from 'fs';
 import { fileURLToPath } from 'url';
-import yaml from 'js-yaml';
 
 import { defineConfig } from 'astro/config';
 
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
-import preact from '@astrojs/preact';
 import icon from 'astro-icon';
 import compress from 'astro-compress';
 
@@ -18,32 +15,12 @@ import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehype
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const yamlPlugin = {
-  name: 'vite-plugin-yaml',
-  transform(_code: string, id: string) {
-    if (!id.endsWith('.yaml') && !id.endsWith('.yml')) return null;
-    const content = fs.readFileSync(id, 'utf-8');
-    const data = yaml.load(content);
-    return { code: `export default ${JSON.stringify(data)};`, map: null };
-  },
-};
-
 export default defineConfig({
   output: 'static',
-
-  i18n: {
-    defaultLocale: 'de',
-    locales: ['de', 'en'],
-    routing: {
-      prefixDefaultLocale: false, // DE routes serve at / with no /de/ prefix (per D-01)
-    },
-    // No fallback — missing EN pages must return 404 (per D-02 / I18N-01)
-  },
 
   integrations: [
     sitemap(),
     mdx(),
-    preact({ compat: false }),
     icon({
       include: {
         tabler: ['*'],
@@ -89,7 +66,7 @@ export default defineConfig({
   },
 
   vite: {
-    plugins: [tailwindcss(), yamlPlugin],
+    plugins: [tailwindcss()],
     resolve: {
       alias: {
         '~': path.resolve(__dirname, './src'),

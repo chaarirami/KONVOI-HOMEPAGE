@@ -74,16 +74,6 @@ const {
             <div class="relative m-auto max-w-4xl">
               {typeof image === 'string' ? (
                 <Fragment set:html={image} />
-              ) : typeof image === 'object' && 'src' in image && typeof (image as { src: string }).src === 'string' && (image as { src: string }).src.startsWith('/') ? (
-                <img
-                  class="mx-auto w-full rounded-lg bg-gray-500 shadow-lg"
-                  src={(image as { src: string; alt?: string }).src}
-                  alt={(image as { src: string; alt?: string }).alt || ''}
-                  width={500}
-                  height={300}
-                  loading="lazy"
-                  decoding="async"
-                />
               ) : (
                 <Image
                   class="mx-auto w-full rounded-lg bg-gray-500 shadow-lg"
