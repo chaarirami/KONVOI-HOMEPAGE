@@ -217,8 +217,6 @@ export interface Hero extends Omit<Headline, 'classes'>, Omit<Widget, 'isDark' |
   content?: string;
   actions?: string | CallToAction[];
   image?: string | unknown;
-  videoSrc?: string;     // path to self-hosted MP4 in public/ (e.g. '/video/hero.mp4')
-  videoPoster?: string;  // path to fallback poster image (e.g. '/images/hero-poster.jpg')
 }
 
 export interface Team extends Omit<Headline, 'classes'>, Widget {

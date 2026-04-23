@@ -1,46 +1,38 @@
 ---
-// src/components/widgets/LanguageSwitcher.astro
-// Functional language switcher — wired in Phase 3 (I18N-04).
-// Reads current route and navigates to the translated equivalent via routeMap.
-// Per D-07: never auto-redirects — locale is always explicit via URL.
-import { getLocalePath } from '~/i18n/routeMap';
-
-const currentPath = Astro.url.pathname;
-const currentLocale = Astro.currentLocale ?? 'de';
-
-// Resolve target paths via routeMap; fall back to locale roots if path not in map
-const dePath = getLocalePath(currentPath, 'de') ?? '/';
-const enPath = getLocalePath(currentPath, 'en') ?? '/en';
+// Language switcher shell — visual only, non-functional.
+// i18n routing and active-state logic will be wired in Phase 3 (I18N-04).
+// Current page language is always DE until Phase 3 activates routing.
+const currentLang: string = 'de';
 ---
 
-<div class="flex items-center gap-1 ml-2 text-sm font-medium" aria-label="Language switcher">
-  <a
-    href={dePath}
+<div class="flex items-center gap-1 ml-2 text-sm font-medium" aria-label="Language switcher (coming soon)">
+  <button
+    type="button"
     class:list={[
       'px-2 py-1 rounded transition-colors',
-      currentLocale === 'de'
+      currentLang === 'de'
         ? 'text-default font-semibold underline underline-offset-2'
         : 'text-muted hover:text-default',
     ]}
-    aria-current={currentLocale === 'de' ? 'page' : undefined}
-    title="Deutsch"
-    hreflang="de"
+    aria-current={currentLang === 'de' ? 'true' : undefined}
+    disabled
+    title="Deutsch (aktiv)"
   >
     DE
-  </a>
+  </button>
   <span class="text-muted" aria-hidden="true">|</span>
-  <a
-    href={enPath}
+  <button
+    type="button"
     class:list={[
       'px-2 py-1 rounded transition-colors',
-      currentLocale === 'en'
+      currentLang === 'en'
         ? 'text-default font-semibold underline underline-offset-2'
         : 'text-muted hover:text-default',
     ]}
-    aria-current={currentLocale === 'en' ? 'page' : undefined}
-    title="English"
-    hreflang="en"
+    aria-current={currentLang === 'en' ? 'true' : undefined}
+    disabled
+    title="English (coming soon)"
   >
     EN
-  </a>
+  </button>
 </div>
