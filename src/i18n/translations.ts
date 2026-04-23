@@ -89,6 +89,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     'pricing.tier_cta':               'Angebot anfragen',
     'pricing.tier_price_prefix':      'ab',
     'pricing.tier_price_period':      '/ Monat',
+    'pricing.roi_section_title':      'Berechnen Sie Ihren ROI',
+    'pricing.roi_section_subtitle':   'Ermitteln Sie Ihre jährlichen Ersparnisse und die Amortisationszeit für Ihre Flotte.',
 
     // ROI calculator
     'roi.hero_tagline':               'Ihr ROI-Rechner',
@@ -241,6 +243,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     'pricing.tier_cta':               'Request a quote',
     'pricing.tier_price_prefix':      'from',
     'pricing.tier_price_period':      '/ month',
+    'pricing.roi_section_title':      'Calculate Your ROI',
+    'pricing.roi_section_subtitle':   'Find out your annual savings and payback period for your fleet.',
 
     // ROI calculator
     'roi.hero_tagline':               'Your ROI Calculator',
