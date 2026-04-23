@@ -18,6 +18,15 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   output: 'static',
 
+  i18n: {
+    defaultLocale: 'de',
+    locales: ['de', 'en'],
+    routing: {
+      prefixDefaultLocale: false, // DE routes serve at / with no /de/ prefix (per D-01)
+    },
+    // No fallback — missing EN pages must return 404 (per D-02 / I18N-01)
+  },
+
   integrations: [
     sitemap(),
     mdx(),
