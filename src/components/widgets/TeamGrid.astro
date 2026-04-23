@@ -1,0 +1,66 @@
+---
+// src/components/widgets/TeamGrid.astro
+// D-08, D-09, D-10 — responsive 2/3/4-col grid of team member cards
+// Reads from team content collection (short-form I18N-07 pattern)
+
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  members: CollectionEntry<'team'>[];
+  locale: 'de' | 'en';
+}
+
+const { members, locale } = Astro.props;
+
+// Sort by order field ascending; unordered members go last
+const sorted = [...members].sort((a, b) => (a.data.order ?? 999) - (b.data.order ?? 999));
+
+function getInitials(name: string): string {
+  return name
+    .split(' ')
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase() ?? '')
+    .join('');
+}
+---
+
+<div class="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
+  {sorted.map((member) => {
+    const name = locale === 'de' ? member.data.name.de : member.data.name.en;
+    const jobTitle = locale === 'de' ? member.data.title.de : member.data.title.en;
+    const bio = locale === 'de' ? member.data.bio.de : member.data.bio.en;
+    const initials = getInitials(name);
+
+    return (
+      <div class="flex flex-col items-center text-center">
+        {/* Photo with initials fallback */}
+        <div class="relative mb-4 h-40 w-40 overflow-hidden rounded-xl">
+          <img
+            src={member.data.photo}
+            alt={name}
+            width="160"
+            height="160"
+            loading="lazy"
+            class="h-full w-full object-cover"
+            onerror={`this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex'`}
+          />
+          <div
+            class="absolute inset-0 hidden items-center justify-center rounded-xl bg-[hsl(217_60%_93%)] dark:bg-slate-700 text-2xl font-bold font-heading text-slate-600 dark:text-slate-300"
+            aria-label={name}
+          >
+            {initials}
+          </div>
+        </div>
+        <h3 class="text-xl font-semibold font-heading text-slate-900 dark:text-white leading-snug">
+          {name}
+        </h3>
+        <p class="mt-1 text-sm text-slate-500 dark:text-slate-400 font-body">
+          {jobTitle}
+        </p>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 font-body leading-relaxed line-clamp-3">
+          {bio}
+        </p>
+      </div>
+    );
+  })}
+</div>
