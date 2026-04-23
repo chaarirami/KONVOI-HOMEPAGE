@@ -1,5 +1,6 @@
 ---
-import type { PaginateFunction } from 'astro';
+import type { GetStaticPathsResult, Page, PaginateFunction } from 'astro';
+import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 import Layout from '~/layouts/PageLayout.astro';
 import Grid from '~/components/blog/Grid.astro';
@@ -13,7 +14,7 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
   posts.forEach((p) => p.data.tags?.forEach((t) => tagSet.add(t)));
 
   // For each tag, return paginated paths
-  const paths: unknown[] = [];
+  const paths: GetStaticPathsResult = [];
   for (const tag of tagSet) {
     const tagSlug = tag.toLowerCase().replace(/\s+/g, '-');
     const tagged = posts
@@ -28,7 +29,8 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
   return paths;
 }
 
-const { page } = Astro.props;
+type Props = { page: Page<CollectionEntry<'post'>> };
+const { page } = Astro.props as Props;
 const { tag } = Astro.params;
 
 const metadata = {
@@ -43,24 +45,28 @@ const metadata = {
       <a href="/en/news/" class="text-sm text-[hsl(214.48_38.33%_55.49%)] hover:underline">← All posts</a>
       <h1 class="mt-4 text-3xl font-bold font-heading text-slate-900 dark:text-white">Tag: {tag}</h1>
     </div>
-    {page.data.length === 0 && (
-      <p class="text-center text-slate-500 py-16">No articles found.</p>
-    )}
-    {page.data.length > 0 && (
-      <Grid posts={page.data.map((e) => ({
-        id: e.id,
-        slug: e.data.canonicalKey,
-        permalink: `/en/news/${e.data.canonicalKey}/`,
-        title: e.data.title,
-        excerpt: e.data.excerpt,
-        image: e.data.image,
-        publishDate: e.data.publishDate ?? new Date(),
-        author: e.data.author,
-        tags: e.data.tags?.map((t) => ({ slug: t.toLowerCase().replace(/\s+/g, '-'), title: t })),
-        category: e.data.category ? { slug: e.data.category.toLowerCase().replace(/\s+/g, '-'), title: e.data.category } : undefined,
-        metadata: e.data.metadata,
-      }))} />
-    )}
+    {page.data.length === 0 && <p class="text-center text-slate-500 py-16">No articles found.</p>}
+    {
+      page.data.length > 0 && (
+        <Grid
+          posts={page.data.map((e) => ({
+            id: e.id,
+            slug: e.data.canonicalKey,
+            permalink: `/en/news/${e.data.canonicalKey}/`,
+            title: e.data.title,
+            excerpt: e.data.excerpt,
+            image: e.data.image,
+            publishDate: e.data.publishDate ?? new Date(),
+            author: e.data.author,
+            tags: e.data.tags?.map((t) => ({ slug: t.toLowerCase().replace(/\s+/g, '-'), title: t })),
+            category: e.data.category
+              ? { slug: e.data.category.toLowerCase().replace(/\s+/g, '-'), title: e.data.category }
+              : undefined,
+            metadata: e.data.metadata,
+          }))}
+        />
+      )
+    }
     <div class="mt-8">
       <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
     </div>

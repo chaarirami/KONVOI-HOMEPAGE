@@ -15,38 +15,34 @@ const upcomingEvents = allEvents
 
 const metadata = {
   title: 'Kontakt — KONVOI GmbH',
-  description: 'Kontaktieren Sie KONVOI: Justus Maenninghoff fuer Kundenanfragen, Heinz Luckhardt fuer Investoren und Marketing. Buero in Hamburg.',
+  description:
+    'Kontaktieren Sie KONVOI: Justus Maenninghoff fuer Kundenanfragen, Heinz Luckhardt fuer Investoren und Marketing. Buero in Hamburg.',
 };
 
 // Maps embed URL — stored here so it never appears in initial HTML (CONT-02)
-const mapsEmbedUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2372.4!2d9.9947!3d53.4677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b18f5a20c9a1c5%3A0xb5d0b51c28b2c0d5!2sHarburger+Schlossstra%C3%9Fe+6-12%2C+21079+Hamburg!5e0!3m2!1sde!2sde!4v1714000000000!5m2!1sde!2sde';
+const mapsEmbedUrl =
+  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2372.4!2d9.9947!3d53.4677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b18f5a20c9a1c5%3A0xb5d0b51c28b2c0d5!2sHarburger+Schlossstra%C3%9Fe+6-12%2C+21079+Hamburg!5e0!3m2!1sde!2sde!4v1714000000000!5m2!1sde!2sde';
 ---
 
 <Layout metadata={metadata}>
   <section class="mx-auto max-w-5xl px-4 py-16 sm:py-24">
-
     <!-- Page heading -->
     <div class="mb-12 text-center">
-      <p class="mb-2 text-sm font-medium uppercase tracking-widest text-[hsl(214.48_38.33%_55.49%)]">
-        Kontakt
-      </p>
+      <p class="mb-2 text-sm font-medium uppercase tracking-widest text-[hsl(214.48_38.33%_55.49%)]">Kontakt</p>
       <h1 class="text-4xl font-bold font-heading text-slate-900 dark:text-white">Sprechen Sie mit uns</h1>
     </div>
 
     <!-- CONT-01 D-14: Two contact cards side by side (stacked mobile) -->
     <div class="grid gap-6 sm:grid-cols-2 mb-16">
-
       <!-- Justus — customer advisor -->
       <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-8 shadow-sm">
-        <div class="mb-4 h-24 w-24 rounded-full bg-[hsl(217_60%_93%)] dark:bg-slate-700 flex items-center justify-center text-2xl font-bold font-heading text-slate-600">
+        <div
+          class="mb-4 h-24 w-24 rounded-full bg-[hsl(217_60%_93%)] dark:bg-slate-700 flex items-center justify-center text-2xl font-bold font-heading text-slate-600"
+        >
           JM
         </div>
-        <h2 class="text-2xl font-bold font-heading text-slate-900 dark:text-white mb-1">
-          Justus Maenninghoff
-        </h2>
-        <p class="text-sm text-slate-500 dark:text-slate-400 font-body mb-4">
-          Kundenberatung
-        </p>
+        <h2 class="text-2xl font-bold font-heading text-slate-900 dark:text-white mb-1">Justus Maenninghoff</h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400 font-body mb-4">Kundenberatung</p>
         <div class="space-y-2 text-sm font-body">
           <p>
             <a href="tel:+4915751959636" class="font-semibold text-slate-900 dark:text-white hover:underline">
@@ -63,15 +59,13 @@ const mapsEmbedUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2372
 
       <!-- Heinz — investors/marketing -->
       <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-8 shadow-sm">
-        <div class="mb-4 h-24 w-24 rounded-full bg-[hsl(217_60%_93%)] dark:bg-slate-700 flex items-center justify-center text-2xl font-bold font-heading text-slate-600">
+        <div
+          class="mb-4 h-24 w-24 rounded-full bg-[hsl(217_60%_93%)] dark:bg-slate-700 flex items-center justify-center text-2xl font-bold font-heading text-slate-600"
+        >
           HL
         </div>
-        <h2 class="text-2xl font-bold font-heading text-slate-900 dark:text-white mb-1">
-          Heinz Luckhardt
-        </h2>
-        <p class="text-sm text-slate-500 dark:text-slate-400 font-body mb-4">
-          Investoren, Marketing &amp; Bewerber
-        </p>
+        <h2 class="text-2xl font-bold font-heading text-slate-900 dark:text-white mb-1">Heinz Luckhardt</h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400 font-body mb-4">Investoren, Marketing &amp; Bewerber</p>
         <div class="space-y-2 text-sm font-body">
           <p>
             <a href="tel:+4916390670600" class="font-semibold text-slate-900 dark:text-white hover:underline">
@@ -97,7 +91,10 @@ const mapsEmbedUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2372
 
       <!-- Click-to-load Google Maps — CONT-02, D-15 -->
       <!-- SECURITY: iframe src NOT set initially. data-src copied to src only on explicit click. -->
-      <div id="map-container" class="relative overflow-hidden rounded-xl bg-[hsl(217_60%_93%)] dark:bg-slate-700 h-72 flex items-center justify-center">
+      <div
+        id="map-container"
+        class="relative overflow-hidden rounded-xl bg-[hsl(217_60%_93%)] dark:bg-slate-700 h-72 flex items-center justify-center"
+      >
         <p id="map-placeholder-text" class="text-sm text-slate-500 dark:text-slate-400 text-center px-4">
           Klicken Sie auf "Karte laden", um Google Maps zu aktivieren.<br />
           <span class="text-xs">Durch das Laden akzeptieren Sie die Datenweitergabe an Google.</span>
@@ -110,8 +107,7 @@ const mapsEmbedUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2372
           class="absolute inset-0 w-full h-full border-0 hidden"
           allowfullscreen
           referrerpolicy="no-referrer-when-downgrade"
-          loading="lazy"
-        ></iframe>
+          loading="lazy"></iframe>
       </div>
       <button
         id="load-map-btn"
@@ -124,75 +120,95 @@ const mapsEmbedUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2372
 
     <!-- CONT-03 D-16: Upcoming events (build-time filtered) -->
     <div class="mb-16">
-      <h2 class="mb-6 text-2xl font-bold font-heading text-slate-900 dark:text-white">
-        Kommende Veranstaltungen
-      </h2>
-      {upcomingEvents.length === 0 && (
-        <p class="text-slate-500 dark:text-slate-400 font-body">
-          Keine anstehenden Veranstaltungen.
-        </p>
-      )}
-      {upcomingEvents.length > 0 && (
-        <ul class="space-y-4">
-          {upcomingEvents.map((event) => {
-            const name = event.data.name.de;
-            const desc = event.data.description?.de;
-            const start = event.data.startDate.toLocaleDateString('de-DE', { day: '2-digit', month: 'long', year: 'numeric' });
-            const end = event.data.endDate?.toLocaleDateString('de-DE', { day: '2-digit', month: 'long', year: 'numeric' });
-            const dateStr = end && end !== start ? `${start} – ${end}` : start;
+      <h2 class="mb-6 text-2xl font-bold font-heading text-slate-900 dark:text-white">Kommende Veranstaltungen</h2>
+      {
+        upcomingEvents.length === 0 && (
+          <p class="text-slate-500 dark:text-slate-400 font-body">Keine anstehenden Veranstaltungen.</p>
+        )
+      }
+      {
+        upcomingEvents.length > 0 && (
+          <ul class="space-y-4">
+            {upcomingEvents.map((event) => {
+              const name = event.data.name.de;
+              const desc = event.data.description?.de;
+              const start = event.data.startDate.toLocaleDateString('de-DE', {
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric',
+              });
+              const end = event.data.endDate?.toLocaleDateString('de-DE', {
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric',
+              });
+              const dateStr = end && end !== start ? `${start} – ${end}` : start;
 
-            return (
-              <li class="flex flex-col sm:flex-row sm:items-start gap-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
-                <div class="flex-1 min-w-0">
-                  <h3 class="font-semibold font-heading text-slate-900 dark:text-white">
-                    {event.data.url ? (
-                      <a href={event.data.url} class="hover:underline" target="_blank" rel="noopener noreferrer">{name}</a>
-                    ) : name}
-                  </h3>
-                  <p class="mt-1 text-sm text-slate-500 dark:text-slate-400 font-body">
-                    {dateStr}{event.data.location ? ` · ${event.data.location}` : ''}
-                  </p>
-                  {desc && (
-                    <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 font-body">{desc}</p>
-                  )}
-                </div>
-              </li>
-            );
-          })}
-        </ul>
-      )}
+              return (
+                <li class="flex flex-col sm:flex-row sm:items-start gap-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="font-semibold font-heading text-slate-900 dark:text-white">
+                      {event.data.url ? (
+                        <a href={event.data.url} class="hover:underline" target="_blank" rel="noopener noreferrer">
+                          {name}
+                        </a>
+                      ) : (
+                        name
+                      )}
+                    </h3>
+                    <p class="mt-1 text-sm text-slate-500 dark:text-slate-400 font-body">
+                      {dateStr}
+                      {event.data.location ? ` · ${event.data.location}` : ''}
+                    </p>
+                    {desc && <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 font-body">{desc}</p>}
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        )
+      }
     </div>
-
   </section>
 
   <!-- CONT-04 D-17: Consult CTA at end of page -->
   <CallToAction
     title="Bereit fur ein Gesprach?"
     subtitle="Vereinbaren Sie ein unverbindliches Beratungsgesprach mit Justus oder Heinz."
-    actions={[{ variant: 'primary', text: 'Beratung anfragen', href: 'mailto:info@konvoi.eu?subject=Beratungsanfrage' }]}
+    actions={[
+      { variant: 'primary', text: 'Beratung anfragen', href: 'mailto:info@konvoi.eu?subject=Beratungsanfrage' },
+    ]}
   />
 </Layout>
 
 <!-- Click-to-load Maps script (is:inline — no hydration needed) -->
 <script is:inline>
   (function () {
-    var btn = document.getElementById('load-map-btn');
+    const btn = document.getElementById('load-map-btn');
     if (!btn) return;
-    btn.addEventListener('click', function () {
-      var iframe = document.getElementById('map-iframe');
-      var placeholder = document.getElementById('map-placeholder-text');
-      if (!iframe) return;
-      // Copy data-src to src — this is the first and only time the Maps URL is loaded
-      iframe.src = iframe.dataset.src || '';
-      iframe.classList.remove('hidden');
-      if (placeholder) placeholder.style.display = 'none';
-      btn.textContent = 'Karte ausblenden';
-      btn.addEventListener('click', function hide() {
-        iframe.classList.add('hidden');
-        if (placeholder) placeholder.style.display = '';
-        btn.textContent = 'Karte laden';
-        btn.removeEventListener('click', hide);
-      }, { once: true });
-    }, { once: true });
+    btn.addEventListener(
+      'click',
+      function () {
+        const iframe = document.getElementById('map-iframe');
+        const placeholder = document.getElementById('map-placeholder-text');
+        if (!iframe) return;
+        // Copy data-src to src — this is the first and only time the Maps URL is loaded
+        iframe.src = iframe.dataset.src || '';
+        iframe.classList.remove('hidden');
+        if (placeholder) placeholder.style.display = 'none';
+        btn.textContent = 'Karte ausblenden';
+        btn.addEventListener(
+          'click',
+          function hide() {
+            iframe.classList.add('hidden');
+            if (placeholder) placeholder.style.display = '';
+            btn.textContent = 'Karte laden';
+            btn.removeEventListener('click', hide);
+          },
+          { once: true }
+        );
+      },
+      { once: true }
+    );
   })();
 </script>
