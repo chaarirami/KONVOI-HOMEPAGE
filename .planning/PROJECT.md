@@ -36,15 +36,15 @@ A full rebuild of www.konvoi.eu — the corporate marketing site for **KONVOI Gm
 - [ ] **REQ-PRODUCT-01** Product page covering hardware spec, data-service layers, alarm chain, installation process
 - [ ] **REQ-UC-01** 7 individual use-case pages (cargo theft, diesel theft, equipment theft, damaged trailers, driver assaults, stationary-time optimization, operations transparency), each with shared motion / shock / GPS data-viz widget
 - [ ] **REQ-VERT-01** 4 industry landings (high-value, cooling, intermodal, other) that cross-link into the relevant use-case deep-dives
-- [ ] **REQ-CASE-01** Dedicated case-studies index + individual case study pages per customer (Schumacher, JJX, Greilmeier, more as they come)
+- [x] **REQ-CASE-01** Dedicated case-studies index + individual case study pages per customer (Schumacher, JJX, Greilmeier, more as they come) — Validated in Phase 6
 - [ ] **REQ-PRICE-01** Public pricing page with Standard / + Camera Module / + Logbook package tiers and "Book a consult" CTA
 - [ ] **REQ-ROI-01** Interactive ROI / savings calculator (inputs: fleet size, vertical, parking frequency → estimated annual theft savings)
 - [ ] **REQ-FUND-01** Dedicated funding-eligibility page explaining the 80% de-minimis subsidy with a pre-qualification form
-- [ ] **REQ-COMPANY-01** Team page (bios + photos) pulled from content collection
-- [ ] **REQ-COMPANY-02** Careers page listing open roles sourced from markdown; "apply" links open mailto to applications inbox
-- [ ] **REQ-CONTACT-01** Contact page with two named contacts (customer advisor + MD) + office address + Google-Maps embed
-- [ ] **REQ-EVENTS-01** Upcoming-events list on Contact page, sourced from content collection; past events auto-hide by end date
-- [ ] **REQ-BLOG-01** Blog at `/aktuelles` (DE) and `/en/news` (EN) ported from current Jimdo blog, plus ability to publish new posts via markdown + PR
+- [x] **REQ-COMPANY-01** Team page (bios + photos) pulled from content collection — Validated in Phase 6
+- [x] **REQ-COMPANY-02** Careers page listing open roles sourced from markdown; "apply" links open mailto to applications inbox — Validated in Phase 6
+- [x] **REQ-CONTACT-01** Contact page with two named contacts (customer advisor + MD) + office address + Google-Maps embed — Validated in Phase 6
+- [x] **REQ-EVENTS-01** Upcoming-events list on Contact page, sourced from content collection; past events auto-hide by end date — Validated in Phase 6
+- [x] **REQ-BLOG-01** Blog at `/aktuelles` (DE) and `/en/news` (EN) ported from current Jimdo blog, plus ability to publish new posts via markdown + PR — Validated in Phase 6
 - [ ] **REQ-FORMS-01** Lead-capture form (consult booking + funding pre-qual) backed by Formspree / FormSubmit / equivalent — no custom backend
 - [ ] **REQ-LEGAL-01** Impressum, Datenschutz, cookie-consent banner, Konvoi licence (private, remove AstroWind MIT licence)
 - [ ] **REQ-DEPLOY-01** Deploy to Netlify on a custom domain (`konvoi.eu` DNS cutover is the final launch step)
