@@ -757,27 +757,19 @@ const metadata = {
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **Sensor fixture data realism**
-   - What we know: Decisions D-04/D-05 describe a time-series chart with motion/shock/GPS traces and detection → classification → measures phases.
-   - What's unclear: Are the fixture values (e.g., `motion: 25`) on a specific numeric scale (0-100, 0-10, raw sensor units)? How do animations map timeline events to chart drawing?
-   - Recommendation: Planner should define the fixture schema precisely and provide 1-2 example fixtures so that SensorDataViz development has a concrete target.
+1. **Sensor fixture data realism** — RESOLVED
+   - Resolution: Planner defined fixture schema in Plan 04 with 0-100 normalized scale for motion/shock values and GPS as lat/lng pairs. Animation phases map to timeline index ranges. 7 example fixtures created with scenario-specific data patterns.
 
-2. **Video production timeline**
-   - What we know: D-02 allows dev to proceed with poster image; real MP4 added before launch.
-   - What's unclear: When is the MP4 available? If it's not ready before Phase 4 launch, does Phase 4 ship with poster only, or does another phase handle video insertion?
-   - Recommendation: Confirm with product/marketing team if video assets exist or need production. If production is ongoing, add a Phase 5 task to swap MP4 into the `<video>` element.
+2. **Video production timeline** — RESOLVED
+   - Resolution: Per D-02, Phase 4 ships with static poster image. `<video>` element is always wired in markup with `poster` attribute. MP4 is a pre-launch asset swap — no additional phase task needed (simple file drop into `public/`).
 
-3. **Testimonial sourcing for Phase 4**
-   - What we know: current-site-overview.md lists 3 testimonial quotes; Phase 6 will formalize case study content collection.
-   - What's unclear: Should Phase 4 inline testimonial data in the homepage template, or wait for Phase 6 to create caseStudy entries first?
-   - Recommendation: Phase 4 can inline from current-site-overview.md. Phase 6 refactors to pull from caseStudy collection. This avoids blocking Phase 4 on Phase 6.
+3. **Testimonial sourcing for Phase 4** — RESOLVED
+   - Resolution: Phase 4 inlines testimonial data from current-site-overview.md directly in homepage template. Phase 6 refactors to pull from caseStudy collection. No blocking dependency.
 
-4. **Logo sources and licensing**
-   - What we know: D-12 mentions "placeholder logos until real assets provided."
-   - What's unclear: Where do real customer/press/partner logos come from? Who provides them? Are there licensing restrictions?
-   - Recommendation: Confirm with marketing that logo assets are available before Phase 4. If not, document the placeholder sources and add a Phase 5/6 task to swap real logos.
+4. **Logo sources and licensing** — RESOLVED
+   - Resolution: Per CONTEXT.md Claude's Discretion, placeholder logos ship with Phase 4. Real assets swapped when marketing provides them — no phase dependency.
 
 ---
 
