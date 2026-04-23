@@ -116,7 +116,15 @@ Plans:
   3. Team page displays all 9 members (Alexander, Heinz, Rami, Trinh, Harsha, Jonas, Sushmita, Eric, Justus) from the `team` collection with photos, names, titles, and bios in both locales
   4. Careers page at `/karriere/` lists 8 open roles; "Apply" opens `mailto:applications@konvoi.eu` with prefilled per-role subject; EN shell redirects to DE for v1
   5. Contact page shows Justus (customer advisor) and Heinz (investors/marketing) with photos + direct phone + email, office address with click-to-load Google Maps (no iframe before consent), upcoming events from `event` collection with past events auto-hidden by `endDate`, and consult CTA
-**Plans**: TBD
+**Plans:** 7 plans
+Plans:
+- [ ] 06-01-PLAN.md -- Case study content entries (DE+EN) + CaseStudyCard + index and detail pages (CASE-01, CASE-02, CASE-03, CASE-04)
+- [ ] 06-02-PLAN.md -- Delete old [...blog] routes, migrate 4 Jimdo posts, locale-specific blog index/detail/RSS/tag pages (BLOG-01, BLOG-02, BLOG-03, BLOG-04)
+- [ ] 06-03-PLAN.md -- 9 team content entries + TeamGrid component + DE and EN team pages (TEAM-01, TEAM-02, TEAM-03)
+- [ ] 06-04-PLAN.md -- 8 job content entries + DE careers page + EN shell page (CAREER-01, CAREER-02, CAREER-03)
+- [ ] 06-05-PLAN.md -- 6 event entries + contact page with click-to-load Maps + upcoming events + CTA (CONT-01, CONT-02, CONT-03, CONT-04)
+- [ ] 06-06-PLAN.md -- Wire navigation.ts, routeMap.ts, translations.ts for all Phase 6 pages (all Phase 6 requirements)
+- [ ] 06-07-PLAN.md -- Full build gate + human visual verification of all 5 page sections (all Phase 6 requirements)
 **UI hint**: yes
 
 ### Phase 7: SEO, Consent & Launch
