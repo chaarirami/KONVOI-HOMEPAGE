@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 4 context gathered
-last_updated: "2026-04-24T09:34:37.744Z"
-last_activity: 2026-04-24 -- Phase 4 planning complete
+stopped_at: Completed 04-01-PLAN.md
+last_updated: "2026-04-24T09:43:27.049Z"
+last_activity: 2026-04-24
 progress:
   total_phases: 7
   completed_phases: 2
   total_plans: 18
-  completed_plans: 14
-  percent: 78
+  completed_plans: 15
+  percent: 83
 ---
 
 # Project State
@@ -25,10 +25,10 @@ See: .planning/PROJECT.md (updated 2026-04-20)
 
 ## Current Position
 
-Phase: 4
-Plan: Not started
+Phase: 04 (Core Marketing Pages) — EXECUTING
+Plan: 2 of 7
 Status: Ready to execute
-Last activity: 2026-04-24 -- Phase 4 planning complete
+Last activity: 2026-04-24
 
 Progress: [█████░░░░░] 57%
 
@@ -60,6 +60,7 @@ Progress: [█████░░░░░] 57%
 | Phase 02 P02 | 2min | 2 tasks | 3 files |
 | Phase 02 P03 | 2min | 2 tasks | 2 files |
 | Phase 02 P04 | 5min | 1 task  | 0 files |
+| Phase 04 P01 | 4 | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -84,6 +85,7 @@ Recent decisions affecting current work:
 - is:inline audit pattern: HSL tokens appear in HTML output, not _astro/*.css bundle — future CI grep checks must target dist/**/*.html
 - Pricing amounts set to "auf Anfrage" / "on request" — live site is quote-based; actual prices to be filled before Phase 5 (PRICE-02)
 - Tier slugs (standard, camera-module, logbook) declared stable — Phase 5 ROI calculator references them by slug (PRICE-03)
+- [Phase 04]: HeroVideo/IncidentVideo use multi-line JSX attribute style for video element — autoplay muted loop playsinline on separate lines, idiomatic Astro, all attributes present
 
 ### Pending Todos
 
@@ -105,9 +107,9 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-24T08:34:00.516Z
-Stopped at: Phase 4 context gathered
-Resume file: .planning/phases/04-core-marketing-pages/04-CONTEXT.md
+Last session: 2026-04-24T09:43:27.047Z
+Stopped at: Completed 04-01-PLAN.md
+Resume file: None
 
 **Completed Phases:** 1, 2, 3, 6
 **Next Phase:** 4 (Core Marketing Pages) — needs planning

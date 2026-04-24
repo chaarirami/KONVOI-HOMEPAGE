@@ -47,7 +47,7 @@
 ### Homepage
 
 - [ ] **HOME-01**: DE + EN homepage at `/` and `/en/`
-- [ ] **HOME-02**: Hero with "Security Tech Made in Germany" positioning, preventive-vs-reactive tagline, primary "Beratung anfragen" / "Book a consult" CTA
+- [x] **HOME-02**: Hero with "Security Tech Made in Germany" positioning, preventive-vs-reactive tagline, primary "Beratung anfragen" / "Book a consult" CTA
 - [ ] **HOME-03**: Customer logo wall
 - [ ] **HOME-04**: 3-testimonial section (Schumacher, JJX, Greilmeier) sourced from `caseStudy` collection
 - [ ] **HOME-05**: Preventive-vs-reactive explainer section surfacing the Konvoi category framing
@@ -58,17 +58,17 @@
 ### Product page
 
 - [ ] **PROD-01**: DE + EN product page covering hardware spec, data services, alarm chain, installation process
-- [ ] **PROD-02**: Hardware system diagram / visual for the sensor positions on a trailer
-- [ ] **PROD-03**: Step-by-step "how it works" (Detection / Classification / Measures)
+- [x] **PROD-02**: Hardware system diagram / visual for the sensor positions on a trailer
+- [x] **PROD-03**: Step-by-step "how it works" (Detection / Classification / Measures)
 - [ ] **PROD-04**: Add-on modules section -- KONVOI Camera Module, KONVOI Logbook
-- [ ] **PROD-05**: Installation section including the 120-minute install promise + video
+- [x] **PROD-05**: Installation section including the 120-minute install promise + video
 
 ### Use cases
 
 - [ ] **UC-01**: Individual DE + EN page per use case: `/anwendungen/ladungsdiebstahl/`, `/dieseldiebstahl/`, `/equipmentdiebstahl/`, `/transparenz-der-operationen/`, `/trailerschaeden/`, `/fahrerangriffe/`, `/standzeit-optimierung/` (EN: `/en/use-cases/cargo-theft/`, `/diesel-theft/`, `/equipment-theft/`, `/operations-transparency/`, `/trailer-damage/`, `/driver-assaults/`, `/stationary-time-optimization/`)
 - [ ] **UC-02**: Each page surfaces problem framing + cost anchor (e.g. 8B EUR/yr cargo theft) + Konvoi approach + CTA
-- [ ] **UC-03**: Shared `SensorDataViz` Preact island renders motion / shock / GPS traces per-use-case on every use-case page
-- [ ] **UC-04**: `SensorDataViz` reads scenario fixtures from `src/data/sensor-scenarios/*.json` with a documented schema
+- [x] **UC-03**: Shared `SensorDataViz` Preact island renders motion / shock / GPS traces per-use-case on every use-case page
+- [x] **UC-04**: `SensorDataViz` reads scenario fixtures from `src/data/sensor-scenarios/*.json` with a documented schema
 - [ ] **UC-05**: Each use-case page cross-links to relevant industry landing pages
 
 ### Industry verticals
@@ -243,7 +243,7 @@ Every v1 requirement is mapped to exactly one phase. See `.planning/ROADMAP.md` 
 | I18N-07 | Phase 3 | Pending |
 | I18N-08 | Phase 3 | Pending |
 | HOME-01 | Phase 4 | Pending |
-| HOME-02 | Phase 4 | Pending |
+| HOME-02 | Phase 4 | Complete |
 | HOME-03 | Phase 4 | Pending |
 | HOME-04 | Phase 4 | Pending |
 | HOME-05 | Phase 4 | Pending |
@@ -251,14 +251,14 @@ Every v1 requirement is mapped to exactly one phase. See `.planning/ROADMAP.md` 
 | HOME-07 | Phase 4 | Pending |
 | HOME-08 | Phase 4 | Pending |
 | PROD-01 | Phase 4 | Pending |
-| PROD-02 | Phase 4 | Pending |
-| PROD-03 | Phase 4 | Pending |
+| PROD-02 | Phase 4 | Complete |
+| PROD-03 | Phase 4 | Complete |
 | PROD-04 | Phase 4 | Pending |
-| PROD-05 | Phase 4 | Pending |
+| PROD-05 | Phase 4 | Complete |
 | UC-01 | Phase 4 | Pending |
 | UC-02 | Phase 4 | Pending |
-| UC-03 | Phase 4 | Pending |
-| UC-04 | Phase 4 | Pending |
+| UC-03 | Phase 4 | Complete |
+| UC-04 | Phase 4 | Complete |
 | UC-05 | Phase 4 | Pending |
 | VERT-01 | Phase 4 | Pending |
 | VERT-02 | Phase 4 | Pending |
