@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: verifying
-stopped_at: Phase 5 context gathered
-last_updated: "2026-04-24T15:10:31.122Z"
+status: executing
+stopped_at: Completed 05-01-PLAN.md
+last_updated: "2026-04-24T17:15:27.855Z"
 last_activity: 2026-04-24
 progress:
   total_phases: 7
   completed_phases: 3
-  total_plans: 18
-  completed_plans: 21
+  total_plans: 22
+  completed_plans: 22
   percent: 100
 ---
 
@@ -21,13 +21,13 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-20)
 
 **Core value:** Turn visitors into booked consult calls.
-**Current focus:** Phase 04 — Core Marketing Pages
+**Current focus:** Phase 05 — conversion-funnel
 
 ## Current Position
 
-Phase: 06
-Plan: Not started
-Status: Phase complete — ready for verification
+Phase: 05 (conversion-funnel) — EXECUTING
+Plan: 2 of 4
+Status: Ready to execute
 Last activity: 2026-04-24
 
 Progress: [█████░░░░░] 57%
@@ -67,6 +67,7 @@ Progress: [█████░░░░░] 57%
 | Phase 04 P03 | 3 | 2 tasks | 4 files |
 | Phase 04 P05 | 5 | 2 tasks | 2 files |
 | Phase 04 P06 | 2 | 2 tasks | 2 files |
+| Phase 05 P01 | 3 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -99,6 +100,8 @@ Recent decisions affecting current work:
 - [Phase 04]: Placeholder PNGs (1x1 transparent) created for trailer-diagram.png and installation-poster.jpg to satisfy T-04-03-02 — user replaces with real assets
 - [Phase 04]: render(entry) from astro:content required for glob loader collections — entry.render() unavailable in Astro 6 content layer API
 - [Phase 04]: render(entry) from astro:content required for glob loader collections — entry.render() unavailable in Astro 6 content layer API (already confirmed in 04-05)
+- [Phase 05]: Badge text (Empfohlen/Recommended) lives in pricing.ts data file — single-source-of-truth principle
+- [Phase 05]: Placeholder WidgetWrapper sections with id anchors for RoiCalculator (Plan 02) and ConsultForm (Plan 03) wiring
 
 ### Pending Todos
 
@@ -120,9 +123,9 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-24T15:10:31.115Z
-Stopped at: Phase 5 context gathered
-Resume file: .planning/phases/05-conversion-funnel/05-CONTEXT.md
+Last session: 2026-04-24T17:15:27.853Z
+Stopped at: Completed 05-01-PLAN.md
+Resume file: None
 
 **Completed Phases:** 2
 **Next Phase:** 4 (Core Marketing Pages) — needs planning

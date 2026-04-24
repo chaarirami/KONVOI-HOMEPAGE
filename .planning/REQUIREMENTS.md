@@ -87,10 +87,10 @@
 
 ### Pricing
 
-- [ ] **PRICE-01**: DE + EN pricing page at `/preise/` + `/en/pricing/`
-- [ ] **PRICE-02**: Three tiers -- Standard, + Camera Module, + Logbook -- with "ab X EUR / Monat" (starting-at) prices
-- [ ] **PRICE-03**: Tier data sourced from `src/data/pricing.ts` (shared with ROI calculator)
-- [ ] **PRICE-04**: Pricing page ends with the consult CTA
+- [x] **PRICE-01**: DE + EN pricing page at `/preise/` + `/en/pricing/`
+- [x] **PRICE-02**: Three tiers -- Standard, + Camera Module, + Logbook -- with "ab X EUR / Monat" (starting-at) prices
+- [x] **PRICE-03**: Tier data sourced from `src/data/pricing.ts` (shared with ROI calculator)
+- [x] **PRICE-04**: Pricing page ends with the consult CTA
 
 ### ROI calculator
 
@@ -268,10 +268,10 @@ Every v1 requirement is mapped to exactly one phase. See `.planning/ROADMAP.md` 
 | CASE-02 | Phase 6 | Pending |
 | CASE-03 | Phase 6 | Pending |
 | CASE-04 | Phase 6 | Pending |
-| PRICE-01 | Phase 5 | Pending |
-| PRICE-02 | Phase 5 | Pending |
-| PRICE-03 | Phase 5 | Pending |
-| PRICE-04 | Phase 5 | Pending |
+| PRICE-01 | Phase 5 | Complete |
+| PRICE-02 | Phase 5 | Complete |
+| PRICE-03 | Phase 5 | Complete |
+| PRICE-04 | Phase 5 | Complete |
 | ROI-01 | Phase 5 | Pending |
 | ROI-02 | Phase 5 | Pending |
 | ROI-03 | Phase 5 | Pending |
