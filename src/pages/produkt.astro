@@ -1,0 +1,187 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Content from '~/components/widgets/Content.astro';
+import SensorDiagram from '~/components/widgets/SensorDiagram.astro';
+import ScrollSteps from '~/components/widgets/ScrollSteps.astro';
+import IncidentVideo from '~/components/widgets/IncidentVideo.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'KONVOI System — Präventive Trailer-Sicherheit | KONVOI',
+  description:
+    'Das KONVOI Sensorsystem schützt Ihren Trailer präventiv: GPS + LTE, KI-Klassifizierung, sofortige Abschreckungskette. Installation in unter 120 Minuten.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Section 1: Hero (PROD-01) -->
+  <Hero
+    tagline="Das KONVOI System"
+    title="Prävention für Ihren Trailer — in unter 120 Minuten installiert"
+    subtitle="Sensor-basiertes Security-as-a-Service mit KI-Klassifizierung und sofortiger Abschreckungskette. Vollständig unabhängig — 7-Tage-Akku, kein permanentes Netz erforderlich."
+    actions={[
+      { variant: 'primary', text: 'Beratung anfragen', href: '#consult' },
+    ]}
+  />
+
+  <!-- Section 2: Hardware spec (PROD-01) -->
+  <Features
+    tagline="Hardware"
+    title="Kompakt. Versteckt. Zuverlässig."
+    subtitle="GPS + LTE, Schock- und Bewegungssensoren, 7-Tage-Akku — alles in einem verdeckten Gehäuse, das ohne Kabelverbindung auskommt."
+    columns={3}
+    items={[
+      {
+        title: 'GPS + LTE',
+        description:
+          'Lückenlose Positionserfassung und Echtzeit-Datenübertragung. Funktioniert auch in schlecht vernetzten Gebieten und Rest Areas.',
+        icon: 'tabler:map-pin',
+      },
+      {
+        title: 'Schock- & Bewegungssensor',
+        description:
+          'Hochpräzise Sensoren erfassen Erschütterungen, ungewöhnliche Bewegungen und Ankopplungsvorgänge in Echtzeit.',
+        icon: 'tabler:radar',
+      },
+      {
+        title: '7-Tage-Akku',
+        description:
+          'Vollständig autark. Kein externer Stromanschluss erforderlich. Auch bei abgekoppeltem Trailer kontinuierlich aktiv.',
+        icon: 'tabler:battery-charging',
+      },
+    ]}
+  />
+
+  <!-- Section 3: Sensor diagram with scroll callouts (PROD-02, D-07) -->
+  <SensorDiagram
+    tagline="Sensor-Positionen"
+    title="Lückenlose Überwachung — von allen Seiten"
+    subtitle="Das KONVOI System überwacht Ihren Trailer an kritischen Positionen: GPS-Modul, Schocksensoren an Achsen und Ladeklappe, Bewegungssensoren für Ankopplung."
+    imageSrc="/images/placeholders/trailer-diagram.png"
+    imageAlt="KONVOI Sensor-Positionen am Sattelauflieger"
+    callouts={[
+      {
+        id: 'gps',
+        label: 'GPS + LTE Modul',
+        description: 'Echtzeit-Ortung und Datenübertragung',
+        x: '12%',
+        y: '15%',
+      },
+      {
+        id: 'shock-axle',
+        label: 'Schock-Sensor (Achse)',
+        description: 'Erkennt Aufbockversuche und Kollisionen',
+        x: '55%',
+        y: '70%',
+      },
+      {
+        id: 'motion-door',
+        label: 'Bewegungssensor (Ladeklappe)',
+        description: 'Detektiert unbefugtes Öffnen',
+        x: '82%',
+        y: '45%',
+      },
+      {
+        id: 'coupling',
+        label: 'Ankopplungssensor',
+        description: 'Dokumentiert alle Kopplungsvorgänge',
+        x: '8%',
+        y: '55%',
+      },
+    ]}
+    id="sensor-diagram"
+  />
+
+  <!-- Section 4: Detection → Classification → Measures (PROD-03, D-08) -->
+  <ScrollSteps
+    tagline="So funktioniert es"
+    title="Erkennung — Klassifizierung — Maßnahmen"
+    subtitle="Das KONVOI System arbeitet in drei automatischen Schritten — ohne manuelle Eingriffe, 24/7."
+    steps={[
+      {
+        icon: 'tabler:radar-2',
+        title: 'Erkennung',
+        description:
+          'Schock-, Bewegungs- und GPS-Sensoren erfassen kontinuierlich alle Aktivitäten am Trailer. Jede Anomalie — ein ungewöhnliches Erschütterungsmuster, eine GPS-Abweichung, ein unautorisierter Ankopplungsvorgang — wird sofort registriert und an die KI-Klassifizierung weitergeleitet.',
+      },
+      {
+        icon: 'tabler:brain',
+        title: 'Klassifizierung',
+        description:
+          'Die KONVOI KI analysiert Muster aus Tausenden von echten Vorfällen und unterscheidet zuverlässig zwischen normalen Betriebsvorgängen und echten Bedrohungsmustern. Weniger Fehlalarme, mehr Präzision — das Modell verbessert sich mit jedem Ereignis in Ihrer Flotte.',
+      },
+      {
+        icon: 'tabler:shield-check',
+        title: 'Maßnahmen',
+        description:
+          'Bei bestätigter Bedrohung löst KONVOI automatisch eine mehrstufige Abschreckungskette aus: sichtbare und akustische Signale am Trailer, sofortige Benachrichtigung des Fahrers und der Flottenverantwortlichen, Eskalation an Sicherheitsdienste. Prävention, nicht Reaktion.',
+      },
+    ]}
+    id="how-it-works"
+  />
+
+  <!-- Section 5: Add-on modules (PROD-04, D-09) -->
+  <Features
+    tagline="Erweiterungen"
+    title="Mehr Transparenz auf Wunsch"
+    subtitle="Das KONVOI Basis-System schützt bereits vollständig. Zwei optionale Module erweitern die Transparenz für Flotten mit erhöhten Compliance- oder Kundenkommunikationsanforderungen."
+    columns={2}
+    items={[
+      {
+        title: 'KONVOI Camera Module',
+        description:
+          'Bei jedem klassifizierten Sicherheitsereignis werden automatisch Cloud-Clips gespeichert. Visuelle Dokumentation für Versicherungen, Behörden und interne Sicherheitsreviews. Kein dauerhaftes Streaming — nur ereignisbasierte Clips.',
+        icon: 'tabler:video',
+      },
+      {
+        title: 'KONVOI Logbook',
+        description:
+          'Automatisch generierter PDF-Bericht je Fahrt: alle Stopps, Standzeiten, Anomalien und Kopplungsvorgänge in übersichtlicher Form. Ideal für Kundenkommunikation, Compliance-Nachweise und interne Qualitätssicherung.',
+        icon: 'tabler:file-report',
+      },
+    ]}
+  />
+
+  <!-- Section 6: Installation with 120-min promise (PROD-05, D-10) -->
+  <Content
+    tagline="Installation"
+    title="Installation in unter 120 Minuten"
+    subtitle="Unser eigenes Team installiert das KONVOI System an Ihrem Trailer — ohne Betriebsunterbrechung."
+    content={`
+      <p>KONVOI wird von unserem zertifizierten Installations-Team direkt bei Ihnen vor Ort montiert.
+      Die Installation dauert <strong>unter 120 Minuten pro Trailer</strong> und erfordert keine
+      Änderungen an der Trailer-Elektronik oder -Infrastruktur.</p>
+      <ul>
+        <li>Keine Kabelarbeiten an der Trailer-Elektrik</li>
+        <li>Keine Betriebsunterbrechung des Fahrzeugbetriebs</li>
+        <li>Sofort einsatzbereit nach Installation</li>
+        <li>Full-Service inklusive: Hardware, Software, Wartung, Support</li>
+      </ul>
+    `}
+    isReversed={true}
+  />
+
+  <!-- Install video placeholder (PROD-05, D-10) -->
+  <IncidentVideo
+    videoSrc="/videos/installation-process.mp4"
+    posterImage="/images/placeholders/installation-poster.jpg"
+    caption="KONVOI Installations-Prozess — von der Anlieferung bis zur Inbetriebnahme in unter 120 Minuten"
+    id="install-video"
+  />
+
+  <!-- Section 7: End CTA -->
+  <CallToAction
+    id="consult"
+    title="Bereit, Ihre Flotte zu schützen?"
+    subtitle="Erfahren Sie in einem 20-minütigen Gespräch, welches KONVOI-Paket für Ihre Flotte passt. Kostenlos und unverbindlich."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Beratung anfragen',
+        href: 'mailto:info@konvoi.eu?subject=Beratungsanfrage+KONVOI+System',
+      },
+    ]}
+  />
+</Layout>
