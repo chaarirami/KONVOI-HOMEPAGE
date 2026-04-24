@@ -1,0 +1,127 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import IncidentVideo from '~/components/widgets/IncidentVideo.astro';
+
+export async function getStaticPaths() {
+  const useCases = await getCollection('useCase', ({ data }) => data.locale === 'de');
+  return useCases.map((entry) => ({
+    params: { slug: entry.data.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { data } = entry;
+
+// Industry name and href lookup for cross-links (per D-14, UC-05)
+// Hrefs are resolved through this hardcoded map — not interpolated from collection data.
+// Invalid slugs from collection produce undefined and are filtered out (T-04-05-02).
+const industryNames: Record<string, { name: string; href: string }> = {
+  'high-value':  { name: 'Hochwertige Güter',     href: '/branchen/hochwertige-gueter' },
+  'cooling':     { name: 'Kühltransporte',         href: '/branchen/kuehlgut' },
+  'intermodal':  { name: 'Intermodaler Transport', href: '/branchen/intermodal' },
+  'other':       { name: 'Weitere Transporte',     href: '/branchen/sonstige' },
+};
+
+const metadata = {
+  title: data.metadata?.title ?? `${data.title} | KONVOI`,
+  description: data.metadata?.description ?? data.problemStatement ?? `KONVOI verhindert ${data.title.toLowerCase()} durch präventive Sensor-Klassifizierung.`,
+};
+---
+
+<Layout metadata={metadata}>
+
+  <!-- Hero: page title and tagline (per D-11) -->
+  <Hero
+    tagline="Anwendungen"
+    title={data.title}
+    actions={[
+      { variant: 'primary', text: 'Beratung anfragen', href: '#consult' },
+    ]}
+  />
+
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-12 space-y-12">
+
+    <!-- Problem framing (UC-02, D-11) -->
+    {data.problemStatement && (
+      <section>
+        <h2 class="text-3xl font-bold mb-4 font-heading">Das Problem</h2>
+        <p class="text-lg text-muted leading-relaxed">{data.problemStatement}</p>
+      </section>
+    )}
+
+    <!-- Cost anchor callout (UC-02, D-11) -->
+    {data.costAnchor && (
+      <div class="border-l-4 border-primary bg-primary/5 dark:bg-primary/10 px-6 py-4 rounded-r-lg">
+        <p class="text-lg font-semibold text-foreground">{data.costAnchor}</p>
+      </div>
+    )}
+
+    <!-- KONVOI approach (UC-02, D-11) -->
+    {data.konvoiApproach && (
+      <section>
+        <h2 class="text-3xl font-bold mb-4 font-heading">Der KONVOI Ansatz</h2>
+        <p class="text-lg text-muted leading-relaxed">{data.konvoiApproach}</p>
+      </section>
+    )}
+
+    <!-- Full markdown body (400-600 words, per D-12)
+         Rendered via Astro's built-in sanitized markdown parser (T-04-05-01). -->
+    <div class="prose dark:prose-invert max-w-none prose-headings:font-heading prose-a:text-primary">
+      <Content />
+    </div>
+
+  </div>
+
+  <!-- Incident video placeholder (UC-03, UC-04, per D-01/D-03/D-13)
+       IncidentVideo renders an HTML5 <video> with controls, muted, autoplay, loop, playsinline.
+       videoSrc uses per-use-case slug so each page shows scenario-specific content when
+       real recordings are available — satisfying UC-04 (per-scenario content).
+       data.slug is Zod-validated — no path traversal possible (T-04-05-03). -->
+  <IncidentVideo
+    videoSrc={`/videos/incident-${data.slug}.mp4`}
+    posterImage={`/images/placeholders/incident-${data.slug}.jpg`}
+    caption={`Dashboard-Aufnahme: ${data.title} — echte Vorfallrekonstruktion`}
+    id="incident-video"
+  />
+
+  <!-- Related industries cross-links (UC-05, per D-14) -->
+  {data.relatedIndustries && data.relatedIndustries.length > 0 && (
+    <section class="max-w-5xl mx-auto px-4 sm:px-6 py-12">
+      <h3 class="text-2xl font-bold mb-6 font-heading">Relevant für diese Branchen</h3>
+      <ul class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {data.relatedIndustries.map((industrySlug) => {
+          const industry = industryNames[industrySlug];
+          if (!industry) return null;
+          return (
+            <li>
+              <a
+                href={industry.href}
+                class="block p-4 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-primary hover:bg-primary/5 transition-colors text-sm font-medium text-foreground"
+              >
+                {industry.name}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  )}
+
+  <!-- End-of-page consult CTA (UC-02, D-11)
+       /fallstudien/ is a valid Phase 6 route (T-04-05-04). -->
+  <CallToAction
+    id="consult"
+    title="Bereit zu handeln?"
+    subtitle="Lassen Sie sich von unserem Team beraten, wie KONVOI Ihre Flotte gegen dieses Risiko schützt. Kostenlos und unverbindlich."
+    actions={[
+      { variant: 'primary', text: 'Beratung anfragen', href: 'mailto:info@konvoi.eu?subject=Beratungsanfrage' },
+      { variant: 'secondary', text: 'Fallstudien ansehen', href: '/fallstudien/' },
+    ]}
+  />
+
+</Layout>
