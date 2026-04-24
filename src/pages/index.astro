@@ -1,398 +1,190 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-
-import Hero from '~/components/widgets/Hero.astro';
-import Note from '~/components/widgets/Note.astro';
+import HeroVideo from '~/components/widgets/HeroVideo.astro';
 import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import Content from '~/components/widgets/Content.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
-import Stats from '~/components/widgets/Stats.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import { getCollection } from 'astro:content';
+
+const caseStudiesDe = await getCollection('caseStudy', ({ data }) =>
+  data.locale === 'de' && ['schumacher', 'jjx', 'greilmeier'].includes(data.canonicalKey)
+);
+
+const testimonials = caseStudiesDe.map((cs) => ({
+  testimonial: cs.data.quote ?? '',
+  name: cs.data.quoteAttribution ?? cs.data.customer,
+  job: cs.data.vertical,
+}));
 
 const metadata = {
-  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
+  title: 'KONVOI — Security Tech Made in Germany',
+  description:
+    'Die erste präventive Lösung für Ihre Flotte — gegen Ladungsdiebstahl, Dieselklau, Sabotage und Fahrerangriffe. Sensor-basiertes Security-as-a-Service für Trailer.',
   ignoreTitleTemplate: true,
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
-
-  <Hero
+  <!-- Section 1: Hero with background video (D-04, HOME-02) -->
+  <HeroVideo
+    tagline="Security Tech Made in Germany"
+    title="Die erste präventive Lösung für Ihre Flotte"
+    subtitle="KONVOI schützt Ihren Trailer gegen Ladungsdiebstahl, Dieselklau, Sabotage und Fahrerangriffe — bevor sie passieren."
+    videoSrc="/videos/hero-bg.mp4"
+    posterImage="/images/placeholders/hero-bg.jpg"
     actions={[
-      {
-        variant: 'primary',
-        text: 'Get template',
-        href: '#',
-        target: '_blank',
-        icon: 'tabler:download',
-      },
-      { text: 'Learn more', href: '#features' },
+      { variant: 'primary', text: 'Beratung anfragen', href: '#consult' },
+      { variant: 'secondary', text: 'Mehr erfahren', href: '/produkt' },
     ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
-  >
-    <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-accent dark:text-white"> Astro 5.0</span> + Tailwind CSS
-    </Fragment>
+  />
 
-    <Fragment slot="subtitle">
-      <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 5.0 +
-        Tailwind CSS.</span
-      >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-      Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages & Blogs.
-    </Fragment>
-  </Hero>
-
-  <!-- Note Widget ******************* -->
-
-  <Note title="Philosophy:" description="Simplicity, Best Practices and High Performance" />
-
-  <!-- Features Widget *************** -->
-
+  <!-- Section 2: Preventive-vs-reactive explainer (HOME-05, D-05) -->
   <Features
-    id="features"
-    tagline="Features"
-    title="What you get with AstroWind"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022, 2023 and 2024."
+    tagline="Prävention statt Reaktion"
+    title="Warum präventiv besser ist"
+    subtitle="Klassische GPS-Tracker zeigen Ihnen nur, wo der Trailer gestohlen wurde — nach dem Vorfall. KONVOI klassifiziert Bewegungs-, Schock- und GPS-Muster in Echtzeit und löst eine Abschreckungskette aus, bevor die Ladung den Trailer verlässt."
+    columns={3}
     items={[
       {
-        title: 'Astro + Tailwind CSS Integration',
+        title: 'Präventiv',
         description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
-        icon: 'tabler:brand-tailwind',
+          'Erkennt und klassifiziert Bedrohungsmuster, bevor Schaden entsteht. Kein reaktives Nachverfolgen — aktives Verhindern.',
+        icon: 'tabler:shield-check',
       },
       {
-        title: 'Ready-to-use Components',
+        title: 'Lernend',
         description:
-          'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-        icon: 'tabler:components',
+          'Künstliche Intelligenz verbessert die Klassifizierung mit jedem Ereignis in Ihrer Flotte. Weniger Fehlalarme, mehr Sicherheit.',
+        icon: 'tabler:brain',
       },
       {
-        title: 'Best Practices',
+        title: 'Unabhängig',
         description:
-          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
-        icon: 'tabler:list-check',
-      },
-      {
-        title: 'Excellent Page Speed',
-        description:
-          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
-        icon: 'tabler:rocket',
-      },
-      {
-        title: 'Search Engine Optimization (SEO)',
-        description:
-          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
-        icon: 'tabler:arrows-right-left',
-      },
-      {
-        title: 'Open to new ideas and contributions',
-        description:
-          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
-        icon: 'tabler:bulb',
+          '7-Tage-Akku. Funktioniert vollständig offline. Keine externe Infrastruktur oder permanente Netzwerkverbindung erforderlich.',
+        icon: 'tabler:battery-eco',
       },
     ]}
   />
 
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    tagline="Inside template"
-    title="AstroWind's Blueprint: Fun Meets Functionality!"
+  <!-- Section 3: Use-case teaser cards (HOME-05, D-06) -->
+  <Features
+    tagline="Anwendungen"
+    title="Schutz gegen alle Bedrohungstypen"
+    subtitle="KONVOI deckt die sieben häufigsten Sicherheitsrisiken im Trailer-Transport ab — von Ladungsdiebstahl bis zur Standzeit-Optimierung."
+    columns={4}
     items={[
       {
-        title: 'Built on top of Astro 5.0',
+        title: 'Ladungsdiebstahl',
         description:
-          'Benefiting from the performance and developer-friendly features of this modern static site generator.',
+          '€8 Mrd. Schaden jährlich in Europa. KONVOI verhindert Diebstahl, bevor er passiert.',
+        icon: 'tabler:box-off',
+        callToAction: { text: 'Mehr erfahren', href: '/anwendungen/ladungsdiebstahl', variant: 'link' },
       },
       {
-        title: 'Styled using Tailwind CSS',
+        title: 'Dieseldiebstahl',
         description:
-          'Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.',
+          'Bis zu €2.000 pro Vorfall. KONVOI erkennt und verhindert Kraftstoffdiebstahl am Trailer.',
+        icon: 'tabler:droplet-off',
+        callToAction: { text: 'Mehr erfahren', href: '/anwendungen/dieseldiebstahl', variant: 'link' },
       },
       {
-        title: 'Cross-browser compatibility',
+        title: 'Equipmentdiebstahl',
         description:
-          'Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Colorful Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
-      Gain a competitive advantage by incorporating industry leading practices
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isAfterContent
-    items={[
-      {
-        title: 'High level of customization',
-        description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
+          '€600 pro Reifen, €3.600 pro Trailer. Sensor-Überwachung schützt Ihre Ausrüstung.',
+        icon: 'tabler:tools-off',
+        callToAction: { text: 'Mehr erfahren', href: '/anwendungen/equipmentdiebstahl', variant: 'link' },
       },
       {
-        title: 'Multiple layout possibilities',
+        title: 'Transparenz der Operationen',
         description:
-          'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
+          'Lückenlose Dokumentation aller Kopplungsvorgänge — für Compliance und Haftungsschutz.',
+        icon: 'tabler:eye-check',
+        callToAction: {
+          text: 'Mehr erfahren',
+          href: '/anwendungen/transparenz-der-operationen',
+          variant: 'link',
+        },
       },
       {
-        title: 'Fully responsive design',
+        title: 'Trailerschäden',
         description:
-          "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
+          'Schocksensor-Daten rekonstruieren Schadensereignisse für Versicherung und Compliance.',
+        icon: 'tabler:alert-triangle',
+        callToAction: { text: 'Mehr erfahren', href: '/anwendungen/trailerschaeden', variant: 'link' },
       },
       {
-        title: 'Integration of media',
+        title: 'Fahrerangriffe',
         description:
-          'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
+          'Präventive Abschreckung und sofortige Alarmkette schützen Ihr Fahrpersonal.',
+        icon: 'tabler:user-shield',
+        callToAction: { text: 'Mehr erfahren', href: '/anwendungen/fahrerangriffe', variant: 'link' },
       },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
-      alt: 'Blueprint Image',
-    }}
-  >
-    <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent
-    items={[
       {
-        title: 'Enhanced user engagement',
+        title: 'Standzeit-Optimierung',
         description:
-          'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
-      },
-      {
-        title: 'Continuous improvement',
-        description:
-          'Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.',
-      },
-      {
-        title: 'Time and resource efficiency',
-        description:
-          'Skip the time-consuming process of building a website from scratch and launch your online presence sooner with AstroWind.',
-      },
-      {
-        title: 'Community support',
-        description: `Join the growing AstroWind community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Astronauts Image',
-    }}
-  >
-    <Fragment slot="content">Designed to foster growth and success.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Steps Widget ****************** -->
-
-  <Steps
-    title="Get your dream website up and running in no time with AstroWind."
-    items={[
-      {
-        title: 'Step 1: <span class="font-medium">Download</span>',
-        description:
-          "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
-        icon: 'tabler:package',
-      },
-      {
-        title: 'Step 2: <span class="font-medium">Add content</span>',
-        description:
-          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
-        icon: 'tabler:letter-case',
-      },
-      {
-        title: 'Step 3: <span class="font-medium">Customize styles</span>',
-        description:
-          'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind! Precision in design ensures a seamless user experience.',
-        icon: 'tabler:paint',
-      },
-      {
-        title: 'Ready!',
-        icon: 'tabler:check',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      alt: 'Steps image',
-    }}
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS"
-    tagline="Components"
-    items={[
-      {
-        title: 'Headers',
-        description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
-        icon: 'flat-color-icons:template',
-      },
-      {
-        title: 'Heros',
-        description:
-          "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!",
-        icon: 'flat-color-icons:gallery',
-      },
-      {
-        title: 'Features',
-        description:
-          'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
-        icon: 'flat-color-icons:approval',
-      },
-      {
-        title: 'Content',
-        description:
-          "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
-        icon: 'flat-color-icons:document',
-      },
-      {
-        title: 'Call-to-Action',
-        description:
-          'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
-        icon: 'flat-color-icons:advertising',
-      },
-      {
-        title: 'Pricing',
-        description: 'Behold the dessert menu of the website world. Tempting choices await, can you resist?',
-        icon: 'flat-color-icons:currency-exchange',
-      },
-      {
-        title: 'Testimonial',
-        description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
-        icon: 'flat-color-icons:voice-presentation',
-      },
-      {
-        title: 'Contact',
-        description:
-          'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
-        icon: 'flat-color-icons:business-contact',
-      },
-      {
-        title: 'Footers',
-        description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
-        icon: 'flat-color-icons:database',
-      },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Features2>
-
-  <!-- HighlightedPosts Widget ******* -->
-
-  <BlogLatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
-                        Astro is a very interesting technology. Thanks.
-                `}
-  />
-
-  <!-- FAQs Widget ******************* -->
-
-  <FAQs
-    title="Frequently Asked Questions"
-    subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
-    tagline="FAQs"
-    classes={{ container: 'max-w-6xl' }}
-    items={[
-      {
-        title: 'Why AstroWind?',
-        description:
-          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
-      },
-      {
-        title: 'What do I need to start?',
-        description:
-          'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
-      },
-      {
-        title: 'How to install the Astro + Tailwind CSS template?',
-        description:
-          "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
-      },
-      {
-        title: "What's something that you don't understand?",
-        description:
-          "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
-      },
-      {
-        title: 'What is something that you would like to try again?',
-        description:
-          "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
-      },
-      {
-        title: 'If you could only ask one question to each person you meet, what would that question be?',
-        description:
-          "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
+          'Echtzeit-Standzeit-Daten reduzieren ungeplante Haltezeiten und verbessern Flottenauslastung.',
+        icon: 'tabler:clock-check',
+        callToAction: { text: 'Mehr erfahren', href: '/anwendungen/standzeit-optimierung', variant: 'link' },
       },
     ]}
   />
 
-  <!-- Stats Widget ****************** -->
-
-  <Stats
-    stats={[
-      { title: 'Downloads', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Forks', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
-    ]}
+  <!-- Section 4: Testimonials sourced from caseStudy collection (HOME-04) -->
+  <Testimonials
+    title="Das sagen unsere Kunden"
+    subtitle="Reale Ergebnisse von Unternehmen, die auf präventive Sicherheit setzen."
+    testimonials={testimonials}
   />
 
-  <!-- CallToAction Widget *********** -->
+  <!-- Section 5: Customer logo wall (HOME-03) -->
+  <WidgetWrapper containerClass="max-w-6xl mx-auto">
+    <p class="text-center text-lg font-semibold text-gray-700 dark:text-gray-300 mb-8">
+      Bereits im Einsatz bei führenden Logistikanbietern
+    </p>
+    <div class="flex flex-wrap justify-center gap-x-12 gap-y-6 items-center">
+      <img src="/images/logos/schumacher.svg" alt="Schumacher Group" width="160" height="48" loading="lazy" class="h-12 w-auto object-contain" />
+      <img src="/images/logos/jjx.svg" alt="JJX Logistics" width="160" height="48" loading="lazy" class="h-12 w-auto object-contain" />
+      <img src="/images/logos/greilmeier.svg" alt="Greilmeier Spedition &amp; Logistik" width="160" height="48" loading="lazy" class="h-12 w-auto object-contain" />
+    </div>
+  </WidgetWrapper>
 
+  <!-- Section 6: Press mentions (HOME-06) -->
+  <WidgetWrapper containerClass="max-w-6xl mx-auto">
+    <p class="text-center text-sm font-bold tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-8">
+      Bekannt aus
+    </p>
+    <div class="flex flex-wrap justify-center gap-x-12 gap-y-6 items-center">
+      <img src="/images/press/placeholder-press-1.svg" alt="Pressekontakt 1" width="120" height="40" loading="lazy" class="h-10 w-auto object-contain opacity-60" />
+      <img src="/images/press/placeholder-press-2.svg" alt="Pressekontakt 2" width="120" height="40" loading="lazy" class="h-10 w-auto object-contain opacity-60" />
+      <img src="/images/press/placeholder-press-3.svg" alt="Pressekontakt 3" width="120" height="40" loading="lazy" class="h-10 w-auto object-contain opacity-60" />
+    </div>
+  </WidgetWrapper>
+
+  <!-- Section 7: Partners/investors (HOME-07) -->
+  <WidgetWrapper containerClass="max-w-6xl mx-auto">
+    <p class="text-center text-sm font-bold tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-8">
+      Unterstützt von
+    </p>
+    <div class="flex flex-wrap justify-center gap-x-12 gap-y-6 items-center">
+      <img src="/images/partners/startup-port.svg" alt="Startup Port" width="140" height="48" loading="lazy" class="h-12 w-auto object-contain" />
+      <img src="/images/partners/1750-ventures.svg" alt="1750 Ventures" width="140" height="48" loading="lazy" class="h-12 w-auto object-contain" />
+      <img src="/images/partners/vgh.svg" alt="VGH Versicherungen" width="140" height="48" loading="lazy" class="h-12 w-auto object-contain" />
+    </div>
+  </WidgetWrapper>
+
+  <!-- Section 8: End-of-page CTA (HOME-08) -->
   <CallToAction
+    id="consult"
+    title="Sicherheit für Ihre Flotte"
+    subtitle="Erfahren Sie in 20 Minuten, wie KONVOI für Ihr Unternehmen funktioniert. Kostenlose Erstberatung — unverbindlich."
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
-        href: '#',
-        target: '_blank',
-        icon: 'tabler:download',
+        text: 'Beratung anfragen',
+        href: 'mailto:info@konvoi.eu?subject=Beratungsanfrage',
       },
+      { variant: 'secondary', text: 'Fallstudien ansehen', href: '/fallstudien/' },
     ]}
-  >
-    <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
-    </Fragment>
-  </CallToAction>
+  />
 </Layout>
