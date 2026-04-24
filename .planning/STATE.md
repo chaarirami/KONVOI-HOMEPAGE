@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 04-01-PLAN.md
-last_updated: "2026-04-24T09:43:27.049Z"
+stopped_at: Completed 04-04-PLAN.md
+last_updated: "2026-04-24T09:54:10.034Z"
 last_activity: 2026-04-24
 progress:
   total_phases: 7
   completed_phases: 2
   total_plans: 18
-  completed_plans: 15
-  percent: 83
+  completed_plans: 16
+  percent: 89
 ---
 
 # Project State
@@ -26,7 +26,7 @@ See: .planning/PROJECT.md (updated 2026-04-20)
 ## Current Position
 
 Phase: 04 (Core Marketing Pages) — EXECUTING
-Plan: 2 of 7
+Plan: 3 of 7
 Status: Ready to execute
 Last activity: 2026-04-24
 
@@ -61,6 +61,7 @@ Progress: [█████░░░░░] 57%
 | Phase 02 P03 | 2min | 2 tasks | 2 files |
 | Phase 02 P04 | 5min | 1 task  | 0 files |
 | Phase 04 P01 | 4 | 2 tasks | 6 files |
+| Phase 04 P04 | 15 | 1 tasks | 14 files |
 
 ## Accumulated Context
 
@@ -86,6 +87,7 @@ Recent decisions affecting current work:
 - Pricing amounts set to "auf Anfrage" / "on request" — live site is quote-based; actual prices to be filled before Phase 5 (PRICE-02)
 - Tier slugs (standard, camera-module, logbook) declared stable — Phase 5 ROI calculator references them by slug (PRICE-03)
 - [Phase 04]: HeroVideo/IncidentVideo use multi-line JSX attribute style for video element — autoplay muted loop playsinline on separate lines, idiomatic Astro, all attributes present
+- [Phase 04]: EN stationary-time slug is stationary-time-optimization per routeMap.ts (not stationary-time as listed in plan)
 
 ### Pending Todos
 
@@ -107,8 +109,8 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-24T09:43:27.047Z
-Stopped at: Completed 04-01-PLAN.md
+Last session: 2026-04-24T09:54:04.136Z
+Stopped at: Completed 04-04-PLAN.md
 Resume file: None
 
 **Completed Phases:** 1, 2, 3, 6

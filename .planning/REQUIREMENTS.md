@@ -65,11 +65,11 @@
 
 ### Use cases
 
-- [ ] **UC-01**: Individual DE + EN page per use case: `/anwendungen/ladungsdiebstahl/`, `/dieseldiebstahl/`, `/equipmentdiebstahl/`, `/transparenz-der-operationen/`, `/trailerschaeden/`, `/fahrerangriffe/`, `/standzeit-optimierung/` (EN: `/en/use-cases/cargo-theft/`, `/diesel-theft/`, `/equipment-theft/`, `/operations-transparency/`, `/trailer-damage/`, `/driver-assaults/`, `/stationary-time-optimization/`)
-- [ ] **UC-02**: Each page surfaces problem framing + cost anchor (e.g. 8B EUR/yr cargo theft) + Konvoi approach + CTA
+- [x] **UC-01**: Individual DE + EN page per use case: `/anwendungen/ladungsdiebstahl/`, `/dieseldiebstahl/`, `/equipmentdiebstahl/`, `/transparenz-der-operationen/`, `/trailerschaeden/`, `/fahrerangriffe/`, `/standzeit-optimierung/` (EN: `/en/use-cases/cargo-theft/`, `/diesel-theft/`, `/equipment-theft/`, `/operations-transparency/`, `/trailer-damage/`, `/driver-assaults/`, `/stationary-time-optimization/`)
+- [x] **UC-02**: Each page surfaces problem framing + cost anchor (e.g. 8B EUR/yr cargo theft) + Konvoi approach + CTA
 - [x] **UC-03**: Shared `SensorDataViz` Preact island renders motion / shock / GPS traces per-use-case on every use-case page
 - [x] **UC-04**: `SensorDataViz` reads scenario fixtures from `src/data/sensor-scenarios/*.json` with a documented schema
-- [ ] **UC-05**: Each use-case page cross-links to relevant industry landing pages
+- [x] **UC-05**: Each use-case page cross-links to relevant industry landing pages
 
 ### Industry verticals
 
@@ -255,11 +255,11 @@ Every v1 requirement is mapped to exactly one phase. See `.planning/ROADMAP.md` 
 | PROD-03 | Phase 4 | Complete |
 | PROD-04 | Phase 4 | Pending |
 | PROD-05 | Phase 4 | Complete |
-| UC-01 | Phase 4 | Pending |
-| UC-02 | Phase 4 | Pending |
+| UC-01 | Phase 4 | Complete |
+| UC-02 | Phase 4 | Complete |
 | UC-03 | Phase 4 | Complete |
 | UC-04 | Phase 4 | Complete |
-| UC-05 | Phase 4 | Pending |
+| UC-05 | Phase 4 | Complete |
 | VERT-01 | Phase 4 | Pending |
 | VERT-02 | Phase 4 | Pending |
 | VERT-03 | Phase 4 | Pending |
