@@ -46,14 +46,14 @@
 
 ### Homepage
 
-- [ ] **HOME-01**: DE + EN homepage at `/` and `/en/`
+- [x] **HOME-01**: DE + EN homepage at `/` and `/en/`
 - [x] **HOME-02**: Hero with "Security Tech Made in Germany" positioning, preventive-vs-reactive tagline, primary "Beratung anfragen" / "Book a consult" CTA
-- [ ] **HOME-03**: Customer logo wall
-- [ ] **HOME-04**: 3-testimonial section (Schumacher, JJX, Greilmeier) sourced from `caseStudy` collection
-- [ ] **HOME-05**: Preventive-vs-reactive explainer section surfacing the Konvoi category framing
-- [ ] **HOME-06**: "Known from" press-mentions strip
-- [ ] **HOME-07**: "Supported by" partners / investors strip
-- [ ] **HOME-08**: End-of-page conversion block repeating the consult CTA
+- [x] **HOME-03**: Customer logo wall
+- [x] **HOME-04**: 3-testimonial section (Schumacher, JJX, Greilmeier) sourced from `caseStudy` collection
+- [x] **HOME-05**: Preventive-vs-reactive explainer section surfacing the Konvoi category framing
+- [x] **HOME-06**: "Known from" press-mentions strip
+- [x] **HOME-07**: "Supported by" partners / investors strip
+- [x] **HOME-08**: End-of-page conversion block repeating the consult CTA
 
 ### Product page
 
@@ -242,14 +242,14 @@ Every v1 requirement is mapped to exactly one phase. See `.planning/ROADMAP.md` 
 | I18N-06 | Phase 3 | Pending |
 | I18N-07 | Phase 3 | Pending |
 | I18N-08 | Phase 3 | Pending |
-| HOME-01 | Phase 4 | Pending |
+| HOME-01 | Phase 4 | Complete |
 | HOME-02 | Phase 4 | Complete |
-| HOME-03 | Phase 4 | Pending |
-| HOME-04 | Phase 4 | Pending |
-| HOME-05 | Phase 4 | Pending |
-| HOME-06 | Phase 4 | Pending |
-| HOME-07 | Phase 4 | Pending |
-| HOME-08 | Phase 4 | Pending |
+| HOME-03 | Phase 4 | Complete |
+| HOME-04 | Phase 4 | Complete |
+| HOME-05 | Phase 4 | Complete |
+| HOME-06 | Phase 4 | Complete |
+| HOME-07 | Phase 4 | Complete |
+| HOME-08 | Phase 4 | Complete |
 | PROD-01 | Phase 4 | Pending |
 | PROD-02 | Phase 4 | Complete |
 | PROD-03 | Phase 4 | Complete |

@@ -85,7 +85,7 @@ Plans:
 **Plans:** 2/7 plans executed
 Plans:
 - [x] 04-01-PLAN.md -- Shared widget components: HeroVideo, IncidentVideo, ScrollSteps, SensorDiagram (HOME-02, PROD-02, PROD-03, PROD-05, UC-03, UC-04)
-- [ ] 04-02-PLAN.md -- Homepage DE + EN: 8-section structure, testimonials from caseStudy collection (HOME-01..08)
+- [x] 04-02-PLAN.md -- Homepage DE + EN: 8-section structure, testimonials from caseStudy collection (HOME-01..08)
 - [ ] 04-03-PLAN.md -- Product page DE + EN: hardware spec, sensor diagram, 3-step flow, add-ons, install (PROD-01..05)
 - [x] 04-04-PLAN.md -- useCase content: 14 markdown files DE+EN, AI-generated copy (UC-01, UC-02, UC-05)
 - [ ] 04-05-PLAN.md -- Use-case pages DE + EN: dynamic routes /anwendungen/[slug] + /en/use-cases/[slug] (UC-01..05)
