@@ -57,10 +57,10 @@
 
 ### Product page
 
-- [ ] **PROD-01**: DE + EN product page covering hardware spec, data services, alarm chain, installation process
+- [x] **PROD-01**: DE + EN product page covering hardware spec, data services, alarm chain, installation process
 - [x] **PROD-02**: Hardware system diagram / visual for the sensor positions on a trailer
 - [x] **PROD-03**: Step-by-step "how it works" (Detection / Classification / Measures)
-- [ ] **PROD-04**: Add-on modules section -- KONVOI Camera Module, KONVOI Logbook
+- [x] **PROD-04**: Add-on modules section -- KONVOI Camera Module, KONVOI Logbook
 - [x] **PROD-05**: Installation section including the 120-minute install promise + video
 
 ### Use cases
@@ -250,10 +250,10 @@ Every v1 requirement is mapped to exactly one phase. See `.planning/ROADMAP.md` 
 | HOME-06 | Phase 4 | Complete |
 | HOME-07 | Phase 4 | Complete |
 | HOME-08 | Phase 4 | Complete |
-| PROD-01 | Phase 4 | Pending |
+| PROD-01 | Phase 4 | Complete |
 | PROD-02 | Phase 4 | Complete |
 | PROD-03 | Phase 4 | Complete |
-| PROD-04 | Phase 4 | Pending |
+| PROD-04 | Phase 4 | Complete |
 | PROD-05 | Phase 4 | Complete |
 | UC-01 | Phase 4 | Complete |
 | UC-02 | Phase 4 | Complete |
