@@ -191,6 +191,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     'thanks.subtitle':                'Wir melden uns innerhalb von 24 Stunden bei Ihnen.',
     'thanks.body':                    'Ihr Beratungsgesuch ist bei uns eingegangen. Unser Team wird sich so schnell wie möglich mit Ihnen in Verbindung setzen.',
     'thanks.back_home':               'Zurück zur Startseite',
+    'thanks.cal_heading':             'Sie möchten nicht warten?',
+    'thanks.cal_body':                'Buchen Sie direkt einen Termin mit unserem Team:',
+    'thanks.cal_cta':                 'Termin buchen',
 
     // Phase 6: Case studies
     'case_studies.index_title':   'Fallstudien',
@@ -410,6 +413,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     'thanks.subtitle':                'We will contact you within 24 hours.',
     'thanks.body':                    'Your consultation request has been received. Our team will get in touch with you as soon as possible.',
     'thanks.back_home':               'Back to Home',
+    'thanks.cal_heading':             'Don’t want to wait?',
+    'thanks.cal_body':                'Book a meeting with our team directly:',
+    'thanks.cal_cta':                 'Book a meeting',
 
     // Phase 6: Case studies
     'case_studies.index_title':    'Case Studies',

@@ -8,6 +8,7 @@ import PageLayout from '~/layouts/PageLayout.astro';
 import { t } from '~/i18n/translations';
 
 const locale = 'de';
+const calUrl = import.meta.env.PUBLIC_CAL_BOOKING_URL;
 const metadata = {
   title: 'Vielen Dank — KONVOI',
   description: 'Ihre Anfrage ist eingegangen. Wir melden uns innerhalb von 24 Stunden.',
@@ -27,9 +28,27 @@ const metadata = {
     <p class="text-slate-500 dark:text-slate-400 mb-10">
       {t('thanks.body', locale)}
     </p>
+    {calUrl && (
+      <div class="mb-10 rounded-2xl border border-slate-200 dark:border-slate-700 p-8">
+        <h2 class="text-xl font-bold font-heading mb-2">
+          {t('thanks.cal_heading', locale)}
+        </h2>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">
+          {t('thanks.cal_body', locale)}
+        </p>
+        <a
+          href={calUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block rounded-lg bg-primary px-6 py-3 text-white font-semibold hover:bg-primary/90 transition-colors"
+        >
+          {t('thanks.cal_cta', locale)}
+        </a>
+      </div>
+    )}
     <a
       href="/"
-      class="inline-block rounded-lg bg-primary px-6 py-3 text-white font-semibold hover:bg-primary/90 transition-colors"
+      class="inline-block rounded-lg border-2 border-primary px-6 py-3 text-primary font-semibold hover:bg-primary hover:text-white transition-colors"
     >
       {t('thanks.back_home', locale)}
     </a>
