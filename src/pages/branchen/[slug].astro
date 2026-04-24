@@ -1,0 +1,108 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+export async function getStaticPaths() {
+  const industries = await getCollection('industry', ({ data }) => data.locale === 'de');
+  return industries.map((entry) => ({
+    params: { slug: entry.data.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { data } = entry;
+
+// Use-case name and href lookup for cross-links (per D-17, VERT-03)
+// hrefs are resolved through this hardcoded map — not interpolated from collection data.
+// Invalid DE slug in relatedUseCases produces undefined and is filtered (T-04-06-02).
+const useCaseNames: Record<string, { name: string; href: string }> = {
+  'ladungsdiebstahl':            { name: 'Ladungsdiebstahl',           href: '/anwendungen/ladungsdiebstahl' },
+  'dieseldiebstahl':             { name: 'Dieseldiebstahl',            href: '/anwendungen/dieseldiebstahl' },
+  'equipmentdiebstahl':          { name: 'Equipmentdiebstahl',         href: '/anwendungen/equipmentdiebstahl' },
+  'transparenz-der-operationen': { name: 'Transparenz der Operationen', href: '/anwendungen/transparenz-der-operationen' },
+  'trailerschaeden':             { name: 'Trailerschäden',             href: '/anwendungen/trailerschaeden' },
+  'fahrerangriffe':              { name: 'Fahrerangriffe',             href: '/anwendungen/fahrerangriffe' },
+  'standzeit-optimierung':       { name: 'Standzeit-Optimierung',      href: '/anwendungen/standzeit-optimierung' },
+};
+
+const metadata = {
+  title: data.metadata?.title ?? `${data.title} — KONVOI Trailer-Sicherheit`,
+  description: data.metadata?.description ?? data.riskProfile ?? `KONVOI schützt ${data.title.toLowerCase()} präventiv gegen Diebstahl, Sabotage und Fahrerangriffe.`,
+};
+---
+
+<Layout metadata={metadata}>
+
+  <!-- Hero: vertical title + riskProfile as subtitle (per D-16, VERT-02) -->
+  <Hero
+    tagline="Branchen"
+    title={data.title}
+    subtitle={data.riskProfile}
+    actions={[
+      { variant: 'primary', text: 'Beratung anfragen', href: '#consult' },
+      { variant: 'secondary', text: 'Produkt ansehen', href: '/produkt' },
+    ]}
+  />
+
+  <!-- Risk profile detail callout (per D-16, VERT-02)
+       riskProfile is author-written content describing public risk categories.
+       Rendered via Astro expression — auto-escaped (T-04-06-04). -->
+  {data.riskProfile && (
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+      <div class="border-l-4 border-primary bg-primary/5 dark:bg-primary/10 px-6 py-4 rounded-r-lg">
+        <h2 class="text-xl font-bold mb-2 font-heading">Das Risikoprofil</h2>
+        <p class="text-base text-muted leading-relaxed">{data.riskProfile}</p>
+      </div>
+    </section>
+  )}
+
+  <!-- Main body content (200-300 words from collection, per D-18)
+       Rendered via Astro's built-in markdown sanitizer (T-04-06-01). -->
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-8">
+    <div class="prose dark:prose-invert max-w-none prose-headings:font-heading prose-a:text-primary">
+      <Content />
+    </div>
+  </div>
+
+  <!-- Related use-case cross-links (per D-17, VERT-03)
+       hrefs resolved via hardcoded map — no dynamic route construction (T-04-06-02). -->
+  {data.relatedUseCases && data.relatedUseCases.length > 0 && (
+    <section class="max-w-5xl mx-auto px-4 sm:px-6 py-12">
+      <h3 class="text-2xl font-bold mb-6 font-heading">Relevante Anwendungsfälle</h3>
+      <ul class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {data.relatedUseCases.map((ucSlug) => {
+          const useCase = useCaseNames[ucSlug];
+          if (!useCase) return null;
+          return (
+            <li>
+              <a
+                href={useCase.href}
+                class="block p-5 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-primary hover:bg-primary/5 transition-colors"
+              >
+                <span class="font-semibold text-foreground block mb-1">{useCase.name}</span>
+                <span class="text-sm text-primary">Mehr erfahren →</span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  )}
+
+  <!-- End-of-page consult CTA (per VERT-04)
+       /fallstudien/ is a valid Phase 6 route (T-04-06-03). -->
+  <CallToAction
+    id="consult"
+    title="Schützen Sie Ihre Flotte"
+    subtitle="Erfahren Sie in 20 Minuten, wie KONVOI die spezifischen Risiken Ihrer Branche adressiert. Kostenlose Erstberatung."
+    actions={[
+      { variant: 'primary', text: 'Beratung anfragen', href: 'mailto:info@konvoi.eu?subject=Beratungsanfrage' },
+      { variant: 'secondary', text: 'Fallstudien ansehen', href: '/fallstudien/' },
+    ]}
+  />
+
+</Layout>
