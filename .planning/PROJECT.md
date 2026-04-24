@@ -31,11 +31,11 @@ A full rebuild of www.konvoi.eu — the corporate marketing site for **KONVOI Gm
 
 - [ ] **REQ-NAV-01** Flatten primary nav — surface Product / Use Cases / Case Studies / Pricing / Company / Contact at top level
 - [ ] **REQ-NAV-02** Top-level DE ↔ EN language switcher with per-route locale persistence
-- [ ] **REQ-HOME-01** Homepage with new hero, preventive-vs-reactive narrative, Security-Tech-Made-in-Germany tagline, primary "Book a consult" CTA
-- [ ] **REQ-HOME-02** Customer logo wall, 3 rotating testimonials, press-mentions strip, partners/investors row on homepage
-- [ ] **REQ-PRODUCT-01** Product page covering hardware spec, data-service layers, alarm chain, installation process
-- [ ] **REQ-UC-01** 7 individual use-case pages (cargo theft, diesel theft, equipment theft, damaged trailers, driver assaults, stationary-time optimization, operations transparency), each with shared motion / shock / GPS data-viz widget
-- [ ] **REQ-VERT-01** 4 industry landings (high-value, cooling, intermodal, other) that cross-link into the relevant use-case deep-dives
+- [x] **REQ-HOME-01** Homepage with new hero, preventive-vs-reactive narrative, Security-Tech-Made-in-Germany tagline, primary "Book a consult" CTA — Validated in Phase 4
+- [x] **REQ-HOME-02** Customer logo wall, 3 rotating testimonials, press-mentions strip, partners/investors row on homepage — Validated in Phase 4
+- [x] **REQ-PRODUCT-01** Product page covering hardware spec, data-service layers, alarm chain, installation process — Validated in Phase 4
+- [x] **REQ-UC-01** 7 individual use-case pages (cargo theft, diesel theft, equipment theft, damaged trailers, driver assaults, stationary-time optimization, operations transparency), each with incident video placeholder (SensorDataViz replaced per D-01) — Validated in Phase 4
+- [x] **REQ-VERT-01** 4 industry landings (high-value, cooling, intermodal, other) that cross-link into the relevant use-case deep-dives — Validated in Phase 4
 - [x] **REQ-CASE-01** Dedicated case-studies index + individual case study pages per customer (Schumacher, JJX, Greilmeier, more as they come) — Validated in Phase 6
 - [ ] **REQ-PRICE-01** Public pricing page with Standard / + Camera Module / + Logbook package tiers and "Book a consult" CTA
 - [ ] **REQ-ROI-01** Interactive ROI / savings calculator (inputs: fleet size, vertical, parking frequency → estimated annual theft savings)
@@ -128,4 +128,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-20 after initialization*
+*Last updated: 2026-04-24 after Phase 4 completion*
