@@ -1,0 +1,43 @@
+---
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+
+interface Props {
+  videoSrc: string;
+  posterImage?: string;
+  caption?: string;
+  aspectRatio?: '16:9' | '4:3';
+  id?: string;
+}
+
+const {
+  videoSrc,
+  posterImage,
+  caption,
+  aspectRatio: _aspectRatio = '16:9',
+  id,
+} = Astro.props;
+---
+
+<WidgetWrapper id={id} containerClass="max-w-4xl mx-auto">
+  <figure class="w-full">
+    <div class="relative w-full aspect-video bg-slate-900 rounded-lg overflow-hidden shadow-xl">
+      <video
+        controls
+        autoplay
+        muted
+        loop
+        playsinline
+        poster={posterImage}
+        class="w-full h-full object-cover"
+      >
+        <source src={videoSrc} type="video/mp4" />
+        <p class="absolute inset-0 flex items-center justify-center text-white text-sm p-4">Video wird geladen — bitte Browser aktualisieren.</p>
+      </video>
+    </div>
+    {caption && (
+      <figcaption class="text-center text-sm text-muted mt-3 px-4 pb-2 italic">
+        {caption}
+      </figcaption>
+    )}
+  </figure>
+</WidgetWrapper>
