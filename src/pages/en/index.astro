@@ -131,11 +131,13 @@ const metadata = {
   />
 
   <!-- Section 4: Testimonials sourced from caseStudy collection (HOME-04) -->
-  <Testimonials
-    title="What our customers say"
-    subtitle="Real outcomes from companies that chose preventive fleet security."
-    testimonials={testimonials}
-  />
+  {testimonials.length > 0 && (
+    <Testimonials
+      title="What our customers say"
+      subtitle="Real outcomes from companies that chose preventive fleet security."
+      testimonials={testimonials}
+    />
+  )}
 
   <!-- Section 5: Customer logo wall (HOME-03) -->
   <WidgetWrapper containerClass="max-w-6xl mx-auto">

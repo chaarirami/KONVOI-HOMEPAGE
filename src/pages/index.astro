@@ -131,11 +131,13 @@ const metadata = {
   />
 
   <!-- Section 4: Testimonials sourced from caseStudy collection (HOME-04) -->
-  <Testimonials
-    title="Das sagen unsere Kunden"
-    subtitle="Reale Ergebnisse von Unternehmen, die auf präventive Sicherheit setzen."
-    testimonials={testimonials}
-  />
+  {testimonials.length > 0 && (
+    <Testimonials
+      title="Das sagen unsere Kunden"
+      subtitle="Reale Ergebnisse von Unternehmen, die auf präventive Sicherheit setzen."
+      testimonials={testimonials}
+    />
+  )}
 
   <!-- Section 5: Customer logo wall (HOME-03) -->
   <WidgetWrapper containerClass="max-w-6xl mx-auto">
