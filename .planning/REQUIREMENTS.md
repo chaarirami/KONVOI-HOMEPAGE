@@ -135,13 +135,13 @@
 
 ### Forms
 
-- [ ] **FORMS-01**: `ConsultForm` Preact island reusable anywhere on the site (homepage, pricing, use-case pages, etc.)
+- [x] **FORMS-01**: `ConsultForm` Preact island reusable anywhere on the site (homepage, pricing, use-case pages, etc.)
 - [ ] **FORMS-02**: `FundingQualifierForm` Preact island on the funding page
-- [ ] **FORMS-03**: Both forms validate client-side with Zod before POSTing to Formspree
-- [ ] **FORMS-04**: Spam protection -- `_gotcha` honeypot field + Cloudflare Turnstile on both forms
-- [ ] **FORMS-05**: Required, unchecked DSGVO consent checkbox on every form with a link to Datenschutz
-- [ ] **FORMS-06**: Submission success routes to `/danke` (DE) or `/en/thanks/` (EN) with response-time SLA
-- [ ] **FORMS-07**: Submission errors preserve all filled-in values and surface a clear inline error message
+- [x] **FORMS-03**: Both forms validate client-side with Zod before POSTing to Formspree
+- [x] **FORMS-04**: Spam protection -- `_gotcha` honeypot field + Cloudflare Turnstile on both forms
+- [x] **FORMS-05**: Required, unchecked DSGVO consent checkbox on every form with a link to Datenschutz
+- [x] **FORMS-06**: Submission success routes to `/danke` (DE) or `/en/thanks/` (EN) with response-time SLA
+- [x] **FORMS-07**: Submission errors preserve all filled-in values and surface a clear inline error message
 
 ### SEO, analytics, consent, DSGVO
 
@@ -295,13 +295,13 @@ Every v1 requirement is mapped to exactly one phase. See `.planning/ROADMAP.md` 
 | BLOG-02 | Phase 6 | Pending |
 | BLOG-03 | Phase 6 | Pending |
 | BLOG-04 | Phase 6 | Pending |
-| FORMS-01 | Phase 5 | Pending |
+| FORMS-01 | Phase 5 | Complete |
 | FORMS-02 | Phase 5 | Pending |
-| FORMS-03 | Phase 5 | Pending |
-| FORMS-04 | Phase 5 | Pending |
-| FORMS-05 | Phase 5 | Pending |
-| FORMS-06 | Phase 5 | Pending |
-| FORMS-07 | Phase 5 | Pending |
+| FORMS-03 | Phase 5 | Complete |
+| FORMS-04 | Phase 5 | Complete |
+| FORMS-05 | Phase 5 | Complete |
+| FORMS-06 | Phase 5 | Complete |
+| FORMS-07 | Phase 5 | Complete |
 | SEO-01 | Phase 7 | Pending |
 | SEO-02 | Phase 7 | Pending |
 | SEO-03 | Phase 7 | Pending |
