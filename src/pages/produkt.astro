@@ -149,7 +149,9 @@ const metadata = {
     tagline="Installation"
     title="Installation in unter 120 Minuten"
     subtitle="Unser eigenes Team installiert das KONVOI System an Ihrem Trailer — ohne Betriebsunterbrechung."
-    content={`
+    isReversed={true}
+  >
+    <Fragment slot="content">
       <p>KONVOI wird von unserem zertifizierten Installations-Team direkt bei Ihnen vor Ort montiert.
       Die Installation dauert <strong>unter 120 Minuten pro Trailer</strong> und erfordert keine
       Änderungen an der Trailer-Elektronik oder -Infrastruktur.</p>
@@ -159,9 +161,8 @@ const metadata = {
         <li>Sofort einsatzbereit nach Installation</li>
         <li>Full-Service inklusive: Hardware, Software, Wartung, Support</li>
       </ul>
-    `}
-    isReversed={true}
-  />
+    </Fragment>
+  </Content>
 
   <!-- Install video placeholder (PROD-05, D-10) -->
   <IncidentVideo
