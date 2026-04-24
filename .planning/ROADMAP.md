@@ -14,10 +14,10 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation Scrub** - Remove all AstroWind debris, replace licence, add CI gates, lock Netlify deploy policy
 - [x] **Phase 2: Brand & Design System** - Apply Konvoi visual identity, brand tokens, self-hosted typography, accessibility baseline
-- [ ] **Phase 3: i18n & Content Collections** - Wire Astro native i18n routing, register 7 content collections, build language switcher, CI parity check
+- [x] **Phase 3: i18n & Content Collections** - Wire Astro native i18n routing, register 7 content collections, build language switcher, CI parity check
 - [ ] **Phase 4: Core Marketing Pages** - Homepage, product page, 7 use-case pages with shared SensorDataViz island, 4 industry verticals -- all DE + EN
 - [ ] **Phase 5: Conversion Funnel** - Pricing tiers, ROI calculator, funding eligibility, lead-capture forms with DSGVO compliance
-- [ ] **Phase 6: Depth & Credibility Pages** - Case studies, blog port, team, careers, contact with events and click-to-load Maps
+- [x] **Phase 6: Depth & Credibility Pages** - Case studies, blog port, team, careers, contact with events and click-to-load Maps
 - [ ] **Phase 7: SEO, Consent & Launch** - Sitemap hreflang, Plausible analytics, cookie consent, Impressum/Datenschutz, CSP, Jimdo redirects, DNS cutover
 
 ## Phase Details
@@ -67,10 +67,10 @@ Plans:
   4. CI translation-parity check fails the build when a long-form entry has a DE sibling without an EN sibling (or vice versa) sharing the same `translationKey`
 **Plans:** 4 plans
 Plans:
-- [ ] 03-01-PLAN.md -- Add i18n config to astro.config.ts, create routeMap.ts and translations.ts (I18N-01, I18N-02, I18N-03)
-- [ ] 03-02-PLAN.md -- Expand content.config.ts to 7 collections, scaffold src/content/ directory tree (I18N-05, I18N-06, I18N-07)
-- [ ] 03-03-PLAN.md -- Create translation parity check script, add tsx, wire into pnpm build (I18N-08)
-- [ ] 03-04-PLAN.md -- Wire Layout.astro lang attribute and LanguageSwitcher.astro with routeMap (I18N-01, I18N-04)
+- [x] 03-01-PLAN.md -- Add i18n config to astro.config.ts, create routeMap.ts and translations.ts (I18N-01, I18N-02, I18N-03)
+- [x] 03-02-PLAN.md -- Expand content.config.ts to 7 collections, scaffold src/content/ directory tree (I18N-05, I18N-06, I18N-07)
+- [x] 03-03-PLAN.md -- Create translation parity check script, add tsx, wire into pnpm build (I18N-08)
+- [x] 03-04-PLAN.md -- Wire Layout.astro lang attribute and LanguageSwitcher.astro with routeMap (I18N-01, I18N-04)
 
 ### Phase 4: Core Marketing Pages
 **Goal**: A visitor landing on the homepage can navigate through the product story, any of 7 theft-type use cases with interactive sensor-data visualization, or any of 4 industry verticals -- all in DE and EN with consistent Konvoi narrative
@@ -108,7 +108,15 @@ Plans:
   3. Team page displays all 9 members (Alexander, Heinz, Rami, Trinh, Harsha, Jonas, Sushmita, Eric, Justus) from the `team` collection with photos, names, titles, and bios in both locales
   4. Careers page at `/karriere/` lists 8 open roles; "Apply" opens `mailto:applications@konvoi.eu` with prefilled per-role subject; EN shell redirects to DE for v1
   5. Contact page shows Justus (customer advisor) and Heinz (investors/marketing) with photos + direct phone + email, office address with click-to-load Google Maps (no iframe before consent), upcoming events from `event` collection with past events auto-hidden by `endDate`, and consult CTA
-**Plans**: TBD
+**Plans:** 7 plans
+Plans:
+- [x] 06-01 -- Case studies collection, 6 entries (3 DE + 3 EN), index + detail pages
+- [x] 06-02 -- Blog routes DE /aktuelles/ + EN /en/news/ with RSS feeds, 4 migrated posts
+- [x] 06-03 -- Team section: 9 entries, TeamGrid component, DE/EN pages
+- [x] 06-04 -- Careers: 8 DE job entries, karriere page, EN shell
+- [x] 06-05 -- Contact page: events, click-to-load Maps, CTA
+- [x] 06-06 -- Navigation + i18n routing wire-up for Phase 6 pages
+- [x] 06-07 -- Build gate verification + pnpm check repair
 **UI hint**: yes
 
 ### Phase 7: SEO, Consent & Launch
@@ -132,8 +140,8 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7
 |-------|----------------|--------|-----------|
 | 1. Foundation Scrub | 3/3 | Complete | 2026-04-22 |
 | 2. Brand & Design System | 4/4 | Complete | 2026-04-22 |
-| 3. i18n & Content Collections | 0/? | Not started | - |
+| 3. i18n & Content Collections | 4/4 | Complete | 2026-04-22 |
 | 4. Core Marketing Pages | 0/? | Not started | - |
 | 5. Conversion Funnel | 0/? | Not started | - |
-| 6. Depth & Credibility Pages | 0/? | Not started | - |
+| 6. Depth & Credibility Pages | 7/7 | Complete | 2026-04-23 |
 | 7. SEO, Consent & Launch | 0/? | Not started | - |
