@@ -173,6 +173,19 @@ export const translations: Record<Locale, Record<string, string>> = {
     'form.funding_title':             'Förder-Vorqualifizierung',
     'form.funding_subtitle':          'Kostenlose Prüfung Ihrer BG-Förderberechtigung.',
 
+    // Funding form specific (Plan 05-04)
+    'form.vertical_placeholder':      '— Bitte wählen —',
+    'form.company_size_placeholder':  '— Bitte wählen —',
+    'form.company_size_51_250':       '51–250 Mitarbeiter',
+    'form.company_size_250plus':      '250+ Mitarbeiter',
+    'form.funding_interest_label':    'Ich bin an der 80%-Förderung interessiert',
+    'form.submit_funding':            'Förderung anfragen',
+    // Funding page (Plan 05-04)
+    'funding.page_tagline':           'Förderung',
+    'funding.page_title':             'Bis zu 80% staatliche Förderung für Ihre Sicherheitsinvestition',
+    'funding.page_subtitle':          'Das Förderprogramm Umweltschutz und Sicherheit übernimmt bis zu €2.000 pro Anhänger — wir zeigen Ihnen wie.',
+    'funding.roi_link':               'Jetzt Einsparungen berechnen →',
+
     // Thank-you pages
     'thanks.title':                   'Vielen Dank!',
     'thanks.subtitle':                'Wir melden uns innerhalb von 24 Stunden bei Ihnen.',
@@ -378,6 +391,19 @@ export const translations: Record<Locale, Record<string, string>> = {
     'form.consult_subtitle':          'We will contact you within 24 hours.',
     'form.funding_title':             'Funding Pre-Qualification',
     'form.funding_subtitle':          'Free check of your BG subsidy eligibility.',
+
+    // Funding form specific (Plan 05-04)
+    'form.vertical_placeholder':      '— Please select —',
+    'form.company_size_placeholder':  '— Please select —',
+    'form.company_size_51_250':       '51–250 employees',
+    'form.company_size_250plus':      '250+ employees',
+    'form.funding_interest_label':    'I am interested in 80% government funding',
+    'form.submit_funding':            'Request funding info',
+    // Funding page (Plan 05-04)
+    'funding.page_tagline':           'Funding',
+    'funding.page_title':             'Up to 80% government funding for your security investment',
+    'funding.page_subtitle':          'The Security & Environment Program covers up to €2,000 per trailer — we will show you how.',
+    'funding.roi_link':               'Calculate your savings now →',
 
     // Thank-you pages
     'thanks.title':                   'Thank You!',
