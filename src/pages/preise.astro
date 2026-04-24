@@ -1,0 +1,110 @@
+---
+import PageLayout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import { pricingTiers } from '~/data/pricing';
+import { t } from '~/i18n/translations';
+
+const locale = 'de' as const;
+
+const metadata = {
+  title: 'Preise — KONVOI Security System',
+  description: 'Transparente Preise für das KONVOI Sicherheitssystem. Drei Stufen: Standard, Camera Module, Logbook. Bis zu 80% staatlich förderbar.',
+};
+---
+
+<PageLayout metadata={metadata}>
+  <Hero
+    tagline="Preise"
+    title="Investition in Sicherheit — mit bis zu 80% staatlicher Förderung"
+    subtitle="Drei Stufen. Ein Ziel: Schutz Ihrer Flotte vor Diebstahl, Sabotage und Fahrerangriffen."
+  />
+
+  <!-- Pricing tier cards -->
+  <WidgetWrapper id="preise">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="grid gap-8 md:grid-cols-3">
+        {pricingTiers.map((tier) => (
+          <div class={[
+            'flex flex-col rounded-2xl border p-8',
+            tier.highlighted
+              ? 'border-primary border-2 relative'
+              : 'border-slate-200 dark:border-slate-700',
+          ].join(' ')}>
+            {tier.de.badge && (
+              <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-sm font-semibold text-white">
+                {tier.de.badge}
+              </span>
+            )}
+            <h2 class="text-xl font-bold font-heading mb-2">{tier.de.name}</h2>
+            <p class="text-3xl font-bold font-heading mb-1">{tier.de.priceDisplay}</p>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">{tier.de.pricePeriod}</p>
+            <ul class="flex-1 space-y-3 mb-8">
+              {tier.de.features.map((f) => (
+                <li class="flex items-start gap-2 text-sm">
+                  <span class={f.included ? 'text-green-600 font-bold' : 'text-slate-400'} aria-hidden="true">
+                    {f.included ? '✓' : '—'}
+                  </span>
+                  <span class={f.included ? '' : 'text-slate-400'}>{f.text}</span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#consult-form"
+              class="block w-full rounded-lg bg-primary px-6 py-3 text-center text-white font-semibold hover:bg-primary/90 transition-colors"
+            >
+              {t('cta.book_consult', locale)}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </WidgetWrapper>
+
+  <!-- De-minimis teaser (D-04) -->
+  <WidgetWrapper>
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="text-lg text-slate-700 dark:text-slate-300">
+        Bis zu 80% förderbar durch das <strong>Förderprogramm Umweltschutz und Sicherheit</strong> —{' '}
+        <a href="/foerderung/" class="text-primary underline underline-offset-2 hover:no-underline">
+          mehr erfahren →
+        </a>
+      </p>
+    </div>
+  </WidgetWrapper>
+
+  <!-- ROI Calculator embed placeholder — wired in Plan 02 -->
+  <WidgetWrapper id="roi-calculator">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-2xl font-bold font-heading mb-2">Wie viel können Sie sparen?</h2>
+      <p class="text-slate-600 dark:text-slate-300 mb-6">Berechnen Sie Ihr Einsparpotenzial — inklusive staatlicher Förderung.</p>
+      <!-- RoiCalculator island added in Plan 02 -->
+    </div>
+  </WidgetWrapper>
+
+  <!-- ConsultForm placeholder — wired in Plan 03 -->
+  <WidgetWrapper id="consult-form">
+    <div class="mx-auto max-w-xl">
+      <h2 class="text-2xl font-bold font-heading mb-2 text-center">Beratung anfragen</h2>
+      <p class="text-center text-slate-600 dark:text-slate-300 mb-6">Unser Team meldet sich innerhalb von 24 Stunden.</p>
+      <!-- ConsultForm island added in Plan 03 -->
+    </div>
+  </WidgetWrapper>
+
+  <!-- Trust section (D-05): Schumacher testimonial quote -->
+  <WidgetWrapper>
+    <div class="mx-auto max-w-2xl text-center">
+      <blockquote class="text-lg italic text-slate-700 dark:text-slate-300 mb-4">
+        "KONVOI hat die Sicherheit unserer Flotte grundlegend verändert. Kein Vorfall seit der Installation."
+      </blockquote>
+      <cite class="text-sm text-slate-500">— Schumacher Logistik GmbH</cite>
+    </div>
+  </WidgetWrapper>
+
+  <CallToAction
+    title="Beratung anfragen"
+    subtitle="Erfahren Sie in 20 Minuten, wie KONVOI für Ihre Flotte funktioniert."
+    actions={[{ variant: 'primary', text: 'Jetzt anfragen', href: '#consult-form' }]}
+  />
+</PageLayout>
