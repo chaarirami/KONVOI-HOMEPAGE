@@ -1,0 +1,89 @@
+---
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Headline from '~/components/ui/Headline.astro';
+
+interface Step {
+  icon?: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  tagline?: string;
+  title?: string;
+  subtitle?: string;
+  steps: Step[];
+  id?: string;
+  isDark?: boolean;
+}
+
+const {
+  tagline,
+  title,
+  subtitle,
+  steps,
+  id,
+  isDark = false,
+} = Astro.props;
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass="max-w-5xl mx-auto">
+  <Headline
+    tagline={tagline}
+    title={title}
+    subtitle={subtitle}
+  />
+  <div class="grid gap-8">
+    {steps.map((step, index) => (
+      <div
+        class="scroll-step flex gap-6 items-start p-6 rounded-lg bg-slate-50 dark:bg-slate-900/50"
+        data-step={index}
+      >
+        <div class="flex-shrink-0 w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold">
+          {index + 1}
+        </div>
+        <div>
+          <h3 class="text-2xl font-bold mb-2 font-heading">{step.title}</h3>
+          <p class="text-lg text-muted leading-relaxed">{step.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</WidgetWrapper>
+
+<style>
+  @supports (animation-timeline: view()) {
+    .scroll-step {
+      animation: slideInStep linear forwards;
+      animation-timeline: view();
+      animation-range: entry 0% cover 30%;
+    }
+
+    @keyframes slideInStep {
+      0% {
+        opacity: 0;
+        transform: translateY(1rem) scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .scroll-step[data-step='0'] {
+      animation-range: entry 0% cover 30%;
+    }
+    .scroll-step[data-step='1'] {
+      animation-range: entry 15% cover 45%;
+    }
+    .scroll-step[data-step='2'] {
+      animation-range: entry 30% cover 60%;
+    }
+  }
+
+  @supports not (animation-timeline: view()) {
+    .scroll-step {
+      opacity: 1;
+    }
+  }
+</style>

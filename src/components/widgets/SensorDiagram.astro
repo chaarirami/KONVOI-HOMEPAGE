@@ -1,0 +1,86 @@
+---
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Headline from '~/components/ui/Headline.astro';
+
+interface SensorCallout {
+  id: string;
+  label: string;
+  description?: string;
+  x: string;
+  y: string;
+}
+
+interface Props {
+  imageSrc?: string;
+  imageAlt?: string;
+  callouts: SensorCallout[];
+  tagline?: string;
+  title?: string;
+  subtitle?: string;
+  id?: string;
+}
+
+const {
+  imageSrc,
+  imageAlt,
+  callouts,
+  tagline,
+  title,
+  subtitle,
+  id,
+} = Astro.props;
+---
+
+<WidgetWrapper id={id} containerClass="max-w-5xl mx-auto">
+  <Headline
+    tagline={tagline}
+    title={title}
+    subtitle={subtitle}
+  />
+  <div class="relative w-full max-w-4xl mx-auto rounded-lg overflow-hidden shadow-xl">
+    <img
+      src={imageSrc ?? '/images/placeholders/trailer-diagram.png'}
+      alt={imageAlt ?? 'KONVOI Sensor-Positionen am Trailer'}
+      class="w-full h-auto block"
+    />
+    {callouts.map((callout) => (
+      <div
+        class="sensor-callout absolute bg-white dark:bg-slate-800 rounded-md px-3 py-2 shadow-lg border border-primary/30 text-sm"
+        style={"left:" + callout.x + ";top:" + callout.y}
+        data-callout={callout.id}
+      >
+        <span class="font-semibold text-primary block">{callout.label}</span>
+        {callout.description && (
+          <span class="text-muted text-xs">{callout.description}</span>
+        )}
+      </div>
+    ))}
+  </div>
+</WidgetWrapper>
+
+<style>
+  @supports (animation-timeline: view()) {
+    .sensor-callout {
+      animation: calloutReveal linear forwards;
+      animation-timeline: view();
+      animation-range: entry 10% cover 50%;
+    }
+
+    @keyframes calloutReveal {
+      0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(4px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+  }
+
+  @supports not (animation-timeline: view()) {
+    .sensor-callout {
+      opacity: 1;
+    }
+  }
+</style>
