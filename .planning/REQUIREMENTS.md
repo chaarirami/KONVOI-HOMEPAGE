@@ -94,11 +94,11 @@
 
 ### ROI calculator
 
-- [ ] **ROI-01**: Interactive ROI / savings calculator as Preact island on `/roi/` + `/en/roi/`; embedded on `/preise/` + `/en/pricing/`
-- [ ] **ROI-02**: Inputs -- fleet size, primary vertical, average parking-stop frequency
-- [ ] **ROI-03**: Outputs -- estimated annual theft cost, estimated Konvoi savings, estimated de-minimis reimbursement, payback period
-- [ ] **ROI-04**: Formula assumptions live in `src/data/pricing.ts` alongside pricing (single source of truth)
-- [ ] **ROI-05**: ROI result pre-fills `ConsultForm` via URL query params when the user clicks "Book a consult"
+- [x] **ROI-01**: Interactive ROI / savings calculator as Preact island on `/roi/` + `/en/roi/`; embedded on `/preise/` + `/en/pricing/`
+- [x] **ROI-02**: Inputs -- fleet size, primary vertical, average parking-stop frequency
+- [x] **ROI-03**: Outputs -- estimated annual theft cost, estimated Konvoi savings, estimated de-minimis reimbursement, payback period
+- [x] **ROI-04**: Formula assumptions live in `src/data/pricing.ts` alongside pricing (single source of truth)
+- [x] **ROI-05**: ROI result pre-fills `ConsultForm` via URL query params when the user clicks "Book a consult"
 
 ### Funding eligibility
 
@@ -272,11 +272,11 @@ Every v1 requirement is mapped to exactly one phase. See `.planning/ROADMAP.md` 
 | PRICE-02 | Phase 5 | Complete |
 | PRICE-03 | Phase 5 | Complete |
 | PRICE-04 | Phase 5 | Complete |
-| ROI-01 | Phase 5 | Pending |
-| ROI-02 | Phase 5 | Pending |
-| ROI-03 | Phase 5 | Pending |
-| ROI-04 | Phase 5 | Pending |
-| ROI-05 | Phase 5 | Pending |
+| ROI-01 | Phase 5 | Complete |
+| ROI-02 | Phase 5 | Complete |
+| ROI-03 | Phase 5 | Complete |
+| ROI-04 | Phase 5 | Complete |
+| ROI-05 | Phase 5 | Complete |
 | FUND-01 | Phase 5 | Pending |
 | FUND-02 | Phase 5 | Pending |
 | FUND-03 | Phase 5 | Pending |

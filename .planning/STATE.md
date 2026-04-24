@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 05-01-PLAN.md
-last_updated: "2026-04-24T17:15:27.855Z"
+stopped_at: Completed 05-02-PLAN.md
+last_updated: "2026-04-24T17:20:41.205Z"
 last_activity: 2026-04-24
 progress:
   total_phases: 7
   completed_phases: 3
   total_plans: 22
-  completed_plans: 22
+  completed_plans: 23
   percent: 100
 ---
 
@@ -26,7 +26,7 @@ See: .planning/PROJECT.md (updated 2026-04-20)
 ## Current Position
 
 Phase: 05 (conversion-funnel) — EXECUTING
-Plan: 2 of 4
+Plan: 3 of 4
 Status: Ready to execute
 Last activity: 2026-04-24
 
@@ -68,6 +68,7 @@ Progress: [█████░░░░░] 57%
 | Phase 04 P05 | 5 | 2 tasks | 2 files |
 | Phase 04 P06 | 2 | 2 tasks | 2 files |
 | Phase 05 P01 | 3 | 2 tasks | 3 files |
+| Phase 05 P02 | 4 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -102,6 +103,8 @@ Recent decisions affecting current work:
 - [Phase 04]: render(entry) from astro:content required for glob loader collections — entry.render() unavailable in Astro 6 content layer API (already confirmed in 04-05)
 - [Phase 05]: Badge text (Empfohlen/Recommended) lives in pricing.ts data file — single-source-of-truth principle
 - [Phase 05]: Placeholder WidgetWrapper sections with id anchors for RoiCalculator (Plan 02) and ConsultForm (Plan 03) wiring
+- [Phase 05]: Preact island uses automatic JSX runtime via @astrojs/preact — no explicit h import needed
+- [Phase 05]: client:load directive (not client:visible) for RoiCalculator — it is the primary page content per UI-SPEC § 7.2
 
 ### Pending Todos
 
@@ -123,8 +126,8 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-24T17:15:27.853Z
-Stopped at: Completed 05-01-PLAN.md
+Last session: 2026-04-24T17:20:41.202Z
+Stopped at: Completed 05-02-PLAN.md
 Resume file: None
 
 **Completed Phases:** 2
