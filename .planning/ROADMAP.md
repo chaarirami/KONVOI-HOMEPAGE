@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Foundation Scrub** - Remove all AstroWind debris, replace licence, add CI gates, lock Netlify deploy policy
 - [x] **Phase 2: Brand & Design System** - Apply Konvoi visual identity, brand tokens, self-hosted typography, accessibility baseline
 - [x] **Phase 3: i18n & Content Collections** - Wire Astro native i18n routing, register 7 content collections, build language switcher, CI parity check
-- [ ] **Phase 4: Core Marketing Pages** - Homepage, product page, 7 use-case pages with IncidentVideo placeholders, 4 industry verticals -- all DE + EN
+- [x] **Phase 4: Core Marketing Pages** - Homepage, product page, 7 use-case pages with IncidentVideo placeholders, 4 industry verticals -- all DE + EN (completed 2026-04-24)
 - [ ] **Phase 5: Conversion Funnel** - Pricing tiers, ROI calculator, funding eligibility, lead-capture forms with DSGVO compliance
 - [x] **Phase 6: Depth & Credibility Pages** - Case studies, blog port, team, careers, contact with events and click-to-load Maps
 - [ ] **Phase 7: SEO, Consent & Launch** - Sitemap hreflang, Plausible analytics, cookie consent, Impressum/Datenschutz, CSP, Jimdo redirects, DNS cutover
@@ -82,14 +82,14 @@ Plans:
   3. All 7 use-case pages exist in both locales at locked slugs (DE `/anwendungen/...`, EN `/en/use-cases/...`), each with problem framing + cost anchor + Konvoi approach + IncidentVideo placeholder + CTA
   4. 4 DE + EN industry landings (high-value, cooling, intermodal, other) each frame the vertical's unique risk profile, cross-link into 2-3 relevant use cases, and end with the consult CTA
   5. All cross-links work: use-case pages link to relevant verticals and vice versa; homepage teasers link through to use cases and case studies
-**Plans:** 6/7 plans executed
+**Plans:** 7/7 plans complete
 Plans:
 - [x] 04-01-PLAN.md -- Shared widget components: HeroVideo, IncidentVideo, ScrollSteps, SensorDiagram (HOME-02, PROD-02, PROD-03, PROD-05, UC-03, UC-04)
 - [x] 04-02-PLAN.md -- Homepage DE + EN: 8-section structure, testimonials from caseStudy collection (HOME-01..08)
 - [x] 04-03-PLAN.md -- Product page DE + EN: hardware spec, sensor diagram, 3-step flow, add-ons, install (PROD-01..05)
 - [x] 04-04-PLAN.md -- useCase content: 14 markdown files DE+EN, AI-generated copy (UC-01, UC-02, UC-05)
 - [x] 04-05-PLAN.md -- Use-case pages DE + EN: dynamic routes /anwendungen/[slug] + /en/use-cases/[slug] (UC-01..05)
-- [ ] 04-06-PLAN.md -- Industry pages DE + EN: dynamic routes /branchen/[slug] + /en/industries/[slug] (VERT-01..04)
+- [x] 04-06-PLAN.md -- Industry pages DE + EN: dynamic routes /branchen/[slug] + /en/industries/[slug] (VERT-01..04)
 - [x] 04-07-PLAN.md -- industry content: 8 markdown files DE+EN, AI-generated copy (VERT-01..04)
 **UI hint**: yes
 
@@ -149,7 +149,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7
 | 1. Foundation Scrub | 3/3 | Complete | 2026-04-22 |
 | 2. Brand & Design System | 4/4 | Complete | 2026-04-22 |
 | 3. i18n & Content Collections | 4/4 | Complete | 2026-04-22 |
-| 4. Core Marketing Pages | 6/7 | In Progress|  |
+| 4. Core Marketing Pages | 7/7 | Complete   | 2026-04-24 |
 | 5. Conversion Funnel | 0/? | Not started | - |
 | 6. Depth & Credibility Pages | 7/7 | Complete | 2026-04-23 |
 | 7. SEO, Consent & Launch | 0/? | Not started | - |

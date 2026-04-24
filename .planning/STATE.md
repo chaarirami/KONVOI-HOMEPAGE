@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-stopped_at: Completed 04-05-PLAN.md
-last_updated: "2026-04-24T10:25:43.122Z"
+status: verifying
+stopped_at: Completed 04-06-PLAN.md
+last_updated: "2026-04-24T10:29:29.378Z"
 last_activity: 2026-04-24
 progress:
   total_phases: 7
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 18
-  completed_plans: 20
+  completed_plans: 21
   percent: 100
 ---
 
@@ -27,7 +27,7 @@ See: .planning/PROJECT.md (updated 2026-04-20)
 
 Phase: 04 (Core Marketing Pages) — EXECUTING
 Plan: 7 of 7
-Status: Ready to execute
+Status: Phase complete — ready for verification
 Last activity: 2026-04-24
 
 Progress: [█████░░░░░] 57%
@@ -66,6 +66,7 @@ Progress: [█████░░░░░] 57%
 | Phase 04 P02 | 4 | 2 tasks | 2 files |
 | Phase 04 P03 | 3 | 2 tasks | 4 files |
 | Phase 04 P05 | 5 | 2 tasks | 2 files |
+| Phase 04 P06 | 2 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -97,6 +98,7 @@ Recent decisions affecting current work:
 - [Phase 04]: Product page uses Hero.astro (not HeroVideo) — text-first layout for /produkt and /en/product; background video not needed on product detail page
 - [Phase 04]: Placeholder PNGs (1x1 transparent) created for trailer-diagram.png and installation-poster.jpg to satisfy T-04-03-02 — user replaces with real assets
 - [Phase 04]: render(entry) from astro:content required for glob loader collections — entry.render() unavailable in Astro 6 content layer API
+- [Phase 04]: render(entry) from astro:content required for glob loader collections — entry.render() unavailable in Astro 6 content layer API (already confirmed in 04-05)
 
 ### Pending Todos
 
@@ -118,8 +120,8 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-24T10:25:43.120Z
-Stopped at: Completed 04-05-PLAN.md
+Last session: 2026-04-24T10:29:29.375Z
+Stopped at: Completed 04-06-PLAN.md
 Resume file: None
 
 **Completed Phases:** 1, 2, 3, 6
