@@ -73,10 +73,10 @@
 
 ### Industry verticals
 
-- [ ] **VERT-01**: 4 DE + EN industry landings -- high-value, cooling, intermodal, other
-- [ ] **VERT-02**: Each vertical hero frames the vertical's unique risk profile
-- [ ] **VERT-03**: Each vertical cross-links into the 2-3 use cases most relevant to it
-- [ ] **VERT-04**: Each vertical ends with the consult CTA
+- [x] **VERT-01**: 4 DE + EN industry landings -- high-value, cooling, intermodal, other
+- [x] **VERT-02**: Each vertical hero frames the vertical's unique risk profile
+- [x] **VERT-03**: Each vertical cross-links into the 2-3 use cases most relevant to it
+- [x] **VERT-04**: Each vertical ends with the consult CTA
 
 ### Case studies
 
@@ -260,10 +260,10 @@ Every v1 requirement is mapped to exactly one phase. See `.planning/ROADMAP.md` 
 | UC-03 | Phase 4 | Complete |
 | UC-04 | Phase 4 | Complete |
 | UC-05 | Phase 4 | Complete |
-| VERT-01 | Phase 4 | Pending |
-| VERT-02 | Phase 4 | Pending |
-| VERT-03 | Phase 4 | Pending |
-| VERT-04 | Phase 4 | Pending |
+| VERT-01 | Phase 4 | Complete |
+| VERT-02 | Phase 4 | Complete |
+| VERT-03 | Phase 4 | Complete |
+| VERT-04 | Phase 4 | Complete |
 | CASE-01 | Phase 6 | Pending |
 | CASE-02 | Phase 6 | Pending |
 | CASE-03 | Phase 6 | Pending |

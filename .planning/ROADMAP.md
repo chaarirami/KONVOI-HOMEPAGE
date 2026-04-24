@@ -90,7 +90,7 @@ Plans:
 - [x] 04-04-PLAN.md -- useCase content: 14 markdown files DE+EN, AI-generated copy (UC-01, UC-02, UC-05)
 - [ ] 04-05-PLAN.md -- Use-case pages DE + EN: dynamic routes /anwendungen/[slug] + /en/use-cases/[slug] (UC-01..05)
 - [ ] 04-06-PLAN.md -- Industry pages DE + EN: dynamic routes /branchen/[slug] + /en/industries/[slug] (VERT-01..04)
-- [ ] 04-07-PLAN.md -- industry content: 8 markdown files DE+EN, AI-generated copy (VERT-01..04)
+- [x] 04-07-PLAN.md -- industry content: 8 markdown files DE+EN, AI-generated copy (VERT-01..04)
 **UI hint**: yes
 
 ### Phase 5: Conversion Funnel
