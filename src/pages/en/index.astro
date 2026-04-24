@@ -1,0 +1,190 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroVideo from '~/components/widgets/HeroVideo.astro';
+import Features from '~/components/widgets/Features.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { getCollection } from 'astro:content';
+
+const caseStudiesEn = await getCollection('caseStudy', ({ data }) =>
+  data.locale === 'en' && ['schumacher', 'jjx', 'greilmeier'].includes(data.canonicalKey)
+);
+
+const testimonials = caseStudiesEn.map((cs) => ({
+  testimonial: cs.data.quote ?? '',
+  name: cs.data.quoteAttribution ?? cs.data.customer,
+  job: cs.data.vertical,
+}));
+
+const metadata = {
+  title: 'KONVOI — Security Tech Made in Germany',
+  description:
+    'The first preventive fleet security solution against cargo theft, diesel theft, sabotage and driver assaults. Sensor-based Security-as-a-Service for trailers.',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Section 1: Hero with background video (D-04, HOME-02) -->
+  <HeroVideo
+    tagline="Security Tech Made in Germany"
+    title="The first preventive solution for your fleet"
+    subtitle="KONVOI protects your trailer against cargo theft, diesel theft, sabotage, and driver assaults — before they happen."
+    videoSrc="/videos/hero-bg.mp4"
+    posterImage="/images/placeholders/hero-bg.jpg"
+    actions={[
+      { variant: 'primary', text: 'Book a consult', href: '#consult' },
+      { variant: 'secondary', text: 'Learn more', href: '/en/product' },
+    ]}
+  />
+
+  <!-- Section 2: Preventive-vs-reactive explainer (HOME-05, D-05) -->
+  <Features
+    tagline="Prevention over reaction"
+    title="Why prevention is better"
+    subtitle="Classic GPS trackers only show you where the trailer was stolen — after the incident. KONVOI classifies motion, shock, and GPS patterns in real time and triggers a deterrence chain before the cargo leaves the trailer."
+    columns={3}
+    items={[
+      {
+        title: 'Preventive',
+        description:
+          'Detects and classifies threat patterns before damage occurs. No reactive tracking — active prevention.',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Learning',
+        description:
+          'Artificial intelligence improves classification with every event in your fleet. Fewer false alarms, more security.',
+        icon: 'tabler:brain',
+      },
+      {
+        title: 'Independent',
+        description:
+          '7-day battery. Works completely offline. No external infrastructure or permanent network connection required.',
+        icon: 'tabler:battery-eco',
+      },
+    ]}
+  />
+
+  <!-- Section 3: Use-case teaser cards (HOME-05, D-06) -->
+  <Features
+    tagline="Use Cases"
+    title="Protection against every threat type"
+    subtitle="KONVOI covers the seven most common security risks in trailer transport — from cargo theft to stationary time optimisation."
+    columns={4}
+    items={[
+      {
+        title: 'Cargo Theft',
+        description:
+          '€8bn annual loss in Europe. KONVOI prevents theft before it happens.',
+        icon: 'tabler:box-off',
+        callToAction: { text: 'Learn more', href: '/en/use-cases/cargo-theft', variant: 'link' },
+      },
+      {
+        title: 'Diesel Theft',
+        description:
+          'Up to €2,000 per incident. KONVOI detects and prevents fuel theft at the trailer.',
+        icon: 'tabler:droplet-off',
+        callToAction: { text: 'Learn more', href: '/en/use-cases/diesel-theft', variant: 'link' },
+      },
+      {
+        title: 'Equipment Theft',
+        description:
+          '€600 per tyre, €3,600 per trailer. Sensor monitoring protects your equipment.',
+        icon: 'tabler:tools-off',
+        callToAction: { text: 'Learn more', href: '/en/use-cases/equipment-theft', variant: 'link' },
+      },
+      {
+        title: 'Operations Transparency',
+        description:
+          'Complete documentation of all coupling operations — for compliance and liability protection.',
+        icon: 'tabler:eye-check',
+        callToAction: {
+          text: 'Learn more',
+          href: '/en/use-cases/operations-transparency',
+          variant: 'link',
+        },
+      },
+      {
+        title: 'Trailer Damage',
+        description:
+          'Shock sensor data reconstructs damage events for insurance and compliance.',
+        icon: 'tabler:alert-triangle',
+        callToAction: { text: 'Learn more', href: '/en/use-cases/trailer-damage', variant: 'link' },
+      },
+      {
+        title: 'Driver Assaults',
+        description:
+          'Preventive deterrence and immediate alarm chain protect your drivers.',
+        icon: 'tabler:user-shield',
+        callToAction: { text: 'Learn more', href: '/en/use-cases/driver-assaults', variant: 'link' },
+      },
+      {
+        title: 'Stationary Time',
+        description:
+          'Real-time standstill data reduces unplanned halts and improves fleet utilisation.',
+        icon: 'tabler:clock-check',
+        callToAction: { text: 'Learn more', href: '/en/use-cases/stationary-time-optimization', variant: 'link' },
+      },
+    ]}
+  />
+
+  <!-- Section 4: Testimonials sourced from caseStudy collection (HOME-04) -->
+  <Testimonials
+    title="What our customers say"
+    subtitle="Real outcomes from companies that chose preventive fleet security."
+    testimonials={testimonials}
+  />
+
+  <!-- Section 5: Customer logo wall (HOME-03) -->
+  <WidgetWrapper containerClass="max-w-6xl mx-auto">
+    <p class="text-center text-lg font-semibold text-gray-700 dark:text-gray-300 mb-8">
+      Already in use at leading logistics providers
+    </p>
+    <div class="flex flex-wrap justify-center gap-x-12 gap-y-6 items-center">
+      <img src="/images/logos/schumacher.svg" alt="Schumacher Group" width="160" height="48" loading="lazy" class="h-12 w-auto object-contain" />
+      <img src="/images/logos/jjx.svg" alt="JJX Logistics" width="160" height="48" loading="lazy" class="h-12 w-auto object-contain" />
+      <img src="/images/logos/greilmeier.svg" alt="Greilmeier Spedition &amp; Logistik" width="160" height="48" loading="lazy" class="h-12 w-auto object-contain" />
+    </div>
+  </WidgetWrapper>
+
+  <!-- Section 6: Press mentions (HOME-06) -->
+  <WidgetWrapper containerClass="max-w-6xl mx-auto">
+    <p class="text-center text-sm font-bold tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-8">
+      Featured in
+    </p>
+    <div class="flex flex-wrap justify-center gap-x-12 gap-y-6 items-center">
+      <img src="/images/press/placeholder-press-1.svg" alt="Press 1" width="120" height="40" loading="lazy" class="h-10 w-auto object-contain opacity-60" />
+      <img src="/images/press/placeholder-press-2.svg" alt="Press 2" width="120" height="40" loading="lazy" class="h-10 w-auto object-contain opacity-60" />
+      <img src="/images/press/placeholder-press-3.svg" alt="Press 3" width="120" height="40" loading="lazy" class="h-10 w-auto object-contain opacity-60" />
+    </div>
+  </WidgetWrapper>
+
+  <!-- Section 7: Partners/investors (HOME-07) -->
+  <WidgetWrapper containerClass="max-w-6xl mx-auto">
+    <p class="text-center text-sm font-bold tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-8">
+      Backed by
+    </p>
+    <div class="flex flex-wrap justify-center gap-x-12 gap-y-6 items-center">
+      <img src="/images/partners/startup-port.svg" alt="Startup Port" width="140" height="48" loading="lazy" class="h-12 w-auto object-contain" />
+      <img src="/images/partners/1750-ventures.svg" alt="1750 Ventures" width="140" height="48" loading="lazy" class="h-12 w-auto object-contain" />
+      <img src="/images/partners/vgh.svg" alt="VGH Versicherungen" width="140" height="48" loading="lazy" class="h-12 w-auto object-contain" />
+    </div>
+  </WidgetWrapper>
+
+  <!-- Section 8: End-of-page CTA (HOME-08) -->
+  <CallToAction
+    id="consult"
+    title="Security for your fleet"
+    subtitle="Learn in 20 minutes how KONVOI works for your company. Free initial consultation — no obligation."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book a consult',
+        href: 'mailto:info@konvoi.eu?subject=Consultation+Request',
+      },
+      { variant: 'secondary', text: 'View case studies', href: '/en/case-studies/' },
+    ]}
+  />
+</Layout>
