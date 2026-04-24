@@ -103,7 +103,12 @@ Plans:
   3. Clicking "Book a consult" from the ROI result pre-fills `ConsultForm` via URL query params (fleet size, vertical, estimated savings) -- the cross-component contract works end-to-end in both locales
   4. DE `/foerderung/` + EN `/en/funding/` explain the 80% de-minimis subsidy with `FundingQualifierForm` capturing company details via Formspree with DSGVO consent, and cross-link to the ROI calculator
   5. Both forms validate client-side with Zod, include `_gotcha` honeypot + Cloudflare Turnstile, require an unchecked DSGVO consent checkbox linking to `/datenschutz`, redirect to `/danke` or `/en/thanks/` on success, and preserve all field values with clear inline error on failure. **Gate: at least one lead captured end-to-end through Formspree.**
-**Plans**: TBD
+**Plans:** 4 plans
+Plans:
+- [ ] 05-01-PLAN.md -- pricing.ts data file + DE/EN pricing tier pages (PRICE-01..04)
+- [ ] 05-02-PLAN.md -- RoiCalculator Preact island + DE/EN /roi/ standalone pages (ROI-01..05)
+- [ ] 05-03-PLAN.md -- ConsultForm Preact island + EN /en/thanks/ page + form i18n strings (FORMS-01,03..07)
+- [ ] 05-04-PLAN.md -- FundingQualifierForm island + DE/EN funding pages + wire islands into pricing + nav (FUND-01..04, FORMS-02)
 **UI hint**: yes
 
 ### Phase 6: Depth & Credibility Pages
