@@ -1,0 +1,111 @@
+---
+import PageLayout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import FundingQualifierForm from '~/components/islands/FundingQualifierForm';
+import { t } from '~/i18n/translations';
+
+const locale = 'en' as const;
+
+const metadata = {
+  title: 'Funding — KONVOI Security System',
+  description: 'Up to 80% government funding for KONVOI through the Security & Environment Program (formerly De-minimis). Application period 2026: April 14 – August 31.',
+};
+---
+
+<PageLayout metadata={metadata}>
+  <Hero
+    tagline={t('funding.page_tagline', locale)}
+    title={t('funding.page_title', locale)}
+    subtitle={t('funding.page_subtitle', locale)}
+  />
+
+  <!-- Savings hook section -->
+  <WidgetWrapper>
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="text-2xl font-bold font-heading text-primary mb-4">
+        80% of your investment is covered by the government.
+      </p>
+      <p class="text-lg text-slate-700 dark:text-slate-300">
+        The <strong>Government Security &amp; Environment Program</strong> (formerly De-minimis),
+        administered by <strong>BALM (Bundesamt für Logistik und Mobilität)</strong>,
+        reimburses up to 80% of your investment in theft prevention.
+      </p>
+    </div>
+  </WidgetWrapper>
+
+  <!-- Key facts callout -->
+  <WidgetWrapper>
+    <div class="mx-auto max-w-3xl">
+      <div class="rounded-2xl bg-secondary dark:bg-slate-800 p-8">
+        <h2 class="text-xl font-bold font-heading mb-6 text-center">Funding details 2026</h2>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <span class="text-primary font-bold text-lg mt-0.5">€</span>
+            <div>
+              <strong>Up to €2,000 per vehicle</strong>
+              <p class="text-sm text-slate-600 dark:text-slate-400">Maximum funding per trailer or tractor unit</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-primary font-bold text-lg mt-0.5">€</span>
+            <div>
+              <strong>Max. €33,000 per company per year</strong>
+              <p class="text-sm text-slate-600 dark:text-slate-400">Total cap per applicant</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-primary font-bold text-lg mt-0.5">📅</span>
+            <div>
+              <strong>Application period 2026: April 14 – August 31, 2026</strong>
+              <p class="text-sm text-red-600 dark:text-red-400 font-medium">
+                The current application round ends August 31, 2026 — seize the opportunity now!
+              </p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-primary font-bold text-lg mt-0.5">✓</span>
+            <div>
+              <strong>KONVOI is eligible</strong>
+              <p class="text-sm text-slate-600 dark:text-slate-400">
+                Alarm systems, sensor systems, GPS tracking — catalog item 1.10
+                "Expenditure for measures to prevent theft"
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </WidgetWrapper>
+
+  <!-- ROI cross-link (FUND-04) -->
+  <WidgetWrapper>
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-xl font-bold font-heading mb-3">How much can you save?</h2>
+      <p class="text-slate-600 dark:text-slate-300 mb-4">
+        Calculate your savings potential — including government subsidies.
+      </p>
+      <a href="/en/roi/" class="inline-block rounded-lg border-2 border-primary px-6 py-3 text-primary font-semibold hover:bg-primary hover:text-white transition-colors">
+        {t('funding.roi_link', locale)}
+      </a>
+    </div>
+  </WidgetWrapper>
+
+  <!-- FundingQualifierForm (FUND-03, FORMS-02) -->
+  <WidgetWrapper id="funding-form">
+    <div class="mx-auto max-w-xl">
+      <h2 class="text-2xl font-bold font-heading mb-2 text-center">Request funding info</h2>
+      <p class="text-center text-slate-600 dark:text-slate-300 mb-6">
+        Our team will review your eligibility and contact you within 24 hours.
+      </p>
+      <FundingQualifierForm client:load locale={locale} />
+    </div>
+  </WidgetWrapper>
+
+  <CallToAction
+    title="Secure your funding now"
+    tagline="The 2026 application period ends August 31. Submit your request today."
+    actions={[{ text: 'Request funding info', href: '#funding-form', variant: 'primary' }]}
+  />
+</PageLayout>

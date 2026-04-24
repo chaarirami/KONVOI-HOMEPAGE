@@ -26,6 +26,7 @@ export const headerDataDe = {
       ],
     },
     { text: 'Preise',      href: '/preise' },
+    { text: 'Förderung',   href: '/foerderung' },
     { text: 'Fallstudien', href: '/fallstudien/' },
     {
       text: 'Über uns',
@@ -68,6 +69,7 @@ export const headerDataEn = {
       ],
     },
     { text: 'Pricing',      href: '/en/pricing' },
+    { text: 'Funding',      href: '/en/funding' },
     { text: 'Case Studies', href: '/en/case-studies/' },
     {
       text: 'About',

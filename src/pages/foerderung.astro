@@ -1,0 +1,111 @@
+---
+import PageLayout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import FundingQualifierForm from '~/components/islands/FundingQualifierForm';
+import { t } from '~/i18n/translations';
+
+const locale = 'de' as const;
+
+const metadata = {
+  title: 'Förderung — KONVOI Security System',
+  description: 'Bis zu 80% staatliche Förderung für KONVOI durch das Förderprogramm Umweltschutz und Sicherheit (ehem. De-minimis). Antragsphase 2026: 14. April bis 31. August.',
+};
+---
+
+<PageLayout metadata={metadata}>
+  <Hero
+    tagline={t('funding.page_tagline', locale)}
+    title={t('funding.page_title', locale)}
+    subtitle={t('funding.page_subtitle', locale)}
+  />
+
+  <!-- Savings hook section (D-14) -->
+  <WidgetWrapper>
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="text-2xl font-bold font-heading text-primary mb-4">
+        80% Ihrer Investition wird vom Staat übernommen.
+      </p>
+      <p class="text-lg text-slate-700 dark:text-slate-300">
+        Das <strong>Förderprogramm Umweltschutz und Sicherheit</strong> (ehem. De-minimis),
+        verwaltet von der <strong>BALM (Bundesamt für Logistik und Mobilität)</strong>,
+        erstattet bis zu 80% Ihrer Investition in Diebstahlprävention.
+      </p>
+    </div>
+  </WidgetWrapper>
+
+  <!-- Key facts callout (D-15, D-16) -->
+  <WidgetWrapper>
+    <div class="mx-auto max-w-3xl">
+      <div class="rounded-2xl bg-secondary dark:bg-slate-800 p-8">
+        <h2 class="text-xl font-bold font-heading mb-6 text-center">Förderdetails 2026</h2>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <span class="text-primary font-bold text-lg mt-0.5">€</span>
+            <div>
+              <strong>Bis zu €2.000 pro Fahrzeug</strong>
+              <p class="text-sm text-slate-600 dark:text-slate-400">Maximale Förderung je Anhänger oder Zugmaschine</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-primary font-bold text-lg mt-0.5">€</span>
+            <div>
+              <strong>Max. €33.000 pro Unternehmen pro Jahr</strong>
+              <p class="text-sm text-slate-600 dark:text-slate-400">Gesamtdeckel je Antragssteller</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-primary font-bold text-lg mt-0.5">📅</span>
+            <div>
+              <strong>Antragsphase 2026: 14. April – 31. August 2026</strong>
+              <p class="text-sm text-red-600 dark:text-red-400 font-medium">
+                Die aktuelle Antragsrunde endet am 31. August 2026 — nutzen Sie die Gelegenheit jetzt!
+              </p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-primary font-bold text-lg mt-0.5">✓</span>
+            <div>
+              <strong>KONVOI ist förderfähig</strong>
+              <p class="text-sm text-slate-600 dark:text-slate-400">
+                Alarmsysteme, Sensorsysteme, GPS-Tracking — Katalogpunkt 1.10
+                „Aufwendungen für Maßnahmen zur Vermeidung von Diebstählen"
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </WidgetWrapper>
+
+  <!-- ROI cross-link (D-17, FUND-04) -->
+  <WidgetWrapper>
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-xl font-bold font-heading mb-3">Wie viel können Sie sparen?</h2>
+      <p class="text-slate-600 dark:text-slate-300 mb-4">
+        Berechnen Sie Ihr Einsparpotenzial — inklusive der staatlichen Förderung.
+      </p>
+      <a href="/roi/" class="inline-block rounded-lg border-2 border-primary px-6 py-3 text-primary font-semibold hover:bg-primary hover:text-white transition-colors">
+        {t('funding.roi_link', locale)}
+      </a>
+    </div>
+  </WidgetWrapper>
+
+  <!-- FundingQualifierForm (FUND-03, FORMS-02) -->
+  <WidgetWrapper id="foerderung-formular">
+    <div class="mx-auto max-w-xl">
+      <h2 class="text-2xl font-bold font-heading mb-2 text-center">Förderung anfragen</h2>
+      <p class="text-center text-slate-600 dark:text-slate-300 mb-6">
+        Unser Team prüft Ihre Förderberechtigung und meldet sich innerhalb von 24 Stunden.
+      </p>
+      <FundingQualifierForm client:load locale={locale} />
+    </div>
+  </WidgetWrapper>
+
+  <CallToAction
+    title="Jetzt Förderung sichern"
+    tagline="Die Antragsphase 2026 endet am 31. August. Stellen Sie jetzt Ihre Anfrage."
+    actions={[{ text: 'Förderung anfragen', href: '#foerderung-formular', variant: 'primary' }]}
+  />
+</PageLayout>
