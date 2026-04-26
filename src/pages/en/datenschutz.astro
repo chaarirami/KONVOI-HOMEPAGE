@@ -1,0 +1,223 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Privacy Policy | KONVOI',
+  description: 'Privacy policy for KONVOI GmbH pursuant to GDPR and TDDDG.',
+  robots: { index: true, follow: true },
+};
+---
+
+<Layout metadata={metadata}>
+  <div class="prose dark:prose-invert max-w-3xl mx-auto px-4 py-12">
+    <h1>Privacy Policy</h1>
+
+    <p>
+      Protecting your personal data is important to us. This privacy policy informs you pursuant to
+      Art. 13 GDPR and § 25 TDDDG (German Telecommunications Digital Services Data Protection Act)
+      about how we collect, process, and protect your data.
+    </p>
+
+    <h2>Data Controller</h2>
+
+    <p>
+      KONVOI GmbH<br />
+      Harburger Schlossstraße 6-12<br />
+      21079 Hamburg<br />
+      Germany<br />
+      Email: <a href="mailto:info@konvoi.eu">info@konvoi.eu</a>
+    </p>
+
+    <h2>Collection and Processing of Personal Data</h2>
+
+    <p>
+      We collect and process personal data only to the extent necessary for providing our website and
+      services, or where you have given your explicit consent. The following sections explain which
+      service providers and processing activities are involved.
+    </p>
+
+    <h2>Hosting and Content Delivery</h2>
+
+    <p>
+      This website is hosted by:<br />
+      <strong>Netlify Inc.</strong><br />
+      44 Montgomery Street Suite 300<br />
+      San Francisco, CA 94104, USA
+    </p>
+
+    <p>
+      <strong>Purpose:</strong> Providing the website and delivering static content via a Content
+      Delivery Network (CDN).<br />
+      <strong>Legal basis:</strong> Art. 6 para. 1 lit. f GDPR (legitimate interest in a reliable,
+      secure, and performant website).<br />
+      <strong>Data processed:</strong> Netlify processes access logs that may include IP addresses,
+      browser information, and timestamps. These logs are used for security and diagnostic purposes.
+    </p>
+
+    <p>
+      For more information, see Netlify's privacy policy:
+      <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">
+        https://www.netlify.com/privacy/
+      </a>
+    </p>
+
+    <h2>Forms and Contact Requests</h2>
+
+    <p>
+      When you use our contact or consultation forms, the data you enter is transmitted to us via
+      <strong>Web3Forms</strong> (api.web3forms.com).
+    </p>
+
+    <p>
+      <strong>Purpose:</strong> Transmitting contact and consultation requests to KONVOI GmbH.<br />
+      <strong>Legal basis:</strong> Art. 6 para. 1 lit. a GDPR (consent given by actively submitting
+      the form).<br />
+      <strong>Data processed:</strong> Name, email address, form content.
+    </p>
+
+    <p>
+      The transmitted data is used exclusively to respond to your request. Web3Forms forwards the data
+      by email and does not store permanent copies. For more information:
+      <a href="https://web3forms.com/privacy" target="_blank" rel="noopener noreferrer">
+        https://web3forms.com/privacy
+      </a>
+    </p>
+
+    <h2>Bot Protection on Forms</h2>
+
+    <p>
+      Our forms are protected by <strong>Cloudflare Turnstile</strong>, a service provided by:<br />
+      Cloudflare Inc.<br />
+      101 Townsend St., San Francisco, CA 94107, USA
+    </p>
+
+    <p>
+      <strong>Purpose:</strong> Protection against automated requests (bots) and abuse of contact
+      forms.<br />
+      <strong>Legal basis:</strong> Art. 6 para. 1 lit. f GDPR (legitimate interest in the security of
+      our website and services).<br />
+      <strong>Cookie:</strong> Cloudflare Turnstile sets a technically necessary cookie
+      (<code>cf_clearance</code>) required for bot protection. This cookie falls under the exemption
+      for technically necessary cookies pursuant to § 25 para. 2 no. 2 TDDDG and does not require
+      separate consent.
+    </p>
+
+    <p>
+      For more information:
+      <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">
+        https://www.cloudflare.com/privacypolicy/
+      </a>
+    </p>
+
+    <h2>Analytics (Rybbit)</h2>
+
+    <p>
+      We use <strong>Rybbit</strong>, a privacy-friendly, self-hosted analytics tool to anonymously
+      evaluate the use of our website.
+    </p>
+
+    <p>
+      Rybbit uses <strong>no cookies</strong> and stores <strong>no personal data</strong>. Analysis
+      is based on anonymised technical characteristics — no IP addresses are stored and no
+      fingerprinting of personal data takes place.
+    </p>
+
+    <p>
+      Since no data is stored on or read from end-user devices, consent under § 25 para. 1 TDDDG
+      (German Telecommunications Digital Services Data Protection Act) is not required. Processing is
+      based on § 25 para. 2 no. 2 TDDDG in conjunction with Art. 6 para. 1 lit. f GDPR (legitimate
+      interest in anonymous reach measurement to improve our website).
+    </p>
+
+    <p>
+      Rybbit is self-hosted — <strong>no data is transmitted to third parties</strong>.
+    </p>
+
+    <h2>Appointment Booking (Cal.eu)</h2>
+
+    <p>
+      Our website contains links to the external booking service <strong>Cal.eu</strong> (cal.eu).
+      When you click these links, you leave our website and are redirected directly to Cal.eu.
+      <strong>No Cal.eu data is embedded on our website</strong>.
+    </p>
+
+    <p>
+      For data processing on Cal.eu's website, only Cal.eu's own privacy policy applies. We have no
+      influence over their data processing.
+    </p>
+
+    <h2>Cookies and Consent Management</h2>
+
+    <p>
+      We use <strong>vanilla-cookieconsent v3</strong> to manage your cookie consents. This tool
+      informs you on your first visit to our website about the use of cookies and allows you to grant
+      or refuse consent.
+    </p>
+
+    <ul>
+      <li>
+        <strong>Technically necessary cookies</strong> (e.g. Cloudflare Turnstile
+        <code>cf_clearance</code>) are set without consent, as they are strictly required for the
+        basic functions of the website (§ 25 para. 2 no. 2 TDDDG).
+      </li>
+      <li>
+        <strong>Optional cookies</strong> (e.g. Google Maps on the contact page) are only loaded
+        after your explicit consent.
+      </li>
+    </ul>
+
+    <p>
+      Your consent decision is stored in your browser (cookie <code>cc_cookie</code>,
+      SameSite=Lax). You can withdraw or adjust your consent at any time via the
+      <strong>"Cookie Settings"</strong> link in the footer of this website.
+    </p>
+
+    <h2>Social Media</h2>
+
+    <p>
+      We maintain a company profile on <strong>LinkedIn</strong> (LinkedIn Ireland Unlimited Company,
+      Wilton Place, Dublin 2, Ireland). When you visit our LinkedIn page, LinkedIn processes your
+      data in accordance with its own privacy policy:
+      <a href="https://www.linkedin.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">
+        https://www.linkedin.com/legal/privacy-policy
+      </a>
+    </p>
+
+    <p>
+      <strong>No LinkedIn tracking pixels or plugins are embedded</strong> on our own website.
+    </p>
+
+    <h2>Your Rights (Data Subject Rights)</h2>
+
+    <p>
+      You have the following rights with regard to your personal data:
+    </p>
+
+    <ul>
+      <li>Right of access (Art. 15 GDPR)</li>
+      <li>Right to rectification (Art. 16 GDPR)</li>
+      <li>Right to erasure (Art. 17 GDPR)</li>
+      <li>Right to restriction of processing (Art. 18 GDPR)</li>
+      <li>Right to data portability (Art. 20 GDPR)</li>
+      <li>Right to object to processing (Art. 21 GDPR)</li>
+    </ul>
+
+    <p>
+      To exercise your rights, please contact:
+      <a href="mailto:info@konvoi.eu">info@konvoi.eu</a>
+    </p>
+
+    <p>
+      <strong>Right to lodge a complaint with the supervisory authority:</strong><br />
+      You have the right to lodge a complaint with the competent data protection supervisory authority:
+    </p>
+
+    <p>
+      Der Hamburgische Beauftragte für Datenschutz und Informationsfreiheit (HmbBfDI)<br />
+      Ludwig-Erhard-Str. 22<br />
+      20459 Hamburg, Germany<br />
+      Email:
+      <a href="mailto:mailbox@datenschutz.hamburg.de">mailbox@datenschutz.hamburg.de</a>
+    </p>
+  </div>
+</Layout>
