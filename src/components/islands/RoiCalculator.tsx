@@ -4,7 +4,7 @@
 // Per UI-SPEC § 5.2, § 6.4, § 7.4 and D-07, D-12.
 // Threat model T-05-02-01: user inputs clamped and parsed before formula use.
 
-import { useState } from 'preact/hooks';
+import { useState, useEffect } from 'preact/hooks';
 import { roiFormulas } from '~/data/pricing';
 import { t } from '~/i18n/translations';
 
@@ -29,6 +29,19 @@ export default function RoiCalculator({ locale, embedMode = 'full' }: RoiCalcula
   const [vertical, setVertical] = useState<Vertical>('high_value');
   const [frequency, setFrequency] = useState<number>(5);
   const [result, setResult] = useState<RoiResult | null>(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const fs = params.get('fleet_size');
+    const v = params.get('vertical');
+    if (fs) {
+      const n = parseInt(fs, 10);
+      if (!isNaN(n) && n >= 1) setFleetSize(Math.min(n, 1000));
+    }
+    if (v && ['high_value', 'cooling', 'intermodal', 'other'].includes(v)) {
+      setVertical(v as Vertical);
+    }
+  }, []);
 
   function calculateRoi() {
     // T-05-02-01: clamp inputs before formula use
