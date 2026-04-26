@@ -25,14 +25,14 @@ export const headerDataDe = {
     },
     { text: 'Preise',      href: '/preise' },
     { text: 'Förderung',   href: '/foerderung' },
-    { text: 'Fallstudien', href: '/fallstudien/' },
+    { text: 'Fallstudien', href: '/fallstudien' },
     {
       text: 'Über uns',
       href: '#',
       links: [
-        { text: 'Team',     href: '/team/' },
-        { text: 'Karriere', href: '/karriere/' },
-        { text: 'Kontakt',  href: '/kontakt/' },
+        { text: 'Team',     href: '/team' },
+        { text: 'Karriere', href: '/karriere' },
+        { text: 'Kontakt',  href: '/kontakt' },
       ],
     },
   ],
@@ -66,14 +66,14 @@ export const headerDataEn = {
     },
     { text: 'Pricing',      href: '/en/pricing' },
     { text: 'Funding',      href: '/en/funding' },
-    { text: 'Case Studies', href: '/en/case-studies/' },
+    { text: 'Case Studies', href: '/en/case-studies' },
     {
       text: 'About',
       href: '#',
       links: [
-        { text: 'Team',    href: '/en/team/' },
-        { text: 'Careers', href: '/en/careers/' },
-        { text: 'Contact', href: '/en/contact/' },
+        { text: 'Team',    href: '/en/team' },
+        { text: 'Careers', href: '/en/careers' },
+        { text: 'Contact', href: '/en/contact' },
       ],
     },
   ],
@@ -88,7 +88,7 @@ export const footerData = {
   secondaryLinks: [
     { text: 'Impressum',  href: '#' },
     { text: 'Datenschutz', href: '#' },
-    { text: 'Aktuelles',  href: '/aktuelles/' },
+    { text: 'Aktuelles',  href: '/aktuelles' },
   ],
   socialLinks: [
     { ariaLabel: 'LinkedIn', icon: 'tabler:brand-linkedin', href: 'https://www.linkedin.com/company/konvoi-gmbh' },
