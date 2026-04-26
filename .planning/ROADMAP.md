@@ -142,11 +142,11 @@ Plans:
   3. Per-locale Open Graph + Twitter card images render correctly for homepage + key landing pages; Schema.org structured data (`Organization`, `LocalBusiness`, `Product`, `FAQPage`) validates via Rich Results Test
   4. `/impressum/` (German slug on both locales) discloses legal entity per §5 TMG; `/datenschutz/` covers processing per DSGVO Art. 13 + TDDDG; `public/_headers` ships CSP allowing only Web3Forms, Turnstile, Google Maps, Rybbit, and self-hosted fonts
   5. `netlify.toml` / `_redirects` covers every old Jimdo URL with a 301 to its Konvoi equivalent; DNS for `konvoi.eu` + `www.konvoi.eu` is cut over to Netlify; Search Console International Targeting is verified for DE + EN; `site:netlify.app konvoi` returns zero indexed pages
-**Plans:** 1/5 plans executed
+**Plans:** 2/5 plans executed
 Plans:
 - [x] 07-01-PLAN.md -- Legal pages: /impressum/ + /datenschutz/ in DE + EN (SEO-07, SEO-08)
 - [ ] 07-02-PLAN.md -- Cookie consent + Rybbit analytics: vanilla-cookieconsent v3, Analytics.astro, Layout.astro wiring (SEO-05, SEO-06)
-- [ ] 07-03-PLAN.md -- SEO infrastructure: Metadata.astro hreflang rewrite, sitemap i18n, SchemaOrg.astro, OG images (SEO-01, SEO-02, SEO-03, SEO-04)
+- [x] 07-03-PLAN.md -- SEO infrastructure: Metadata.astro hreflang rewrite, sitemap i18n, SchemaOrg.astro, OG images (SEO-01, SEO-02, SEO-03, SEO-04)
 - [ ] 07-04-PLAN.md -- Deployment config: netlify.toml, CSP headers, Jimdo _redirects (SEO-09, DEPLOY-01, DEPLOY-02)
 - [ ] 07-05-PLAN.md -- DNS cutover + Search Console verification checkpoint (DEPLOY-03, DEPLOY-04, DEPLOY-05)
 
@@ -163,4 +163,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7
 | 4. Core Marketing Pages | 7/7 | Complete   | 2026-04-24 |
 | 5. Conversion Funnel | 3/4 | In Progress|  |
 | 6. Depth & Credibility Pages | 7/7 | Complete | 2026-04-23 |
-| 7. SEO, Consent & Launch | 1/5 | In Progress|  |
+| 7. SEO, Consent & Launch | 2/5 | In Progress|  |

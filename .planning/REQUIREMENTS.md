@@ -145,10 +145,10 @@
 
 ### SEO, analytics, consent, DSGVO
 
-- [ ] **SEO-01**: `Metadata.astro` emits per-page `<link rel="canonical">` + three `<link rel="alternate" hreflang>` entries (de, en, x-default pointing to DE)
-- [ ] **SEO-02**: `@astrojs/sitemap` configured with the `i18n` block so sitemap entries include `<xhtml:link>` locale alternates
-- [ ] **SEO-03**: Per-locale Open Graph and Twitter card images for homepage + key landing pages
-- [ ] **SEO-04**: Schema.org structured data -- `Organization`, `LocalBusiness`, `Product`, `FAQPage` where applicable
+- [x] **SEO-01**: `Metadata.astro` emits per-page `<link rel="canonical">` + three `<link rel="alternate" hreflang>` entries (de, en, x-default pointing to DE)
+- [x] **SEO-02**: `@astrojs/sitemap` configured with the `i18n` block so sitemap entries include `<xhtml:link>` locale alternates
+- [x] **SEO-03**: Per-locale Open Graph and Twitter card images for homepage + key landing pages
+- [x] **SEO-04**: Schema.org structured data -- `Organization`, `LocalBusiness`, `Product`, `FAQPage` where applicable
 - [ ] **SEO-05**: Plausible Cloud EU analytics snippet embedded in `Layout.astro` (cookieless, no banner required)
 - [ ] **SEO-06**: `vanilla-cookieconsent` v3 banner with DE + EN translations gating Google Maps and YouTube embeds (not Plausible)
 - [x] **SEO-07**: Impressum (`/impressum/` -- German slug on both locales) with legal entity per SS 5 TMG
@@ -302,10 +302,10 @@ Every v1 requirement is mapped to exactly one phase. See `.planning/ROADMAP.md` 
 | FORMS-05 | Phase 5 | Complete |
 | FORMS-06 | Phase 5 | Complete |
 | FORMS-07 | Phase 5 | Complete |
-| SEO-01 | Phase 7 | Pending |
-| SEO-02 | Phase 7 | Pending |
-| SEO-03 | Phase 7 | Pending |
-| SEO-04 | Phase 7 | Pending |
+| SEO-01 | Phase 7 | Complete |
+| SEO-02 | Phase 7 | Complete |
+| SEO-03 | Phase 7 | Complete |
+| SEO-04 | Phase 7 | Complete |
 | SEO-05 | Phase 7 | Pending |
 | SEO-06 | Phase 7 | Pending |
 | SEO-07 | Phase 7 | Complete |

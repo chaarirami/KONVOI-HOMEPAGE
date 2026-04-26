@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 07-01-PLAN.md
-last_updated: "2026-04-26T12:52:52.145Z"
+stopped_at: Completed 07-03-PLAN.md
+last_updated: "2026-04-26T12:59:20.807Z"
 last_activity: 2026-04-26
 progress:
   total_phases: 7
   completed_phases: 4
   total_plans: 27
-  completed_plans: 26
-  percent: 96
+  completed_plans: 27
+  percent: 100
 ---
 
 # Project State
@@ -26,7 +26,7 @@ See: .planning/PROJECT.md (updated 2026-04-20)
 ## Current Position
 
 Phase: 07 (seo-consent-launch) — EXECUTING
-Plan: 2 of 5
+Plan: 3 of 5
 Status: Ready to execute
 Last activity: 2026-04-26
 
@@ -72,6 +72,7 @@ Progress: [█████░░░░░] 57%
 | Phase 05 P02 | 4 | 2 tasks | 4 files |
 | Phase 05 P03 | 8 | 2 tasks | 3 files |
 | Phase 07 P01 | 4 | 2 tasks | 5 files |
+| Phase 07 P03 | 4min | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -113,6 +114,9 @@ Recent decisions affecting current work:
 - [Phase 07]: [Phase 07-01]: Legal pages use PageLayout.astro matching existing simple content pages
 - [Phase 07]: [Phase 07-01]: Rybbit legal basis cites § 25 Abs. 2 Nr. 2 TDDDG (not TTDSG) — cookieless analytics exemption
 - [Phase 07]: [Phase 07-01]: Cal.eu documented as external link only — no embedding, no data transfer on our domain
+- [Phase 07]: [Phase 07-03]: Removed AstroSeo component — replaced with raw link/meta tag emission for full canonical+hreflang control
+- [Phase 07]: [Phase 07-03]: Hreflang derivation uses pathname prefix: /en/* is EN, else DE; x-default always points to DE URL
+- [Phase 07]: [Phase 07-03]: SchemaOrg.astro emits Organization+LocalBusiness globally; accepts optional schema prop for page-specific JSON-LD
 
 ### Pending Todos
 
@@ -134,8 +138,8 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-26T12:52:52.143Z
-Stopped at: Completed 07-01-PLAN.md
+Last session: 2026-04-26T12:59:20.804Z
+Stopped at: Completed 07-03-PLAN.md
 Resume file: None
 
 **Completed Phases:** 3
