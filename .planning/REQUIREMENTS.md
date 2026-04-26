@@ -151,8 +151,8 @@
 - [ ] **SEO-04**: Schema.org structured data -- `Organization`, `LocalBusiness`, `Product`, `FAQPage` where applicable
 - [ ] **SEO-05**: Plausible Cloud EU analytics snippet embedded in `Layout.astro` (cookieless, no banner required)
 - [ ] **SEO-06**: `vanilla-cookieconsent` v3 banner with DE + EN translations gating Google Maps and YouTube embeds (not Plausible)
-- [ ] **SEO-07**: Impressum (`/impressum/` -- German slug on both locales) with legal entity per SS 5 TMG
-- [ ] **SEO-08**: Datenschutz (`/datenschutz/` -- German slug on both locales) covering processing per DSGVO Art. 13 + TTDSG / TDDDG references
+- [x] **SEO-07**: Impressum (`/impressum/` -- German slug on both locales) with legal entity per SS 5 TMG
+- [x] **SEO-08**: Datenschutz (`/datenschutz/` -- German slug on both locales) covering processing per DSGVO Art. 13 + TTDSG / TDDDG references
 - [ ] **SEO-09**: CSP headers in `public/_headers` tuned to allow only whitelisted third parties (Plausible, Formspree, Turnstile, self-hosted fonts)
 
 ### Deploy & redirects
@@ -308,8 +308,8 @@ Every v1 requirement is mapped to exactly one phase. See `.planning/ROADMAP.md` 
 | SEO-04 | Phase 7 | Pending |
 | SEO-05 | Phase 7 | Pending |
 | SEO-06 | Phase 7 | Pending |
-| SEO-07 | Phase 7 | Pending |
-| SEO-08 | Phase 7 | Pending |
+| SEO-07 | Phase 7 | Complete |
+| SEO-08 | Phase 7 | Complete |
 | SEO-09 | Phase 7 | Pending |
 | DEPLOY-01 | Phase 7 | Pending |
 | DEPLOY-02 | Phase 7 | Pending |
