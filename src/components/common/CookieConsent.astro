@@ -1,0 +1,101 @@
+---
+// src/components/common/CookieConsent.astro
+// vanilla-cookieconsent v3 — DSGVO consent banner with DE+EN translations
+// Per CONTEXT.md D-04: Two categories only — necessary (always on) + functional (Maps/YouTube)
+// Per CONTEXT.md D-05: Rybbit is NOT in this banner — it loads unconditionally
+// Per RESEARCH.md Pattern 3: astro:after-swap listener fixes View Transitions pitfall
+---
+
+<script>
+  import * as CookieConsent from 'vanilla-cookieconsent';
+  import 'vanilla-cookieconsent/dist/cookieconsent.css';
+
+  function initCookieConsent() {
+    CookieConsent.run({
+      categories: {
+        necessary: {
+          enabled: true,
+          readOnly: true,
+        },
+        functional: {
+          enabled: false,
+        },
+      },
+      language: {
+        default: document.documentElement.lang === 'de' ? 'de' : 'en',
+        autoDetect: 'document',
+        translations: {
+          de: {
+            consentModal: {
+              title: 'Wir nutzen Cookies',
+              description:
+                'Wir verwenden technisch notwendige Cookies für Bot-Schutz bei Formularen (Cloudflare Turnstile). Optionale Cookies laden Google Maps auf unserer Kontaktseite. Unsere Analyse (Rybbit) ist cookielos und benötigt keine Einwilligung.',
+              acceptAllBtn: 'Alle akzeptieren',
+              acceptNecessaryBtn: 'Nur notwendige',
+              showPreferencesBtn: 'Einstellungen verwalten',
+            },
+            preferencesModal: {
+              title: 'Cookie-Einstellungen',
+              acceptAllBtn: 'Alle akzeptieren',
+              acceptNecessaryBtn: 'Nur notwendige',
+              savePreferencesBtn: 'Einstellungen speichern',
+              closeIconLabel: 'Schließen',
+              sections: [
+                {
+                  title: 'Notwendige Cookies',
+                  description:
+                    'Cloudflare Turnstile schützt unsere Formulare vor automatisierten Anfragen. Diese Cookies sind technisch notwendig und können nicht deaktiviert werden.',
+                  linkedCategory: 'necessary',
+                },
+                {
+                  title: 'Funktionale Cookies',
+                  description:
+                    'Google Maps wird auf unserer Kontaktseite eingebettet. Ohne Ihre Einwilligung wird die Karte nicht geladen. Diese Cookies stammen von Google und unterliegen der Google-Datenschutzerklärung.',
+                  linkedCategory: 'functional',
+                },
+              ],
+            },
+          },
+          en: {
+            consentModal: {
+              title: 'We use cookies',
+              description:
+                'We use technically necessary cookies for bot protection on forms (Cloudflare Turnstile). Optional cookies load Google Maps on our contact page. Our analytics (Rybbit) is cookieless and requires no consent.',
+              acceptAllBtn: 'Accept all',
+              acceptNecessaryBtn: 'Necessary only',
+              showPreferencesBtn: 'Manage preferences',
+            },
+            preferencesModal: {
+              title: 'Cookie Preferences',
+              acceptAllBtn: 'Accept all',
+              acceptNecessaryBtn: 'Necessary only',
+              savePreferencesBtn: 'Save preferences',
+              closeIconLabel: 'Close',
+              sections: [
+                {
+                  title: 'Necessary Cookies',
+                  description:
+                    'Cloudflare Turnstile protects our forms from automated requests. These cookies are technically necessary and cannot be disabled.',
+                  linkedCategory: 'necessary',
+                },
+                {
+                  title: 'Functional Cookies',
+                  description:
+                    "Google Maps is embedded on our contact page. Without your consent, the map will not load. These cookies are set by Google and are subject to Google's Privacy Policy.",
+                  linkedCategory: 'functional',
+                },
+              ],
+            },
+          },
+        },
+      },
+    });
+  }
+
+  // Initialize on page load
+  initCookieConsent();
+
+  // Re-initialize after each Astro View Transition swap
+  // vanilla-cookieconsent v3 is idempotent — re-running restores state from cc_cookie
+  document.addEventListener('astro:after-swap', initCookieConsent);
+</script>

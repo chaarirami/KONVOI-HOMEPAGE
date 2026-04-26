@@ -35,7 +35,8 @@
     "lodash.merge": "^4.6.2",
     "preact": "^10.29.1",
     "unpic": "^4.2.2",
-    "uplot": "^1.6.32"
+    "uplot": "^1.6.32",
+    "vanilla-cookieconsent": "^3.1.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.8",

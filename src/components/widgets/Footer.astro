@@ -36,7 +36,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
         <div class="mb-2">
           <a class="inline-block font-bold text-xl" href={getHomePermalink()}>{SITE?.name}</a>
         </div>
-        <div class="text-sm text-muted flex gap-1">
+        <div class="text-sm text-muted flex gap-1 flex-wrap items-center">
           {
             secondaryLinks.map(({ text, href }, index) => (
               <>
@@ -49,6 +49,14 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
               </>
             ))
           }
+          {secondaryLinks.length > 0 && ' · '}
+          <button
+            type="button"
+            data-cc="show-preferencesModal"
+            class="text-muted hover:text-gray-700 dark:text-gray-400 hover:underline cursor-pointer transition duration-150 ease-in-out"
+          >
+            Cookie-Einstellungen
+          </button>
         </div>
       </div>
       {
