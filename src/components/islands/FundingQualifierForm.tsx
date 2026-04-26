@@ -24,7 +24,7 @@ const buildFundingSchema = () =>
     company_size:     z.string().min(1, 'form.error_required'),
     funding_interest: z.boolean().optional(),
     message:          z.string().optional(),
-    dsgvo_consent:    z.literal(true, { errorMap: () => ({ message: 'form.error_dsgvo' }) }),
+    dsgvo_consent:    z.boolean().refine((v) => v === true, { message: 'form.error_dsgvo' }),
   });
 
 export default function FundingQualifierForm({ locale }: FundingQualifierFormProps) {

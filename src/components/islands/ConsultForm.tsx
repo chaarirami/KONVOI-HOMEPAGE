@@ -20,7 +20,7 @@ const buildConsultSchema = () =>
     company:       z.string().min(1, 'form.error_required'),
     fleet_size:    z.coerce.number().min(1, 'form.error_fleet_min'),
     message:       z.string().optional(),
-    dsgvo_consent: z.literal(true, { errorMap: () => ({ message: 'form.error_dsgvo' }) }),
+    dsgvo_consent: z.boolean().refine((v) => v === true, { message: 'form.error_dsgvo' }),
   });
 
 export default function ConsultForm({ locale }: ConsultFormProps) {
