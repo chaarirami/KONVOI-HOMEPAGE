@@ -1,0 +1,47 @@
+# public/_redirects — Jimdo → Konvoi 301 redirect mapping
+# Per CONTEXT.md D-14: minimal mapping, no exhaustive crawl needed (low Jimdo SEO value)
+# Per RESEARCH.md Pattern 10: format is "FROM TO STATUS" one rule per line
+# Astro static build copies this file verbatim to dist/_redirects
+
+# === DE pages ===
+/die-loesung                /produkt/           301
+/die-loesung/               /produkt/           301
+/ueber-uns                  /team/              301
+/ueber-uns/                 /team/              301
+/kontakt                    /kontakt/           301
+/karriere                   /karriere/          301
+/aktuelles                  /aktuelles/         301
+
+# Jimdo may have used /leistungen or /loesungen for the product
+/leistungen                 /produkt/           301
+/leistungen/                /produkt/           301
+/loesungen                  /produkt/           301
+/loesungen/                 /produkt/           301
+
+# Possible Jimdo blog/news paths
+/blog                       /aktuelles/         301
+/blog/                      /aktuelles/         301
+/news                       /aktuelles/         301
+/news/                      /aktuelles/         301
+
+# === EN pages ===
+/en/die-loesung             /en/product/        301
+/en/die-loesung/            /en/product/        301
+/en/ueber-uns               /en/team/           301
+/en/ueber-uns/              /en/team/           301
+/en/contact                 /en/contact/        301
+/en/the-solution            /en/product/        301
+/en/the-solution/           /en/product/        301
+/en/about                   /en/team/           301
+/en/about/                  /en/team/           301
+/en/blog                    /en/news/           301
+/en/blog/                   /en/news/           301
+
+# === Trailing slash normalization (Jimdo served without trailing slashes) ===
+# Astro's pretty_urls = false means we need explicit trailing-slash variants above.
+# Netlify handles any remaining ambiguity via its own routing.
+
+# === Fallback (catch unknown paths) ===
+# Commented out: a catch-all would swallow legitimate 404s and mask broken links.
+# Enable only if crawl shows many unmapped Jimdo URLs post-launch.
+# /*   /   302
