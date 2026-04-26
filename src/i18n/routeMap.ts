@@ -5,6 +5,10 @@
 // Per D-04: keyed by canonical route key, values are locale-specific paths.
 
 export const routeMap: Record<string, { de: string; en: string }> = {
+  // Legal pages (Phase 7)
+  impressum:   { de: '/impressum',   en: '/en/impressum' },
+  datenschutz: { de: '/datenschutz', en: '/en/datenschutz' },
+
   // Top-level pages
   home:       { de: '/',          en: '/en' },
   about:      { de: '/about',     en: '/en/about' },
