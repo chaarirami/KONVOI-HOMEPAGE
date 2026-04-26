@@ -149,8 +149,8 @@
 - [x] **SEO-02**: `@astrojs/sitemap` configured with the `i18n` block so sitemap entries include `<xhtml:link>` locale alternates
 - [x] **SEO-03**: Per-locale Open Graph and Twitter card images for homepage + key landing pages
 - [x] **SEO-04**: Schema.org structured data -- `Organization`, `LocalBusiness`, `Product`, `FAQPage` where applicable
-- [ ] **SEO-05**: Plausible Cloud EU analytics snippet embedded in `Layout.astro` (cookieless, no banner required)
-- [ ] **SEO-06**: `vanilla-cookieconsent` v3 banner with DE + EN translations gating Google Maps and YouTube embeds (not Plausible)
+- [x] **SEO-05**: Plausible Cloud EU analytics snippet embedded in `Layout.astro` (cookieless, no banner required)
+- [x] **SEO-06**: `vanilla-cookieconsent` v3 banner with DE + EN translations gating Google Maps and YouTube embeds (not Plausible)
 - [x] **SEO-07**: Impressum (`/impressum/` -- German slug on both locales) with legal entity per SS 5 TMG
 - [x] **SEO-08**: Datenschutz (`/datenschutz/` -- German slug on both locales) covering processing per DSGVO Art. 13 + TTDSG / TDDDG references
 - [x] **SEO-09**: CSP headers in `public/_headers` tuned to allow only whitelisted third parties (Plausible, Formspree, Turnstile, self-hosted fonts)
@@ -306,8 +306,8 @@ Every v1 requirement is mapped to exactly one phase. See `.planning/ROADMAP.md` 
 | SEO-02 | Phase 7 | Complete |
 | SEO-03 | Phase 7 | Complete |
 | SEO-04 | Phase 7 | Complete |
-| SEO-05 | Phase 7 | Pending |
-| SEO-06 | Phase 7 | Pending |
+| SEO-05 | Phase 7 | Complete |
+| SEO-06 | Phase 7 | Complete |
 | SEO-07 | Phase 7 | Complete |
 | SEO-08 | Phase 7 | Complete |
 | SEO-09 | Phase 7 | Complete |
