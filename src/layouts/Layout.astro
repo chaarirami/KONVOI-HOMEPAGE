@@ -11,6 +11,7 @@ import Metadata from '~/components/common/Metadata.astro';
 import SchemaOrg from '~/components/common/SchemaOrg.astro';
 import SiteVerification from '~/components/common/SiteVerification.astro';
 import Analytics from '~/components/common/Analytics.astro';
+import CookieConsent from '~/components/common/CookieConsent.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
 
 // Comment the line below to disable View Transitions
@@ -39,6 +40,7 @@ const isNonProduction = netlifyContext === 'deploy-preview' || netlifyContext ==
     <SchemaOrg />
     <SiteVerification />
     <Analytics />
+    <CookieConsent />
     {isNonProduction && <meta name="robots" content="noindex, nofollow" />}
 
     <!-- Comment the line below to disable View Transitions -->

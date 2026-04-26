@@ -1,3 +1,19 @@
 ---
-// Analytics placeholder -- Plausible snippet will be added in Phase 7 (SEO-05)
+// src/components/common/Analytics.astro
+// Rybbit self-hosted cookieless analytics — loads unconditionally on every page.
+// Per CONTEXT.md D-05: Rybbit is cookieless — no consent banner needed.
+// Per CONTEXT.md D-07: self-hosted instance, domain TBD.
+// Per CONTEXT.md D-08: script goes in Layout.astro head (via this Analytics component).
+//
+// BEFORE LAUNCH: Replace RYBBIT_DOMAIN and RYBBIT_SITE_ID with actual values.
+// See: https://github.com/rybbit-io/rybbit for self-hosting instructions.
 ---
+
+<!-- Rybbit Analytics — cookieless, privacy-first, self-hosted -->
+<!-- TODO before DNS cutover: replace RYBBIT_DOMAIN and RYBBIT_SITE_ID -->
+<script
+  src="https://RYBBIT_DOMAIN/api/script.js"
+  async
+  data-site-id="RYBBIT_SITE_ID"
+  is:inline
+></script>
