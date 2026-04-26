@@ -34,9 +34,9 @@ export const headerDataDe = {
       links: [
         { text: 'Team',     href: '/team/' },
         { text: 'Karriere', href: '/karriere/' },
+        { text: 'Kontakt',  href: '/kontakt/' },
       ],
     },
-    { text: 'Kontakt', href: '/kontakt/' },
   ],
   actions: [
     { text: 'Beratung anfragen', href: '#consult' },
@@ -77,9 +77,9 @@ export const headerDataEn = {
       links: [
         { text: 'Team',    href: '/en/team/' },
         { text: 'Careers', href: '/en/careers/' },
+        { text: 'Contact', href: '/en/contact/' },
       ],
     },
-    { text: 'Contact', href: '/en/contact/' },
   ],
   actions: [
     { text: 'Book a consult', href: '#consult' },
