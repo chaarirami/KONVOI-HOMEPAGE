@@ -20,10 +20,19 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   output: 'static',
+  site: 'https://www.konvoi.eu',
 
   integrations: [
     preact(),
-    sitemap(),
+    sitemap({
+      i18n: {
+        defaultLocale: 'de',
+        locales: {
+          de: 'de-DE',
+          en: 'en-US',
+        },
+      },
+    }),
     mdx(),
     icon({
       include: {

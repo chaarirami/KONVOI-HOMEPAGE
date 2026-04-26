@@ -1,14 +1,11 @@
 ---
-import merge from 'lodash.merge';
-import { AstroSeo } from '@astrolib/seo';
-
-import type { Props as AstroSeoProps } from '@astrolib/seo';
+// src/components/common/Metadata.astro
+// Rewritten in Phase 7 (SEO-01) to emit canonical + hreflang directly.
+// @astrolib/seo AstroSeo does NOT emit hreflang — replaced with raw <link> tags.
+// Per CONTEXT.md D-09: must emit per-page canonical + three hreflang alternates.
 
 import { SITE, METADATA, I18N } from 'astrowind:config';
 import type { MetaData } from '~/types';
-import { getCanonical } from '~/utils/permalinks';
-
-import { adaptOpenGraphImages } from '~/utils/images';
 
 export interface Props extends MetaData {
   dontUseTitleTemplate?: boolean;
@@ -17,52 +14,95 @@ export interface Props extends MetaData {
 const {
   title,
   ignoreTitleTemplate = false,
-  canonical = String(getCanonical(String(Astro.url.pathname))),
+  canonical: canonicalProp,
   robots = {},
   description,
   openGraph = {},
   twitter = {},
 } = Astro.props;
 
-const seoProps: AstroSeoProps = merge(
-  {
-    title: '',
-    titleTemplate: '%s',
-    canonical: canonical,
-    noindex: true,
-    nofollow: true,
-    description: undefined,
-    openGraph: {
-      url: canonical,
-      site_name: SITE?.name,
-      images: [],
-      locale: I18N?.language || 'en',
-      type: 'website',
-    },
-    twitter: {
-      cardType: openGraph?.images?.length ? 'summary_large_image' : 'summary',
-    },
-  },
-  {
-    title: METADATA?.title?.default,
-    titleTemplate: METADATA?.title?.template,
-    noindex: typeof METADATA?.robots?.index !== 'undefined' ? !METADATA.robots.index : undefined,
-    nofollow: typeof METADATA?.robots?.follow !== 'undefined' ? !METADATA.robots.follow : undefined,
-    description: METADATA?.description,
-    openGraph: METADATA?.openGraph,
-    twitter: METADATA?.twitter,
-  },
-  {
-    title: title,
-    titleTemplate: ignoreTitleTemplate ? '%s' : undefined,
-    canonical: canonical,
-    noindex: typeof robots?.index !== 'undefined' ? !robots.index : undefined,
-    nofollow: typeof robots?.follow !== 'undefined' ? !robots.follow : undefined,
-    description: description,
-    openGraph: { url: canonical, ...openGraph },
-    twitter: twitter,
-  }
-);
+// --- Site base URL ---
+const siteBase = (Astro.site?.toString() ?? 'https://www.konvoi.eu').replace(/\/$/, '');
+
+// --- Canonical URL resolution ---
+const pathname = Astro.url.pathname;
+const absoluteCanonical = canonicalProp
+  ? (canonicalProp.startsWith('http') ? canonicalProp : `${siteBase}${canonicalProp}`)
+  : `${siteBase}${pathname}`;
+
+// --- Hreflang URL derivation ---
+// Strategy: detect current locale from pathname prefix
+const isEN = pathname.startsWith('/en/') || pathname === '/en';
+const normalised = pathname === '/' ? '/' : pathname.replace(/\/+$/, '');
+
+let dePath: string;
+let enPath: string;
+
+if (isEN) {
+  // EN page: /en/... → DE is /...
+  dePath = normalised === '/en' ? '/' : normalised.replace(/^\/en/, '') || '/';
+  enPath = normalised;
+} else {
+  // DE page: /... → EN is /en/...
+  dePath = normalised;
+  enPath = normalised === '/' ? '/en' : `/en${normalised}`;
+}
+
+const absoluteDeUrl = `${siteBase}${dePath}`;
+const absoluteEnUrl = `${siteBase}${enPath}`;
+
+// --- OG image ---
+// Default: locale-specific fallback OG image
+// Can be overridden via openGraph.images prop
+const lang = isEN ? 'en' : 'de';
+const defaultOgImage = `${siteBase}/og/default-${lang}.png`;
+const ogImage = openGraph?.images?.[0]?.url ?? defaultOgImage;
+
+// --- Title ---
+const titleTemplate = ignoreTitleTemplate ? '%s' : (METADATA?.title?.template ?? '%s | KONVOI');
+const resolvedTitle = title
+  ? titleTemplate.replace('%s', title)
+  : (METADATA?.title?.default ?? 'KONVOI');
+
+// --- Description ---
+const resolvedDescription = description ?? METADATA?.description ?? '';
+
+// --- Robots ---
+const noindex = typeof robots?.index !== 'undefined' ? !robots.index
+  : typeof METADATA?.robots?.index !== 'undefined' ? !METADATA.robots.index
+  : false;
+const nofollow = typeof robots?.follow !== 'undefined' ? !robots.follow
+  : typeof METADATA?.robots?.follow !== 'undefined' ? !METADATA.robots.follow
+  : false;
+const robotsContent = [noindex ? 'noindex' : 'index', nofollow ? 'nofollow' : 'follow'].join(', ');
+
+// --- OG locale ---
+const ogLocale = lang === 'de' ? 'de_DE' : 'en_US';
 ---
 
-<AstroSeo {...{ ...seoProps, openGraph: await adaptOpenGraphImages(seoProps?.openGraph, Astro.site) }} />
+<title>{resolvedTitle}</title>
+<meta name="description" content={resolvedDescription} />
+<meta name="robots" content={robotsContent} />
+
+<!-- Canonical -->
+<link rel="canonical" href={absoluteCanonical} />
+
+<!-- Hreflang alternates (SEO-01) -->
+<link rel="alternate" hreflang="de" href={absoluteDeUrl} />
+<link rel="alternate" hreflang="en" href={absoluteEnUrl} />
+<link rel="alternate" hreflang="x-default" href={absoluteDeUrl} />
+
+<!-- Open Graph (SEO-03) -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={absoluteCanonical} />
+<meta property="og:title" content={resolvedTitle} />
+<meta property="og:description" content={resolvedDescription} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:locale" content={ogLocale} />
+<meta property="og:site_name" content="KONVOI" />
+
+<!-- Twitter Card (SEO-03) -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={resolvedTitle} />
+<meta name="twitter:description" content={resolvedDescription} />
+<meta name="twitter:image" content={ogImage} />
