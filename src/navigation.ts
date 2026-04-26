@@ -1,5 +1,3 @@
-import { getAsset } from './utils/permalinks';
-
 // DE navigation (default locale — paths without /en/ prefix)
 export const headerDataDe = {
   links: [
@@ -38,9 +36,7 @@ export const headerDataDe = {
       ],
     },
   ],
-  actions: [
-    { text: 'Beratung anfragen', href: '#consult' },
-  ],
+  actions: [],
 };
 
 // EN navigation (prefixed with /en/)
@@ -81,9 +77,7 @@ export const headerDataEn = {
       ],
     },
   ],
-  actions: [
-    { text: 'Book a consult', href: '#consult' },
-  ],
+  actions: [],
 };
 
 // Legacy export kept for backward compat — Header.astro uses headerDataDe/En based on locale.
@@ -98,7 +92,6 @@ export const footerData = {
   ],
   socialLinks: [
     { ariaLabel: 'LinkedIn', icon: 'tabler:brand-linkedin', href: 'https://www.linkedin.com/company/konvoi-gmbh' },
-    { ariaLabel: 'RSS',      icon: 'tabler:rss',            href: getAsset('/aktuelles/rss.xml') },
   ],
   footNote: `© KONVOI GmbH · Alle Rechte vorbehalten.`,
 };
