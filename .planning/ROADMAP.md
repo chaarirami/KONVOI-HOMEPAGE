@@ -18,7 +18,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 4: Core Marketing Pages** - Homepage, product page, 7 use-case pages with IncidentVideo placeholders, 4 industry verticals -- all DE + EN (completed 2026-04-24)
 - [ ] **Phase 5: Conversion Funnel** - Pricing tiers, ROI calculator, funding eligibility, lead-capture forms with DSGVO compliance
 - [x] **Phase 6: Depth & Credibility Pages** - Case studies, blog port, team, careers, contact with events and click-to-load Maps
-- [ ] **Phase 7: SEO, Consent & Launch** - Sitemap hreflang, Plausible analytics, cookie consent, Impressum/Datenschutz, CSP, Jimdo redirects, DNS cutover
+- [ ] **Phase 7: SEO, Consent & Launch** - Sitemap hreflang, Rybbit analytics, cookie consent, Impressum/Datenschutz, CSP, Jimdo redirects, DNS cutover
 
 ## Phase Details
 
@@ -108,7 +108,7 @@ Plans:
 - [x] 05-01-PLAN.md -- pricing.ts data file + DE/EN pricing tier pages (PRICE-01..04)
 - [x] 05-02-PLAN.md -- RoiCalculator Preact island + DE/EN /roi/ standalone pages (ROI-01..05)
 - [x] 05-03-PLAN.md -- ConsultForm Preact island + EN /en/thanks/ page + form i18n strings (FORMS-01,03..07)
-- [ ] 05-04-PLAN.md -- FundingQualifierForm island + DE/EN funding pages + wire islands into pricing + nav (FUND-01..04, FORMS-02)
+- [x] 05-04-PLAN.md -- FundingQualifierForm island + DE/EN funding pages + wire islands into pricing + nav (FUND-01..04, FORMS-02)
 **UI hint**: yes
 
 ### Phase 6: Depth & Credibility Pages
@@ -138,11 +138,17 @@ Plans:
 **Requirements**: SEO-01, SEO-02, SEO-03, SEO-04, SEO-05, SEO-06, SEO-07, SEO-08, SEO-09, DEPLOY-01, DEPLOY-02, DEPLOY-03, DEPLOY-04, DEPLOY-05
 **Success Criteria** (what must be TRUE):
   1. Every page emits per-page `<link rel="canonical">` + three `<link rel="alternate" hreflang>` entries (de, en, x-default pointing to DE); `@astrojs/sitemap` emits `<xhtml:link>` locale alternates in `dist/sitemap-*.xml`
-  2. Plausible Cloud EU analytics loads on every page without a consent banner (cookieless); `vanilla-cookieconsent` v3 with DE + EN translations gates only Google Maps and YouTube embeds -- not Plausible, not self-hosted fonts, not Formspree
+  2. Rybbit self-hosted cookieless analytics loads on every page without a consent banner; `vanilla-cookieconsent` v3 with DE + EN translations gates only Google Maps and YouTube embeds -- not Rybbit, not self-hosted fonts, not Web3Forms
   3. Per-locale Open Graph + Twitter card images render correctly for homepage + key landing pages; Schema.org structured data (`Organization`, `LocalBusiness`, `Product`, `FAQPage`) validates via Rich Results Test
-  4. `/impressum/` (German slug on both locales) discloses legal entity per SS 5 TMG; `/datenschutz/` covers processing per DSGVO Art. 13 + TTDSG/TDDDG; `public/_headers` ships CSP allowing only Plausible, Formspree, Turnstile, and self-hosted fonts
+  4. `/impressum/` (German slug on both locales) discloses legal entity per §5 TMG; `/datenschutz/` covers processing per DSGVO Art. 13 + TDDDG; `public/_headers` ships CSP allowing only Web3Forms, Turnstile, Google Maps, Rybbit, and self-hosted fonts
   5. `netlify.toml` / `_redirects` covers every old Jimdo URL with a 301 to its Konvoi equivalent; DNS for `konvoi.eu` + `www.konvoi.eu` is cut over to Netlify; Search Console International Targeting is verified for DE + EN; `site:netlify.app konvoi` returns zero indexed pages
-**Plans**: TBD
+**Plans:** 5 plans
+Plans:
+- [ ] 07-01-PLAN.md -- Legal pages: /impressum/ + /datenschutz/ in DE + EN (SEO-07, SEO-08)
+- [ ] 07-02-PLAN.md -- Cookie consent + Rybbit analytics: vanilla-cookieconsent v3, Analytics.astro, Layout.astro wiring (SEO-05, SEO-06)
+- [ ] 07-03-PLAN.md -- SEO infrastructure: Metadata.astro hreflang rewrite, sitemap i18n, SchemaOrg.astro, OG images (SEO-01, SEO-02, SEO-03, SEO-04)
+- [ ] 07-04-PLAN.md -- Deployment config: netlify.toml, CSP headers, Jimdo _redirects (SEO-09, DEPLOY-01, DEPLOY-02)
+- [ ] 07-05-PLAN.md -- DNS cutover + Search Console verification checkpoint (DEPLOY-03, DEPLOY-04, DEPLOY-05)
 
 ## Progress
 
@@ -157,4 +163,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7
 | 4. Core Marketing Pages | 7/7 | Complete   | 2026-04-24 |
 | 5. Conversion Funnel | 3/4 | In Progress|  |
 | 6. Depth & Credibility Pages | 7/7 | Complete | 2026-04-23 |
-| 7. SEO, Consent & Launch | 0/? | Not started | - |
+| 7. SEO, Consent & Launch | 0/5 | Not started | - |
