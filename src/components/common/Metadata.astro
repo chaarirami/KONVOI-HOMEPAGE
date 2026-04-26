@@ -4,7 +4,7 @@
 // @astrolib/seo AstroSeo does NOT emit hreflang — replaced with raw <link> tags.
 // Per CONTEXT.md D-09: must emit per-page canonical + three hreflang alternates.
 
-import { SITE, METADATA, I18N } from 'astrowind:config';
+import { METADATA } from 'astrowind:config';
 import type { MetaData } from '~/types';
 
 export interface Props extends MetaData {
@@ -18,7 +18,6 @@ const {
   robots = {},
   description,
   openGraph = {},
-  twitter = {},
 } = Astro.props;
 
 // --- Site base URL ---

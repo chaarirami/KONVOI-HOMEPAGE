@@ -1,0 +1,65 @@
+---
+// src/components/common/SchemaOrg.astro
+// Schema.org structured data — SEO-04
+// Per CONTEXT.md D-11: Organization, LocalBusiness, Product, FAQPage where applicable.
+// Organization + LocalBusiness emit globally on all pages via Layout.astro.
+// Page-specific schemas (Product, FAQPage) are passed via the schema prop.
+
+export interface Props {
+  schema?: Record<string, unknown> | null;
+}
+
+const { schema = null } = Astro.props;
+
+// Organization (global — all pages)
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "KONVOI GmbH",
+  "url": "https://www.konvoi.eu",
+  "logo": "https://www.konvoi.eu/images/logo.svg",
+  "telephone": "+49 40 766293660",
+  "email": "info@konvoi.eu",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Harburger Schlossstraße 6-12",
+    "addressLocality": "Hamburg",
+    "postalCode": "21079",
+    "addressCountry": "DE"
+  },
+  "foundingDate": "2020",
+  "sameAs": [
+    "https://www.linkedin.com/company/konvoi-gmbh"
+  ]
+};
+
+// LocalBusiness (supplements Organization)
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "KONVOI GmbH",
+  "url": "https://www.konvoi.eu",
+  "telephone": "+49 40 766293660",
+  "email": "info@konvoi.eu",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Harburger Schlossstraße 6-12",
+    "addressLocality": "Hamburg",
+    "postalCode": "21079",
+    "addressCountry": "DE"
+  },
+  "areaServed": "DE",
+  "priceRange": "Auf Anfrage"
+};
+---
+
+<!-- Organization JSON-LD (SEO-04) -->
+<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+
+<!-- LocalBusiness JSON-LD (SEO-04) -->
+<script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+
+<!-- Page-specific JSON-LD (Product, FAQPage, etc.) — passed via schema prop -->
+{schema && (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+)}
