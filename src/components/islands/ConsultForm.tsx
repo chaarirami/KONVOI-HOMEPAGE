@@ -102,25 +102,23 @@ export default function ConsultForm({ locale }: ConsultFormProps) {
       return;
     }
 
-    // 2. Build FormData for Formspree
+    // 2. Build FormData for Web3Forms
     const formData = new FormData();
+    formData.append('access_key', import.meta.env.PUBLIC_WEB3FORMS_KEY || '');
+    formData.append('subject', 'KONVOI — Neue Beratungsanfrage');
+    formData.append('from_name', 'KONVOI Website');
     formData.append('name', fields.name);
     formData.append('email', fields.email);
     formData.append('phone', fields.phone || '');
     formData.append('company', fields.company);
     formData.append('fleet_size', String(fields.fleet_size));
     formData.append('message', fields.message || '');
-    // Honeypot — always empty; bots fill this and Formspree silently rejects (T-05-03-03)
-    formData.append('_gotcha', '');
-    // Get Turnstile token from rendered widget field
-    const turnstileInput = document.querySelector<HTMLInputElement>('[name="cf-turnstile-response"]');
-    if (turnstileInput?.value) formData.append('cf-turnstile-response', turnstileInput.value);
-    formData.append('_next', locale === 'de' ? '/danke' : '/en/thanks');
+    formData.append('botcheck', '');
 
-    // 3. POST to Formspree
+    // 3. POST to Web3Forms
     try {
       const response = await fetch(
-        `https://formspree.io/f/${import.meta.env.PUBLIC_FORMSPREE_CONSULT_ID}`,
+        'https://api.web3forms.com/submit',
         { method: 'POST', headers: { Accept: 'application/json' }, body: formData }
       );
       if (response.ok) {
@@ -267,7 +265,7 @@ export default function ConsultForm({ locale }: ConsultFormProps) {
       </div>
 
       {/* Honeypot — hidden from users; bots fill this (T-05-03-03) */}
-      <input type="text" name="_gotcha" style="display:none" tabindex={-1} autocomplete="off" />
+      <input type="text" name="botcheck" style="display:none" tabindex={-1} autocomplete="off" />
 
       {/* Cloudflare Turnstile widget — implicit rendering (T-05-03-04) */}
       <div class="cf-turnstile" data-sitekey={import.meta.env.PUBLIC_TURNSTILE_SITEKEY}></div>

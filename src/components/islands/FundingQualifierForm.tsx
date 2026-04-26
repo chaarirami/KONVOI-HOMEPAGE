@@ -93,8 +93,11 @@ export default function FundingQualifierForm({ locale }: FundingQualifierFormPro
       return;
     }
 
-    // 2. Build FormData for Formspree (separate FUNDING endpoint — T-05-04-06)
+    // 2. Build FormData for Web3Forms (funding inquiry)
     const formData = new FormData();
+    formData.append('access_key', import.meta.env.PUBLIC_WEB3FORMS_KEY || '');
+    formData.append('subject', 'KONVOI — Neue Förderanfrage');
+    formData.append('from_name', 'KONVOI Website');
     formData.append('name', fields.name);
     formData.append('email', fields.email);
     formData.append('phone', fields.phone || '');
@@ -104,17 +107,12 @@ export default function FundingQualifierForm({ locale }: FundingQualifierFormPro
     formData.append('company_size', fields.company_size);
     formData.append('funding_interest', fields.funding_interest ? 'yes' : 'no');
     formData.append('message', fields.message || '');
-    // Honeypot — always empty; bots fill this and Formspree silently rejects (T-05-04-02)
-    formData.append('_gotcha', '');
-    // Get Turnstile token from rendered widget field (T-05-04-02)
-    const turnstileInput = document.querySelector<HTMLInputElement>('[name="cf-turnstile-response"]');
-    if (turnstileInput?.value) formData.append('cf-turnstile-response', turnstileInput.value);
-    formData.append('_next', locale === 'de' ? '/danke' : '/en/thanks');
+    formData.append('botcheck', '');
 
-    // 3. POST to Formspree FUNDING endpoint (FUND-03)
+    // 3. POST to Web3Forms
     try {
       const response = await fetch(
-        `https://formspree.io/f/${import.meta.env.PUBLIC_FORMSPREE_FUNDING_ID}`,
+        'https://api.web3forms.com/submit',
         { method: 'POST', headers: { Accept: 'application/json' }, body: formData }
       );
       if (response.ok) {
@@ -328,7 +326,7 @@ export default function FundingQualifierForm({ locale }: FundingQualifierFormPro
       </div>
 
       {/* 10. Honeypot — hidden from users; bots fill this (T-05-04-02) */}
-      <input type="text" name="_gotcha" style="display:none" tabindex={-1} autocomplete="off" />
+      <input type="text" name="botcheck" style="display:none" tabindex={-1} autocomplete="off" />
 
       {/* 11. Cloudflare Turnstile widget — implicit rendering (T-05-04-02) */}
       <div class="cf-turnstile" data-sitekey={import.meta.env.PUBLIC_TURNSTILE_SITEKEY}></div>
