@@ -1,0 +1,30 @@
+---
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Headline from '~/components/ui/Headline.astro';
+import FleetGlobeIsland from '~/components/islands/FleetGlobe.tsx';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  id?: string;
+  isDark?: boolean;
+  locale?: 'de' | 'en';
+}
+
+const {
+  title = '',
+  subtitle = '',
+  tagline = '',
+  id,
+  isDark = false,
+  locale = 'de',
+} = Astro.props;
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass="max-w-7xl mx-auto">
+  <Headline title={title} subtitle={subtitle} tagline={tagline} />
+  <div class="flex justify-center">
+    <FleetGlobeIsland client:visible locale={locale} endpoint="/api/fleet-positions" />
+  </div>
+</WidgetWrapper>

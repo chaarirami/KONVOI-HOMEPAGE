@@ -10,7 +10,7 @@ interface Props {
 }
 
 const { canonicalKey, customer, vertical, outcome, logo, coverImage, locale } = Astro.props;
-const href = locale === 'de' ? `/fallstudien/${canonicalKey}/` : `/en/case-studies/${canonicalKey}/`;
+const href = locale === 'de' ? `/fallstudien/${canonicalKey}` : `/en/case-studies/${canonicalKey}`;
 const ctaText = locale === 'de' ? 'Fallstudie lesen' : 'Read case study';
 ---
 

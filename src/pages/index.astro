@@ -6,6 +6,7 @@ import Testimonials from '~/components/widgets/Testimonials.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import CustomerMarquee from '~/components/widgets/CustomerMarquee.astro';
 import LogoGrid from '~/components/widgets/LogoGrid.astro';
+import FleetGlobe from '~/components/widgets/FleetGlobe.astro';
 import { pressLogos } from '~/data/press';
 import { supporters } from '~/data/supporters';
 import { getCollection } from 'astro:content';
@@ -43,6 +44,12 @@ const metadata = {
   />
 
   <CustomerMarquee title="Bereits im Einsatz bei führenden Logistikanbietern" />
+
+  <FleetGlobe
+    tagline="Live-Tracking"
+    title="Ihre Flotte. In Echtzeit geschützt."
+    subtitle="KONVOI Sensorsysteme im aktiven Einsatz — rund um die Uhr."
+  />
 
   <!-- Section 2: Preventive-vs-reactive explainer (HOME-05, D-05) -->
   <Features2
@@ -159,7 +166,7 @@ const metadata = {
         text: 'Beratung anfragen',
         href: 'mailto:info@konvoi.eu?subject=Beratungsanfrage',
       },
-      { variant: 'secondary', text: 'Fallstudien ansehen', href: '/fallstudien/' },
+      { variant: 'secondary', text: 'Fallstudien ansehen', href: '/fallstudien' },
     ]}
   />
 </Layout>

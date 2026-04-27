@@ -25,8 +25,8 @@ export interface Props {
 
 const { metadata = {} } = Astro.props;
 const { language, textDirection } = I18N;
-const netlifyContext = import.meta.env.CONTEXT ?? process.env.CONTEXT ?? 'production';
-const isNonProduction = netlifyContext === 'deploy-preview' || netlifyContext === 'branch-deploy';
+const cfBranch = import.meta.env.CF_PAGES_BRANCH ?? process.env.CF_PAGES_BRANCH;
+const isNonProduction = cfBranch !== undefined && cfBranch !== 'main';
 ---
 
 <!doctype html>

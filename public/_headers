@@ -1,4 +1,4 @@
-# public/_headers — Netlify header rules
+# public/_headers — Cloudflare Pages header rules (also compatible with Netlify)
 # Per CONTEXT.md D-15: allow Web3Forms, Turnstile, Google Maps, Rybbit, self-hosted fonts
 # Per RESEARCH.md Pattern 9: CSP directives verified against official sources
 # BEFORE LAUNCH: Replace RYBBIT_DOMAIN with actual self-hosted Rybbit domain
