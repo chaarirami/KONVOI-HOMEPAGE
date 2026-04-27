@@ -1,13 +1,12 @@
 ---
 name:
-  de: Sushmita Patel
-  en: Sushmita Patel
+  de: Sushmita
+  en: Sushmita
 title:
-  de: Embedded Systems
-  en: Embedded Systems
+  de: Data Scientist
+  en: Data Scientist
 bio:
-  de: Sushmita programmiert die Firmware der KONVOI-Sensor-Einheiten und stellt sicher, dass Datenübertragung und Batterielaufzeit unter allen Bedingungen zuverlässig funktionieren.
-  en: Sushmita programmes the firmware of KONVOI sensor units and ensures reliable data transmission and battery performance under all conditions.
-photo: ~/assets/images/team/sushmita.jpg
+  de: Sushmita analysiert Sensordaten und entwickelt datengetriebene Modelle, die Muster erkennen und die Erkennungsgenauigkeit von KONVOI kontinuierlich verbessern.
+  en: Sushmita analyses sensor data and develops data-driven models that detect patterns and continuously improve KONVOI's detection accuracy.
 order: 7
 ---

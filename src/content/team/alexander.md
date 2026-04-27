@@ -1,13 +1,13 @@
 ---
 name:
-  de: Alexander Jagielo
-  en: Alexander Jagielo
+  de: Alexander
+  en: Alexander
 title:
-  de: Co-Founder & CTO
-  en: Co-Founder & CTO
+  de: Co-Founder, Head of Product & Operations
+  en: Co-Founder, Head of Product & Operations
 bio:
-  de: Alexander leitet die technische Entwicklung von KONVOI und hat die Sensor-Architektur von Grund auf konzipiert. Absolvent der TUHH mit acht Jahren Erfahrung in Hardware- und Embedded-Systemen.
-  en: Alexander leads KONVOI's technical development and designed the sensor architecture from scratch. TUHH graduate with eight years of experience in hardware and embedded systems.
-photo: ~/assets/images/team/alexander.jpg
+  de: Alexander verantwortet als Mitgründer Produktentwicklung und operatives Geschäft. Er steuert die Roadmap und sorgt dafür, dass Hardware, Software und Logistik reibungslos zusammenspielen.
+  en: As co-founder, Alexander oversees product development and operations. He drives the roadmap and ensures hardware, software, and logistics work seamlessly together.
+photo: /images/team/alexander.png
 order: 1
 ---

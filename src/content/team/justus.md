@@ -1,14 +1,13 @@
 ---
 name:
-  de: Justus Männinghoff
-  en: Justus Männinghoff
+  de: Justus
+  en: Justus
 title:
-  de: Customer Advisor
-  en: Customer Advisor
+  de: Sales Manager
+  en: Sales Manager
 bio:
-  de: Justus ist der direkte Ansprechpartner für Kundenanfragen. Er begleitet Transporteure vom ersten Gespräch bis zur erfolgreichen Inbetriebnahme.
-  en: Justus is the direct contact for customer enquiries. He guides transport operators from the first conversation through to successful commissioning.
-photo: ~/assets/images/team/justus.jpg
+  de: Justus verantwortet den Vertrieb und baut neue Kundenbeziehungen in der Logistikbranche auf — vom Erstkontakt bis zum Vertragsabschluss.
+  en: Justus drives sales and builds new customer relationships in the logistics industry — from first contact through to contract signing.
 email: justus@konvoi.eu
 phone: "+49 157 51959636"
 order: 9

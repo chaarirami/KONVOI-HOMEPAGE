@@ -1,13 +1,13 @@
 ---
 name:
-  de: Jonas Weber
-  en: Jonas Weber
+  de: Jonas
+  en: Jonas
 title:
-  de: Hardware Engineering
-  en: Hardware Engineering
+  de: Project-Manager Customer Success
+  en: Project Manager Customer Success
 bio:
-  de: Jonas entwickelt und optimiert die physischen Sensor-Einheiten, die an Anhängern montiert werden. Sein Fokus liegt auf Robustheit unter realen Betriebsbedingungen.
-  en: Jonas develops and optimises the physical sensor units mounted on trailers. His focus is on reliability under real-world operating conditions.
-photo: ~/assets/images/team/jonas.jpg
+  de: Jonas betreut Kunden vom Onboarding bis zum laufenden Betrieb und sorgt als Projektmanager dafür, dass Installationen und Rollouts reibungslos verlaufen.
+  en: Jonas supports customers from onboarding through ongoing operations and ensures smooth installations and rollouts as project manager.
+photo: /images/team/jonas.png
 order: 6
 ---

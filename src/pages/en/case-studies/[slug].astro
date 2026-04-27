@@ -18,7 +18,7 @@ interface Props {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { title, customer, vertical, problem, approach, outcome, quote, quoteAttribution, logo } = entry.data;
+const { title, customer, vertical, problem, approach, outcome, quote, quoteAttribution, logo, coverImage } = entry.data;
 
 const metadata = {
   title: `${customer} — Case Study | KONVOI`,

@@ -1,13 +1,13 @@
 ---
 name:
-  de: Trinh Nguyen
-  en: Trinh Nguyen
+  de: Trinh
+  en: Trinh
 title:
-  de: Operations & Customer Success
-  en: Operations & Customer Success
+  de: Embedded Software Engineer
+  en: Embedded Software Engineer
 bio:
-  de: Trinh koordiniert Installationsprojekte und betreut Kunden vom Onboarding bis zum laufenden Betrieb.
-  en: Trinh coordinates installation projects and supports customers from onboarding through ongoing operations.
-photo: ~/assets/images/team/trinh.jpg
+  de: Trinh programmiert die Firmware der KONVOI-Sensoreinheiten und stellt sicher, dass Datenübertragung und Batterielaufzeit unter allen Bedingungen zuverlässig funktionieren.
+  en: Trinh develops the firmware for KONVOI sensor units, ensuring reliable data transmission and battery performance under all conditions.
+photo: /images/team/trinh.png
 order: 4
 ---

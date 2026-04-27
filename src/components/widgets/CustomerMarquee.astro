@@ -1,0 +1,155 @@
+---
+import { Image } from 'astro:assets';
+import Headline from '~/components/ui/Headline.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import { customers } from '~/data/customers';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  id?: string;
+  isDark?: boolean;
+  classes?: Record<string, string>;
+}
+
+const {
+  title = '',
+  subtitle = '',
+  tagline = '',
+  id,
+  isDark = false,
+  classes = {},
+} = Astro.props;
+
+const row1 = customers.slice(0, 8);
+const row2 = customers.slice(8);
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mx-auto ${classes?.container ?? ''}`}>
+  <Headline title={title} subtitle={subtitle} tagline={tagline} />
+
+  <div class="flex flex-col gap-6">
+    <!-- Row 1: right-to-left -->
+    <div class="marquee-container">
+      <div class="marquee-track">
+        {[...row1, ...row1].map((customer, i) => (
+          <a
+            href={customer.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="marquee-cell"
+            aria-hidden={i >= row1.length ? "true" : undefined}
+            tabindex={i >= row1.length ? -1 : undefined}
+          >
+            <Image
+              src={customer.logo}
+              alt={i < row1.length ? customer.name : ''}
+              widths={[250, 400]}
+              sizes="200px"
+              class="marquee-img"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Row 2: left-to-right -->
+    <div class="marquee-container">
+      <div class="marquee-track marquee-reverse">
+        {[...row2, ...row2].map((customer, i) => (
+          <a
+            href={customer.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="marquee-cell"
+            aria-hidden={i >= row2.length ? "true" : undefined}
+            tabindex={i >= row2.length ? -1 : undefined}
+          >
+            <Image
+              src={customer.logo}
+              alt={i < row2.length ? customer.name : ''}
+              widths={[250, 400]}
+              sizes="200px"
+              class="marquee-img"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</WidgetWrapper>
+
+<style>
+  .marquee-container {
+    overflow: hidden;
+    position: relative;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+
+  .marquee-track {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    width: max-content;
+    animation: marquee-rtl 35s linear infinite;
+  }
+
+  .marquee-reverse {
+    animation-name: marquee-ltr;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  .marquee-cell {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 100px;
+  }
+
+  .marquee-img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  @keyframes marquee-rtl {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes marquee-ltr {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: auto;
+      gap: 2rem;
+    }
+  }
+</style>

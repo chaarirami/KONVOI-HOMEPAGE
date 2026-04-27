@@ -14,7 +14,7 @@ const metadata = {
 
 <Layout metadata={metadata}>
   <section class="mx-auto max-w-6xl px-4 py-16 sm:py-24">
-    <div class="mb-12 text-center">
+    <div class="intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade mb-12 text-center">
       <p class="mb-2 text-sm font-medium uppercase tracking-widest text-[hsl(214.48_38.33%_55.49%)]">
         Das Team
       </p>
@@ -24,6 +24,52 @@ const metadata = {
       </p>
     </div>
     <TeamGrid members={members} locale="de" />
+  </section>
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:py-24" id="karriere">
+    <div class="intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade mb-12 text-center">
+      <p class="mb-2 text-sm font-medium uppercase tracking-widest text-[hsl(214.48_38.33%_55.49%)]">
+        Karriere
+      </p>
+      <h2 class="text-3xl font-bold font-heading text-slate-900 dark:text-white">Offene Stellen</h2>
+      <p class="mt-4 text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+        Werde Teil unseres Teams und gestalte die Zukunft der Ladungssicherheit mit.
+      </p>
+    </div>
+    <ul class="mx-auto max-w-3xl space-y-4">
+      {[
+        { title: "Founder's Associate Student (w/m/x)", pdf: '/jobs/founders-associate.pdf' },
+        { title: 'B2B Sales Account Executive Fulltime (w/m/x)', pdf: '/jobs/b2b-sales-ae.pdf' },
+        { title: 'Full-Stack Engineer Internship (f/m/x)', pdf: '/jobs/fullstack-eng-internship.pdf' },
+        { title: 'IoT / Embedded Engineer Internship (f/m/x)', pdf: '/jobs/iot-embedded-internship.pdf' },
+        { title: 'Embedded Systems Internship (f/m/x)', pdf: '/jobs/embedded-systems-internship.pdf' },
+        { title: 'Data Scientist Internship (f/m/x)', pdf: '/jobs/data-scientist-internship.pdf' },
+        { title: 'Data Scientist Fulltime (f/m/x)', pdf: '/jobs/data-scientist-ft.pdf' },
+        { title: 'Initiativbewerbung (f/m/x)', pdf: '/jobs/initiative-application.pdf' },
+      ].map((job) => (
+        <li class="intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm transition-all duration-300 hover:shadow-md hover:scale-[1.02]">
+          <div class="flex flex-wrap items-start justify-between gap-4">
+            <h3 class="flex-1 min-w-0 text-xl font-semibold font-heading text-slate-900 dark:text-white">
+              {job.title}
+            </h3>
+            <div class="flex shrink-0 gap-2">
+              <a
+                href={job.pdf}
+                download
+                class="inline-flex min-h-[44px] items-center rounded-lg border border-[hsl(214.48_38.33%_55.49%)] px-5 py-2.5 text-sm font-semibold text-[hsl(214.48_38.33%_55.49%)] transition-colors hover:bg-[hsl(214.48_38.33%_55.49%)] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[hsl(214.48_38.33%_55.49%)]"
+              >
+                PDF
+              </a>
+              <a
+                href={`mailto:applications@konvoi.eu?subject=${encodeURIComponent(job.title + ' - Bewerbung')}`}
+                class="inline-flex min-h-[44px] items-center rounded-lg bg-[hsl(214.48_38.33%_55.49%)] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[hsl(214.48_38.33%_45%)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[hsl(214.48_38.33%_55.49%)]"
+              >
+                Bewerben
+              </a>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
   </section>
   <CallToAction
     title="Lernen Sie uns kennen"

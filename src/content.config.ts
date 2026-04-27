@@ -98,6 +98,7 @@ const caseStudyCollection = defineCollection({
     quote: z.string().optional(),
     quoteAttribution: z.string().optional(),
     logo: z.string().optional(),
+    coverImage: z.string().optional(),
     publishDate: z.date().optional(),
 
     metadata: metadataDefinition(),
@@ -219,7 +220,7 @@ const teamCollection = defineCollection({
       en: z.string(),
     }),
     // Shared singular fields
-    photo: z.string(),
+    photo: z.string().optional(),
     email: z.string().optional(),
     phone: z.string().optional(),
     order: z.number().optional(),

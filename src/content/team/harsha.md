@@ -1,13 +1,13 @@
 ---
 name:
-  de: Harsha Vardhan
-  en: Harsha Vardhan
+  de: Harsha
+  en: Harsha
 title:
-  de: Data Science & KI
-  en: Data Science & AI
+  de: Data Scientist
+  en: Data Scientist
 bio:
-  de: Harsha verantwortet die KI-Modelle, die Sensordaten in Echtzeit klassifizieren und Bedrohungsmuster von Fehlalarmen unterscheiden.
-  en: Harsha is responsible for the AI models that classify sensor data in real time and distinguish threat patterns from false alarms.
-photo: ~/assets/images/team/harsha.jpg
+  de: Harsha entwickelt und trainiert die Machine-Learning-Modelle, die Sensordaten in Echtzeit klassifizieren und Bedrohungsmuster von Fehlalarmen unterscheiden.
+  en: Harsha develops and trains the machine-learning models that classify sensor data in real time and distinguish threat patterns from false alarms.
+photo: /images/team/harsha.png
 order: 5
 ---

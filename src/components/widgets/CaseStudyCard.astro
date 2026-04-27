@@ -1,51 +1,60 @@
 ---
-// src/components/widgets/CaseStudyCard.astro
-// D-01: card-based case study index item
-// Visual: secondary bg, logo top, customer name, vertical badge, outcome snippet, hover shadow
-
 interface Props {
   canonicalKey: string;
   customer: string;
   vertical: string;
   outcome: string;
   logo?: string;
+  coverImage?: string;
   locale: 'de' | 'en';
 }
 
-const { canonicalKey, customer, vertical, outcome, logo, locale } = Astro.props;
+const { canonicalKey, customer, vertical, outcome, logo, coverImage, locale } = Astro.props;
 const href = locale === 'de' ? `/fallstudien/${canonicalKey}/` : `/en/case-studies/${canonicalKey}/`;
 const ctaText = locale === 'de' ? 'Fallstudie lesen' : 'Read case study';
 ---
 
 <a
   href={href}
-  class="group block rounded-xl border border-slate-200 dark:border-slate-700 bg-[hsl(217_60%_93%)] dark:bg-slate-800 p-6 shadow-sm transition-shadow hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[hsl(217.14_42%_80.39%)]"
+  class="group block rounded-xl border border-slate-200 dark:border-slate-700 bg-[hsl(217_60%_93%)] dark:bg-slate-800 overflow-hidden shadow-sm transition-shadow hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[hsl(217.14_42%_80.39%)]"
 >
-  {logo && (
+  {coverImage && (
     <img
-      src={logo}
-      alt={`${customer} logo`}
-      class="mb-4 h-10 w-auto object-contain"
+      src={coverImage}
+      alt={`${customer} — KONVOI`}
+      class="w-full h-48 object-cover"
       loading="lazy"
-      width="120"
-      height="40"
+      width="400"
+      height="192"
     />
   )}
-  {!logo && (
-    <div class="mb-4 flex h-10 w-24 items-center justify-center rounded bg-slate-200 dark:bg-slate-700 text-xs font-semibold text-slate-500 uppercase tracking-wide">
-      {customer.slice(0, 4)}
-    </div>
-  )}
-  <span class="mb-2 inline-block rounded px-2 py-0.5 text-xs font-medium bg-[hsl(217.14_42%_80.39%)] text-slate-900">
-    {vertical}
-  </span>
-  <h3 class="mb-2 text-xl font-semibold leading-snug font-heading text-slate-900 dark:text-white group-hover:underline">
-    {customer}
-  </h3>
-  <p class="line-clamp-3 text-sm text-slate-600 dark:text-slate-400 font-body leading-relaxed">
-    {outcome}
-  </p>
-  <span class="mt-4 inline-block text-sm font-medium text-[hsl(214.48_38.33%_55.49%)] group-hover:underline">
-    {ctaText} →
-  </span>
+  <div class="p-6">
+    {logo && (
+      <img
+        src={logo}
+        alt={`${customer} logo`}
+        class="mb-4 h-10 w-auto object-contain"
+        loading="lazy"
+        width="120"
+        height="40"
+      />
+    )}
+    {!logo && (
+      <div class="mb-4 flex h-10 w-24 items-center justify-center rounded bg-slate-200 dark:bg-slate-700 text-xs font-semibold text-slate-500 uppercase tracking-wide">
+        {customer.slice(0, 4)}
+      </div>
+    )}
+    <span class="mb-2 inline-block rounded px-2 py-0.5 text-xs font-medium bg-[hsl(217.14_42%_80.39%)] text-slate-900">
+      {vertical}
+    </span>
+    <h3 class="mb-2 text-xl font-semibold leading-snug font-heading text-slate-900 dark:text-white group-hover:underline">
+      {customer}
+    </h3>
+    <p class="line-clamp-3 text-sm text-slate-600 dark:text-slate-400 font-body leading-relaxed">
+      {outcome}
+    </p>
+    <span class="mt-4 inline-block text-sm font-medium text-[hsl(214.48_38.33%_55.49%)] group-hover:underline">
+      {ctaText} →
+    </span>
+  </div>
 </a>
