@@ -168,6 +168,7 @@ const jobCollection = defineCollection({
     applyEmail: z.string().optional(),
     publishDate: z.date().optional(),
     active: z.boolean().default(true),
+    pdfFile: z.string().optional(),
 
     metadata: metadataDefinition(),
   }),

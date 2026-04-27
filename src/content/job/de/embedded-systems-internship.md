@@ -8,6 +8,7 @@ type: internship
 applyEmail: applications@konvoi.eu
 publishDate: 2025-01-01
 active: true
+pdfFile: /jobs/embedded-systems-internship.pdf
 ---
 
 Du entwickelst und testest Embedded-Software fur unsere Sensor-Hardware unter realen Betriebsbedingungen. Fokus liegt auf Zuverlassigkeit und Stromverbrauchsoptimierung.

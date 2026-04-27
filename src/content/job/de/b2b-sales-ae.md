@@ -8,6 +8,7 @@ type: fulltime
 applyEmail: applications@konvoi.eu
 publishDate: 2025-01-01
 active: true
+pdfFile: /jobs/b2b-sales-ae.pdf
 ---
 
 Du verantwortest den gesamten Verkaufszyklus fur KONVOI-Sicherheitssysteme im deutschen und europaischen Markt: von der Qualifizierung bis zum Vertragsabschluss.

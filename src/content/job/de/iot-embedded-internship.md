@@ -8,6 +8,7 @@ type: internship
 applyEmail: applications@konvoi.eu
 publishDate: 2025-01-01
 active: true
+pdfFile: /jobs/iot-embedded-internship.pdf
 ---
 
 Du arbeitest an der Firmware und den IoT-Schnittstellen der KONVOI-Sensor-Einheiten. Datenubertragung, Energiemanagement und Feldtests gehoeren zum Alltag.

@@ -8,6 +8,7 @@ type: internship
 applyEmail: applications@konvoi.eu
 publishDate: 2025-01-01
 active: true
+pdfFile: /jobs/fullstack-eng-internship.pdf
 ---
 
 Du entwickelst gemeinsam mit unserem Engineering-Team Web-Anwendungen und APIs fur die KONVOI-Plattform. TypeScript, React/Astro, Node.js und Cloud-Infrastruktur stehen im Mittelpunkt.

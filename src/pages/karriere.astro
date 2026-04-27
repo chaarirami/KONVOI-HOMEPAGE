@@ -22,7 +22,7 @@ const typeLabelDe: Record<string, string> = {
 
 const metadata = {
   title: 'Karriere bei KONVOI — Offene Stellen',
-  description: 'Werden Sie Teil des KONVOI-Teams. Offene Stellen in Engineering, Data Science, Vertrieb und Operations.',
+  description: 'Werde Teil des KONVOI-Teams. Offene Stellen in Engineering, Data Science, Vertrieb und Operations.',
 };
 ---
 
@@ -34,13 +34,13 @@ const metadata = {
       </p>
       <h1 class="text-4xl font-bold font-heading text-slate-900 dark:text-white">Karriere</h1>
       <p class="mt-4 text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-        Wir bauen das fuhrende Praventionssystem fur Flottensicherheit in Europa. Werden Sie Teil des Teams.
+        Wir bauen das fuhrende Praventionssystem fur Flottensicherheit in Europa. Werde Teil des Teams.
       </p>
     </div>
 
     {sorted.length === 0 && (
       <p class="text-center text-slate-500 dark:text-slate-400 py-16">
-        Derzeit keine offenen Stellen — schauen Sie bald wieder vorbei oder senden Sie eine Initiativbewerbung.
+        Derzeit keine offenen Stellen — schau bald wieder vorbei oder sende eine Initiativbewerbung.
       </p>
     )}
 
@@ -71,13 +71,24 @@ const metadata = {
                   )}
                 </div>
               </div>
-              {/* CAREER-02 — Apply button: mailto with prefilled subject */}
-              <a
-                href={mailtoHref}
-                class="inline-flex min-h-[44px] shrink-0 items-center rounded-lg bg-[hsl(214.48_38.33%_55.49%)] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[hsl(214.48_38.33%_45%)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[hsl(214.48_38.33%_55.49%)]"
-              >
-                Bewerben
-              </a>
+              <div class="flex shrink-0 gap-2">
+                {job.data.pdfFile && (
+                  <a
+                    href={job.data.pdfFile}
+                    download
+                    class="inline-flex min-h-[44px] items-center rounded-lg border border-[hsl(214.48_38.33%_55.49%)] px-5 py-2.5 text-sm font-semibold text-[hsl(214.48_38.33%_55.49%)] transition-colors hover:bg-[hsl(214.48_38.33%_55.49%)] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[hsl(214.48_38.33%_55.49%)]"
+                  >
+                    PDF
+                  </a>
+                )}
+                {/* CAREER-02 — Apply button: mailto with prefilled subject */}
+                <a
+                  href={mailtoHref}
+                  class="inline-flex min-h-[44px] items-center rounded-lg bg-[hsl(214.48_38.33%_55.49%)] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[hsl(214.48_38.33%_45%)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[hsl(214.48_38.33%_55.49%)]"
+                >
+                  Bewerben
+                </a>
+              </div>
             </div>
           </li>
         );

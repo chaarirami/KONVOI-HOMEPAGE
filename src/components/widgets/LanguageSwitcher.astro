@@ -1,38 +1,39 @@
 ---
-// Language switcher shell — visual only, non-functional.
-// i18n routing and active-state logic will be wired in Phase 3 (I18N-04).
-// Current page language is always DE until Phase 3 activates routing.
-const currentLang: string = 'de';
+import { trimSlash } from '~/utils/permalinks';
+import { getLocalePath } from '~/i18n/routeMap';
+
+const path = `/${trimSlash(new URL(Astro.url).pathname)}`;
+const isEnglish = path.startsWith('/en');
+const currentLang: string = isEnglish ? 'en' : 'de';
+
+const dePath = getLocalePath(path, 'de') ?? '/';
+const enPath = getLocalePath(path, 'en') ?? '/en';
 ---
 
-<div class="flex items-center gap-1 ml-2 text-sm font-medium" aria-label="Language switcher (coming soon)">
-  <button
-    type="button"
+<div class="flex items-center gap-1 ml-2 text-sm font-medium" aria-label="Language switcher">
+  <a
+    href={dePath}
     class:list={[
-      'px-2 py-1 rounded transition-colors',
+      'px-2 py-1 rounded transition-colors cursor-pointer',
       currentLang === 'de'
         ? 'text-default font-semibold underline underline-offset-2'
         : 'text-muted hover:text-default',
     ]}
-    aria-current={currentLang === 'de' ? 'true' : undefined}
-    disabled
-    title="Deutsch (aktiv)"
+    aria-current={currentLang === 'de' ? 'page' : undefined}
   >
     DE
-  </button>
+  </a>
   <span class="text-muted" aria-hidden="true">|</span>
-  <button
-    type="button"
+  <a
+    href={enPath}
     class:list={[
-      'px-2 py-1 rounded transition-colors',
+      'px-2 py-1 rounded transition-colors cursor-pointer',
       currentLang === 'en'
         ? 'text-default font-semibold underline underline-offset-2'
         : 'text-muted hover:text-default',
     ]}
-    aria-current={currentLang === 'en' ? 'true' : undefined}
-    disabled
-    title="English (coming soon)"
+    aria-current={currentLang === 'en' ? 'page' : undefined}
   >
     EN
-  </button>
+  </a>
 </div>

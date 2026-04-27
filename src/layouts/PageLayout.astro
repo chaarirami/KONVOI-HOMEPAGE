@@ -3,7 +3,8 @@ import Layout from '~/layouts/Layout.astro';
 import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
 
-import { headerData, footerData } from '~/navigation';
+import { headerDataDe, headerDataEn, footerData } from '~/navigation';
+import { trimSlash } from '~/utils/permalinks';
 
 import type { MetaData } from '~/types';
 
@@ -12,6 +13,8 @@ export interface Props {
 }
 
 const { metadata } = Astro.props;
+const isEnglish = `/${trimSlash(new URL(Astro.url).pathname)}`.startsWith('/en');
+const headerData = isEnglish ? headerDataEn : headerDataDe;
 ---
 
 <Layout metadata={metadata}>

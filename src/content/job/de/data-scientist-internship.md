@@ -8,6 +8,7 @@ type: internship
 applyEmail: applications@konvoi.eu
 publishDate: 2025-01-01
 active: true
+pdfFile: /jobs/data-scientist-internship.pdf
 ---
 
 Du analysierst Sensordaten aus dem Einsatz und entwickelst ML-Modelle fur die Anomalieerkennung. Python, scikit-learn und Zeitreihendaten stehen im Mittelpunkt.

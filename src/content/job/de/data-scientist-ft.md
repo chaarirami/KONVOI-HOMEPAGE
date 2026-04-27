@@ -8,6 +8,7 @@ type: fulltime
 applyEmail: applications@konvoi.eu
 publishDate: 2025-01-01
 active: true
+pdfFile: /jobs/data-scientist-ft.pdf
 ---
 
 Du entwickelst und verbessert kontinuierlich die KI-Modelle, die das Herzstuck von KONVOI bilden: Echtzeit-Klassifizierung von Sensor-Anomalien mit minimaler Fehlalarmrate.
