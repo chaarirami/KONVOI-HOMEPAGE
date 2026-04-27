@@ -26,5 +26,7 @@ pnpm-debug.log*
 .omc/
 
 # Crawled site snapshots (working files for planning)
-_crawl/.mcp.json
 _crawl/
+
+# MCP config (contains secrets)
+.mcp.json
