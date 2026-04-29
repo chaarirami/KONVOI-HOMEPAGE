@@ -17,15 +17,15 @@ legal:
 
 contacts:
   customer_advisor:
-    name: Justus Männinghoff
+    name: Justus Münnighoff
     role_de: Kundenberatung
     role_en: Customer Advisor
-    email: justus@konvoi.eu
+    email: justus.muennighoff@konvoi.eu
   marketing:
     name: Heinz Luckhardt
     role_de: "Investoren, Marketing & Bewerber"
     role_en: "Investors, Marketing & Applicants"
-    email: heinz@konvoi.eu
+    email: heinz.luckhardt@konvoi.eu
   general:
     email: info@konvoi.eu
   applications:
