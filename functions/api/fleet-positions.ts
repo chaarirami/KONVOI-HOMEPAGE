@@ -1,14 +1,12 @@
-interface Env {
-  CLICKHOUSE_URL: string;
-  CLICKHOUSE_USER: string;
-  CLICKHOUSE_PASSWORD: string;
-  CLICKHOUSE_DATABASE: string;
-}
+interface Env {}
 
 interface Position {
   lat: number;
   lng: number;
 }
+
+const SUPABASE_URL = 'https://riwxdhytoaglntyjpaww.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJpd3hkaHl0b2FnbG50eWpwYXd3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk5NTM4NDEsImV4cCI6MjA1NTUyOTg0MX0.6bPU5M0D-fEDAwHnrHa38fjONhrr4tSisBR4EWuZu_Q';
 
 const ALLOWED_ORIGINS = [
   'https://konvoi.eu',
@@ -32,7 +30,6 @@ function corsHeaders(origin: string | null): Record<string, string> {
   };
 }
 
-// Deterministic jitter seeded by day + grid cell — shifts points ±0.05° (~5km)
 function jitter(lat: number, lng: number): [number, number] {
   const daySeed = Math.floor(Date.now() / 86_400_000);
   const cellSeed = Math.round(lat * 10) * 10000 + Math.round(lng * 10);
@@ -57,84 +54,38 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
   const cached = await cache.match(cacheKey);
   if (cached) return cached;
 
-  const { CLICKHOUSE_URL, CLICKHOUSE_USER, CLICKHOUSE_PASSWORD, CLICKHOUSE_DATABASE } = context.env;
-  if (!CLICKHOUSE_URL || !CLICKHOUSE_USER || !CLICKHOUSE_PASSWORD) {
-    return new Response(JSON.stringify({ positions: [], count: 0, error: 'not configured' }), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json', ...corsHeaders(origin) },
-    });
-  }
-
-  const query = `
-    SELECT
-      round(latitude, 2) AS lat,
-      round(longitude, 2) AS lng
-    FROM (
-      SELECT
-        client_id,
-        latitude,
-        longitude,
-        ROW_NUMBER() OVER (
-          PARTITION BY client_id, toStartOfHour(timestamp)
-          ORDER BY timestamp DESC
-        ) AS rn
-      FROM gps
-      WHERE timestamp > now() - INTERVAL 24 HOUR
-        AND latitude != 0
-        AND longitude != 0
-        AND latitude BETWEEN -90 AND 90
-        AND longitude BETWEEN -180 AND 180
-    )
-    WHERE rn = 1
-    LIMIT 1000
-    FORMAT JSONEachRow
-  `;
-
   try {
-    const url = new URL(CLICKHOUSE_URL);
-    url.searchParams.set('database', CLICKHOUSE_DATABASE || 'default');
-    url.searchParams.set('query', query);
-
-    const chResponse = await fetch(url.toString(), {
-      method: 'GET',
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/get_globe_positions`, {
+      method: 'POST',
       headers: {
-        'X-ClickHouse-User': CLICKHOUSE_USER,
-        'X-ClickHouse-Key': CLICKHOUSE_PASSWORD,
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'Content-Type': 'application/json',
       },
+      body: '{}',
     });
 
-    if (!chResponse.ok) {
-      console.error('ClickHouse error:', await chResponse.text());
+    if (!res.ok) {
+      console.error('Supabase error:', await res.text());
       return new Response(JSON.stringify({ positions: [], count: 0 }), {
         status: 200,
         headers: { 'Content-Type': 'application/json', ...corsHeaders(origin) },
       });
     }
 
-    const text = await chResponse.text();
-    const rows = text
-      .trim()
-      .split('\n')
-      .filter(Boolean)
-      .map((line) => JSON.parse(line) as { lat: number; lng: number });
+    const rows = await res.json() as { lat: number; lng: number }[];
 
-    // Deduplicate grid cells and apply jitter
-    const seen = new Set<string>();
-    const positions: Position[] = [];
-    for (const row of rows) {
-      const key = `${row.lat},${row.lng}`;
-      if (seen.has(key)) continue;
-      seen.add(key);
+    const positions: Position[] = rows.map((row) => {
       const [jLat, jLng] = jitter(row.lat, row.lng);
-      positions.push({ lat: Math.round(jLat * 100) / 100, lng: Math.round(jLng * 100) / 100 });
-    }
+      return { lat: Math.round(jLat * 100) / 100, lng: Math.round(jLng * 100) / 100 };
+    });
 
     const body = JSON.stringify({ positions, count: positions.length });
     const response = new Response(body, {
       status: 200,
       headers: {
         'Content-Type': 'application/json',
-        'Cache-Control': 'public, s-maxage=60, max-age=60',
+        'Cache-Control': 'public, s-maxage=3600, max-age=3600',
         ...corsHeaders(origin),
       },
     });
