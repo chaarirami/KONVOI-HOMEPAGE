@@ -18,7 +18,7 @@ const buildConsultSchema = () =>
     email:         z.string().min(1, 'form.error_required').email('form.error_email'),
     phone:         z.string().optional(),
     company:       z.string().min(1, 'form.error_required'),
-    fleet_size:    z.coerce.number().min(1, 'form.error_fleet_min'),
+    fleet_size:    z.union([z.literal(''), z.coerce.number().min(1, 'form.error_fleet_min')]).optional(),
     message:       z.string().optional(),
     dsgvo_consent: z.boolean().refine((v) => v === true, { message: 'form.error_dsgvo' }),
   });
@@ -111,7 +111,7 @@ export default function ConsultForm({ locale }: ConsultFormProps) {
     formData.append('email', fields.email);
     formData.append('phone', fields.phone || '');
     formData.append('company', fields.company);
-    formData.append('fleet_size', String(fields.fleet_size));
+    if (fields.fleet_size) formData.append('fleet_size', String(fields.fleet_size));
     formData.append('message', fields.message || '');
     formData.append('botcheck', '');
 
@@ -219,10 +219,11 @@ export default function ConsultForm({ locale }: ConsultFormProps) {
         )}
       </div>
 
-      {/* Fleet size */}
+      {/* Fleet size (optional) */}
       <div class="space-y-1">
         <label for="fleet_size" class="block text-sm font-medium">
-          {t('form.fleet_label', locale)}
+          {t('form.fleet_label', locale)}{' '}
+          <span class="text-slate-400 font-normal text-xs">(optional)</span>
         </label>
         <div class="flex items-center gap-2">
           <input
@@ -236,7 +237,6 @@ export default function ConsultForm({ locale }: ConsultFormProps) {
             class={`w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary ${
               errors.fleet_size ? 'border-red-500' : 'border-slate-300 dark:border-slate-600'
             } dark:bg-slate-800 dark:text-slate-100`}
-            required
           />
           <span class="text-sm text-slate-500 dark:text-slate-400 whitespace-nowrap">
             {t('form.fleet_unit', locale)}
