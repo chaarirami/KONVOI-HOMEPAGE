@@ -82,8 +82,8 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
         AND latitude BETWEEN -90 AND 90
         AND longitude BETWEEN -180 AND 180
     )
-    WHERE rn = 1
-    LIMIT 200
+    WHERE rn <= 5
+    LIMIT 500
     FORMAT JSONEachRow
   `;
 
