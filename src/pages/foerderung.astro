@@ -1,7 +1,7 @@
 ---
 import PageLayout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
+import ConsultCTA from '~/components/widgets/ConsultCTA.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import FundingQualifierForm from '~/components/islands/FundingQualifierForm';
 import { t } from '~/i18n/translations';
@@ -103,9 +103,5 @@ const metadata = {
     </div>
   </WidgetWrapper>
 
-  <CallToAction
-    title="Jetzt Förderung sichern"
-    tagline="Die Antragsphase 2026 endet am 31. August. Stellen Sie jetzt Ihre Anfrage."
-    actions={[{ text: 'Förderung anfragen', href: '#foerderung-formular', variant: 'primary' }]}
-  />
+  <ConsultCTA locale="de" />
 </PageLayout>

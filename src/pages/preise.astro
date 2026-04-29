@@ -1,12 +1,11 @@
 ---
 import PageLayout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import ConsultCTA from '~/components/widgets/ConsultCTA.astro';
 import { t } from '~/i18n/translations';
 import PricingCalculator from '~/components/islands/PricingCalculator';
 import RoiCalculator from '~/components/islands/RoiCalculator';
-import ConsultForm from '~/components/islands/ConsultForm';
 
 const locale = 'de' as const;
 
@@ -51,15 +50,6 @@ const metadata = {
     </div>
   </WidgetWrapper>
 
-  <!-- ConsultForm island -->
-  <WidgetWrapper id="consult-form">
-    <div class="mx-auto max-w-xl">
-      <h2 class="text-2xl font-bold font-heading mb-2 text-center">Beratung anfragen</h2>
-      <p class="text-center text-slate-600 dark:text-slate-300 mb-6">Unser Team meldet sich innerhalb von 24 Stunden.</p>
-      <ConsultForm client:load locale={locale} />
-    </div>
-  </WidgetWrapper>
-
   <!-- Trust section (D-05): Schumacher testimonial quote -->
   <WidgetWrapper>
     <div class="mx-auto max-w-2xl text-center">
@@ -70,9 +60,5 @@ const metadata = {
     </div>
   </WidgetWrapper>
 
-  <CallToAction
-    title="Beratung anfragen"
-    subtitle="Erfahren Sie in 20 Minuten, wie KONVOI für Ihre Flotte funktioniert."
-    actions={[{ variant: 'primary', text: 'Jetzt anfragen', href: '#consult-form' }]}
-  />
+  <ConsultCTA locale={locale} id="consult-form" />
 </PageLayout>

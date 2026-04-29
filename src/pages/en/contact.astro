@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '~/layouts/PageLayout.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
+import ConsultCTA from '~/components/widgets/ConsultCTA.astro';
 
 // Build-time event filtering (CONT-03, D-16)
 const allEvents = await getCollection('event');
@@ -167,14 +167,7 @@ const mapsEmbedUrl =
     </div>
   </section>
 
-  <!-- CONT-04 D-17: Consult CTA at end of page -->
-  <CallToAction
-    title="Ready to talk?"
-    subtitle="Book a no-obligation consultation with Justus or Heinz."
-    actions={[
-      { variant: 'primary', text: 'Book a consult', href: 'mailto:info@konvoi.eu?subject=Consultation+Request' },
-    ]}
-  />
+  <ConsultCTA locale="en" />
 </Layout>
 
 <!-- Click-to-load Maps script (is:inline — no hydration needed) -->

@@ -3,7 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import HeroVideo from '~/components/widgets/HeroVideo.astro';
 import Features from '~/components/widgets/Features.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
+import ConsultCTA from '~/components/widgets/ConsultCTA.astro';
 import CustomerMarquee from '~/components/widgets/CustomerMarquee.astro';
 import LogoGrid from '~/components/widgets/LogoGrid.astro';
 import FleetGlobe from '~/components/widgets/FleetGlobe.astro';
@@ -156,18 +156,5 @@ const metadata = {
 
   <LogoGrid title="Supported by" logos={supporters} />
 
-  <!-- Section 8: End-of-page CTA (HOME-08) -->
-  <CallToAction
-    id="consult"
-    title="Security for your fleet"
-    subtitle="Learn in 20 minutes how KONVOI works for your company. Free initial consultation — no obligation."
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Book a consult',
-        href: 'mailto:info@konvoi.eu?subject=Consultation+Request',
-      },
-      { variant: 'secondary', text: 'View case studies', href: '/en/case-studies' },
-    ]}
-  />
+  <ConsultCTA locale="en" />
 </Layout>

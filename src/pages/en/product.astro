@@ -6,7 +6,7 @@ import Content from '~/components/widgets/Content.astro';
 import SensorDiagram from '~/components/widgets/SensorDiagram.astro';
 import ScrollSteps from '~/components/widgets/ScrollSteps.astro';
 import IncidentVideo from '~/components/widgets/IncidentVideo.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
+import ConsultCTA from '~/components/widgets/ConsultCTA.astro';
 import CustomerMarquee from '~/components/widgets/CustomerMarquee.astro';
 
 const metadata = {
@@ -175,17 +175,5 @@ const metadata = {
     id="install-video"
   />
 
-  <!-- Section 7: End CTA -->
-  <CallToAction
-    id="consult"
-    title="Ready to protect your fleet?"
-    subtitle="Learn in a 20-minute conversation which KONVOI package fits your fleet. Free and non-binding."
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Book a consult',
-        href: 'mailto:info@konvoi.eu?subject=Consultation+Request+KONVOI+System',
-      },
-    ]}
-  />
+  <ConsultCTA locale="en" />
 </Layout>

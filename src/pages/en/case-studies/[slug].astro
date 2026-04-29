@@ -2,7 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import Layout from '~/layouts/PageLayout.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
+import ConsultCTA from '~/components/widgets/ConsultCTA.astro';
 
 export async function getStaticPaths() {
   const entries = await getCollection('caseStudy', (e) => e.data.locale === 'en');
@@ -70,10 +70,5 @@ const metadata = {
     </div>
   </div>
 
-  <!-- End CTA — CASE-04, D-02 -->
-  <CallToAction
-    title="Ready for preventive fleet security?"
-    subtitle="Book a no-obligation consultation — we will show you exactly how KONVOI protects your fleet."
-    actions={[{ variant: 'primary', text: 'Book a consult', href: '/en/contact' }]}
-  />
+  <ConsultCTA locale="en" />
 </Layout>

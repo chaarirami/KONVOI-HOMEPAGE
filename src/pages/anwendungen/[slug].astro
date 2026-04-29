@@ -2,7 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
+import ConsultCTA from '~/components/widgets/ConsultCTA.astro';
 import IncidentVideo from '~/components/widgets/IncidentVideo.astro';
 
 export async function getStaticPaths() {
@@ -112,16 +112,6 @@ const metadata = {
     </section>
   )}
 
-  <!-- End-of-page consult CTA (UC-02, D-11)
-       /fallstudien/ is a valid Phase 6 route (T-04-05-04). -->
-  <CallToAction
-    id="consult"
-    title="Bereit zu handeln?"
-    subtitle="Lassen Sie sich von unserem Team beraten, wie KONVOI Ihre Flotte gegen dieses Risiko schützt. Kostenlos und unverbindlich."
-    actions={[
-      { variant: 'primary', text: 'Beratung anfragen', href: 'mailto:info@konvoi.eu?subject=Beratungsanfrage' },
-      { variant: 'secondary', text: 'Fallstudien ansehen', href: '/fallstudien' },
-    ]}
-  />
+  <ConsultCTA locale="de" />
 
 </Layout>

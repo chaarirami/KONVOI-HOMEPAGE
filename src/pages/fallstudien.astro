@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '~/layouts/PageLayout.astro';
 import CaseStudyCard from '~/components/widgets/CaseStudyCard.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
+import ConsultCTA from '~/components/widgets/ConsultCTA.astro';
 
 const entries = await getCollection('caseStudy', (e) => e.data.locale === 'de');
 const sorted = entries.sort((a, b) =>
@@ -38,9 +38,5 @@ const metadata = {
       ))}
     </div>
   </section>
-  <CallToAction
-    title="Bereit für präventive Sicherheit?"
-    subtitle="Vereinbaren Sie ein unverbindliches Beratungsgespräch — wir zeigen Ihnen, wie KONVOI Ihre Flotte schützt."
-    actions={[{ variant: 'primary', text: 'Beratung anfragen', href: '/kontakt' }]}
-  />
+  <ConsultCTA locale="de" />
 </Layout>

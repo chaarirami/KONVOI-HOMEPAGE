@@ -1,7 +1,7 @@
 ---
 import PageLayout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
+import ConsultCTA from '~/components/widgets/ConsultCTA.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import RoiCalculator from '~/components/islands/RoiCalculator';
 import { t } from '~/i18n/translations';
@@ -28,9 +28,5 @@ const metadata = {
     </div>
   </WidgetWrapper>
 
-  <CallToAction
-    title="Ready to take the next step?"
-    subtitle="Our team will explain how KONVOI protects your fleet in 20 minutes."
-    actions={[{ text: t('cta.book_consult', locale), href: '/en/pricing/#consult-form', variant: 'primary' }]}
-  />
+  <ConsultCTA locale="en" />
 </PageLayout>

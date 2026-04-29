@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '~/layouts/PageLayout.astro';
 import TeamGrid from '~/components/widgets/TeamGrid.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
+import ConsultCTA from '~/components/widgets/ConsultCTA.astro';
 
 const members = await getCollection('team');
 
@@ -25,9 +25,5 @@ const metadata = {
     </div>
     <TeamGrid members={members} locale="en" />
   </section>
-  <CallToAction
-    title="Meet the team"
-    subtitle="Book a consultation and speak directly with the people behind KONVOI."
-    actions={[{ variant: 'primary', text: 'Book a consult', href: '/en/contact' }]}
-  />
+  <ConsultCTA locale="en" />
 </Layout>

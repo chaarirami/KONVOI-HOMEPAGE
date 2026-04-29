@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '~/layouts/PageLayout.astro';
 import TeamGrid from '~/components/widgets/TeamGrid.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
+import ConsultCTA from '~/components/widgets/ConsultCTA.astro';
 
 const members = await getCollection('team');
 
@@ -71,9 +71,5 @@ const metadata = {
       ))}
     </ul>
   </section>
-  <CallToAction
-    title="Lernen Sie uns kennen"
-    subtitle="Vereinbaren Sie ein Beratungsgespräch und sprechen Sie direkt mit unserem Team."
-    actions={[{ variant: 'primary', text: 'Beratung anfragen', href: '/kontakt' }]}
-  />
+  <ConsultCTA locale="de" />
 </Layout>
