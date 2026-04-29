@@ -74,7 +74,10 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
         client_id,
         latitude,
         longitude,
-        ROW_NUMBER() OVER (PARTITION BY client_id ORDER BY timestamp DESC) AS rn
+        ROW_NUMBER() OVER (
+          PARTITION BY client_id, toStartOfHour(timestamp)
+          ORDER BY timestamp DESC
+        ) AS rn
       FROM gps
       WHERE timestamp > now() - INTERVAL 24 HOUR
         AND latitude != 0
@@ -82,8 +85,8 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
         AND latitude BETWEEN -90 AND 90
         AND longitude BETWEEN -180 AND 180
     )
-    WHERE rn <= 5
-    LIMIT 500
+    WHERE rn = 1
+    LIMIT 1000
     FORMAT JSONEachRow
   `;
 
