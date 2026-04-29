@@ -50,8 +50,9 @@ function resolvePhoto(filename?: string): ImageMetadata | undefined {
             <Image
               src={photo}
               alt={name}
-              width={160}
-              height={160}
+              width={320}
+              height={320}
+              quality={85}
               loading="lazy"
               class="h-full w-full object-cover"
             />

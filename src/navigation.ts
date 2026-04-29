@@ -91,7 +91,7 @@ export const footerData = {
     { text: 'Aktuelles',  href: '/aktuelles' },
   ],
   socialLinks: [
-    { ariaLabel: 'LinkedIn', icon: 'tabler:brand-linkedin', href: 'https://www.linkedin.com/company/konvoi-gmbh' },
+    { ariaLabel: 'LinkedIn', icon: 'tabler:brand-linkedin', href: 'https://www.linkedin.com/company/konvoi-eu' },
   ],
   footNote: `© KONVOI GmbH · Alle Rechte vorbehalten.`,
 };
