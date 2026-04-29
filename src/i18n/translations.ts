@@ -99,7 +99,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'pricing.per_system_month':       'pro System / Monat',
     'pricing.per_system_year':        'pro System / Jahr',
     'pricing.fleet_total':            'Flottenkosten gesamt',
-    'pricing.net_disclaimer':         'Alle Preise netto zzgl. Montagekosten.',
+    'pricing.net_disclaimer':         'Alle Preise netto zzgl. Montagekosten. Immer als Full-Service-Paket: Lizenz, Betrieb, Wartung, Support, Datenmodelle, Dashboard-Zugang.',
 
     // ROI calculator
     'roi.hero_tagline':               'Ihr ROI-Rechner',
@@ -329,7 +329,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'pricing.per_system_month':       'per system / month',
     'pricing.per_system_year':        'per system / year',
     'pricing.fleet_total':            'Total fleet cost',
-    'pricing.net_disclaimer':         'All prices net, excl. installation costs.',
+    'pricing.net_disclaimer':         'All prices net, excl. installation costs. Always full-service: license, operation, maintenance, support, data models, dashboard access.',
 
     // ROI calculator
     'roi.hero_tagline':               'Your ROI Calculator',
