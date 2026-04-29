@@ -185,7 +185,7 @@ export default function FleetGlobe({ locale = 'de', endpoint = '/api/fleet-posit
         glowColor: [0.15, 0.15, 0.25],
         markers: positionsRef.current.map((p) => ({
           location: [p.lat, p.lng] as [number, number],
-          size: 0.035,
+          size: 0.02,
         })),
       });
 
@@ -214,7 +214,7 @@ export default function FleetGlobe({ locale = 'de', endpoint = '/api/fleet-posit
           scale: scaleRef.current,
           markers: positionsRef.current.map((p) => ({
             location: [p.lat, p.lng] as [number, number],
-            size: 0.035,
+            size: 0.02,
           })),
         });
         rafRef.current = requestAnimationFrame(animate);
