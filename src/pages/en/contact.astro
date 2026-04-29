@@ -1,7 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import Layout from '~/layouts/PageLayout.astro';
 import ConsultCTA from '~/components/widgets/ConsultCTA.astro';
+import justusImg from '~/assets/images/team/justus.png';
+import heinzImg from '~/assets/images/team/heinz.png';
 
 // Build-time event filtering (CONT-03, D-16)
 const allEvents = await getCollection('event');
@@ -16,7 +19,7 @@ const upcomingEvents = allEvents
 const metadata = {
   title: 'Contact — KONVOI GmbH',
   description:
-    'Contact KONVOI: Justus Maenninghoff for customer enquiries, Heinz Luckhardt for investors and marketing. Office in Hamburg, Germany.',
+    'Contact KONVOI: Justus Münnighoff for customer enquiries, Heinz Luckhardt for investors and marketing. Office in Hamburg, Germany.',
 };
 
 // Maps embed URL — stored here so it never appears in initial HTML (CONT-02)
@@ -35,13 +38,11 @@ const mapsEmbedUrl =
     <!-- CONT-01 D-14: Two contact cards side by side (stacked mobile) -->
     <div class="grid gap-6 sm:grid-cols-2 mb-16">
       <!-- Justus — customer advisor -->
-      <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-8 shadow-sm">
-        <div
-          class="mb-4 h-24 w-24 rounded-full bg-[hsl(217_60%_93%)] dark:bg-slate-700 flex items-center justify-center text-2xl font-bold font-heading text-slate-600"
-        >
-          JM
+      <div class="group rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-8 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-primary/40">
+        <div class="mb-4 h-24 w-24 overflow-hidden rounded-full ring-2 ring-slate-200 dark:ring-slate-600 transition-all duration-300 group-hover:ring-primary/50 group-hover:ring-4">
+          <Image src={justusImg} alt="Justus Münnighoff" width={96} height={96} class="h-full w-full object-cover" />
         </div>
-        <h2 class="text-2xl font-bold font-heading text-slate-900 dark:text-white mb-1">Justus Maenninghoff</h2>
+        <h2 class="text-2xl font-bold font-heading text-slate-900 dark:text-white mb-1">Justus Münnighoff</h2>
         <p class="text-sm text-slate-500 dark:text-slate-400 font-body mb-4">Customer Advisor</p>
         <div class="space-y-2 text-sm font-body">
           <p>
@@ -50,7 +51,7 @@ const mapsEmbedUrl =
             </a>
           </p>
           <p>
-            <a href="mailto:justus@konvoi.eu" class="text-[hsl(214.48_38.33%_55.49%)] hover:underline">
+            <a href="mailto:justus@konvoi.eu" class="text-primary hover:underline transition-colors">
               justus@konvoi.eu
             </a>
           </p>
@@ -58,11 +59,9 @@ const mapsEmbedUrl =
       </div>
 
       <!-- Heinz — investors/marketing -->
-      <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-8 shadow-sm">
-        <div
-          class="mb-4 h-24 w-24 rounded-full bg-[hsl(217_60%_93%)] dark:bg-slate-700 flex items-center justify-center text-2xl font-bold font-heading text-slate-600"
-        >
-          HL
+      <div class="group rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-8 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-primary/40">
+        <div class="mb-4 h-24 w-24 overflow-hidden rounded-full ring-2 ring-slate-200 dark:ring-slate-600 transition-all duration-300 group-hover:ring-primary/50 group-hover:ring-4">
+          <Image src={heinzImg} alt="Heinz Luckhardt" width={96} height={96} class="h-full w-full object-cover" />
         </div>
         <h2 class="text-2xl font-bold font-heading text-slate-900 dark:text-white mb-1">Heinz Luckhardt</h2>
         <p class="text-sm text-slate-500 dark:text-slate-400 font-body mb-4">Investors, Marketing &amp; Applicants</p>
@@ -73,7 +72,7 @@ const mapsEmbedUrl =
             </a>
           </p>
           <p>
-            <a href="mailto:heinz@konvoi.eu" class="text-[hsl(214.48_38.33%_55.49%)] hover:underline">
+            <a href="mailto:heinz@konvoi.eu" class="text-primary hover:underline transition-colors">
               heinz@konvoi.eu
             </a>
           </p>
