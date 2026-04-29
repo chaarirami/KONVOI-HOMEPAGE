@@ -8,6 +8,6 @@ title:
 bio:
   de: Jonas betreut Kunden vom Onboarding bis zum laufenden Betrieb und sorgt als Projektmanager dafür, dass Installationen und Rollouts reibungslos verlaufen.
   en: Jonas supports customers from onboarding through ongoing operations and ensures smooth installations and rollouts as project manager.
-photo: /images/team/jonas.png
+photo: jonas.png
 order: 6
 ---
