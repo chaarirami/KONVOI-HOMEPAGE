@@ -30,13 +30,13 @@ const mapsEmbedUrl =
 <Layout metadata={metadata}>
   <section class="mx-auto max-w-5xl px-4 py-16 sm:py-24">
     <!-- Page heading -->
-    <div class="mb-12 text-center">
+    <div class="mb-12 text-center intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
       <p class="mb-2 text-sm font-medium uppercase tracking-widest text-[hsl(214.48_38.33%_55.49%)]">Contact</p>
       <h1 class="text-4xl font-bold font-heading text-slate-900 dark:text-white">Get in touch</h1>
     </div>
 
     <!-- CONT-01 D-14: Two contact cards side by side (stacked mobile) -->
-    <div class="grid gap-6 sm:grid-cols-2 mb-16">
+    <div class="grid gap-6 sm:grid-cols-2 mb-16 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
       <!-- Justus — customer advisor -->
       <div class="group rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-8 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-primary/40">
         <div class="mb-4 h-24 w-24 overflow-hidden rounded-full ring-2 ring-slate-200 dark:ring-slate-600 transition-all duration-300 group-hover:ring-primary/50 group-hover:ring-4">
@@ -81,7 +81,7 @@ const mapsEmbedUrl =
     </div>
 
     <!-- CONT-02 D-15: Office address + click-to-load Maps -->
-    <div class="mb-16">
+    <div class="mb-16 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
       <h2 class="mb-6 text-2xl font-bold font-heading text-slate-900 dark:text-white">Office</h2>
       <p class="mb-6 text-base font-body text-slate-700 dark:text-slate-300">
         Harburger Schlossstrasse 6-12<br />
@@ -118,7 +118,7 @@ const mapsEmbedUrl =
     </div>
 
     <!-- CONT-03 D-16: Upcoming events (build-time filtered) -->
-    <div class="mb-16">
+    <div class="mb-16 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
       <h2 class="mb-6 text-2xl font-bold font-heading text-slate-900 dark:text-white">Upcoming Events</h2>
       {upcomingEvents.length === 0 && <p class="text-slate-500 dark:text-slate-400 font-body">No upcoming events.</p>}
       {

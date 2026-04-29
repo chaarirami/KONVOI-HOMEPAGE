@@ -4,6 +4,7 @@ import Hero from '~/components/widgets/Hero.astro';
 import ConsultCTA from '~/components/widgets/ConsultCTA.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import FundingQualifierForm from '~/components/islands/FundingQualifierForm';
+import RoiCalculator from '~/components/islands/RoiCalculator';
 import { t } from '~/i18n/translations';
 
 const locale = 'en' as const;
@@ -83,12 +84,10 @@ const metadata = {
   <WidgetWrapper>
     <div class="mx-auto max-w-2xl text-center">
       <h2 class="text-xl font-bold font-heading mb-3">How much can you save?</h2>
-      <p class="text-slate-600 dark:text-slate-300 mb-4">
+      <p class="text-slate-600 dark:text-slate-300 mb-6">
         Calculate your savings potential — including government subsidies.
       </p>
-      <a href="/en/roi/" class="inline-block rounded-lg border-2 border-primary px-6 py-3 text-primary font-semibold hover:bg-primary hover:text-white transition-colors">
-        {t('funding.roi_link', locale)}
-      </a>
+      <RoiCalculator client:visible locale={locale} embedMode="full" />
     </div>
   </WidgetWrapper>
 

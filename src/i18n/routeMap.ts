@@ -15,7 +15,6 @@ export const routeMap: Record<string, { de: string; en: string }> = {
   contact:    { de: '/kontakt',   en: '/en/contact' },
   product:    { de: '/produkt',   en: '/en/product' },
   pricing:    { de: '/preise',    en: '/en/pricing' },
-  roi:        { de: '/roi',       en: '/en/roi' },
   funding:    { de: '/foerderung', en: '/en/funding' },
   careers:    { de: '/karriere',  en: '/en/careers' },
   news:       { de: '/aktuelles', en: '/en/news' },
