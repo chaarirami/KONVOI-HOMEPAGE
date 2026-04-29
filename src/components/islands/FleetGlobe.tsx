@@ -109,7 +109,7 @@ export default function FleetGlobe({ locale = 'de', endpoint = '/api/fleet-posit
 
     // Scroll wheel zoom
     const MIN_SCALE = 0.9;
-    const MAX_SCALE = 1.15;
+    const MAX_SCALE = 2.5;
     function onWheel(e: WheelEvent) {
       e.preventDefault();
       const delta = e.deltaY > 0 ? -0.02 : 0.02;
@@ -208,10 +208,10 @@ export default function FleetGlobe({ locale = 'de', endpoint = '/api/fleet-posit
             velocityRef.current.theta *= 0.95;
           }
         }
+        canvas!.style.transform = `scale(${scaleRef.current})`;
         globe.update({
           phi: phiRef.current,
           theta: thetaRef.current,
-          scale: scaleRef.current,
           markers: positionsRef.current.map((p) => ({
             location: [p.lat, p.lng] as [number, number],
             size: 0.02,
@@ -264,7 +264,7 @@ export default function FleetGlobe({ locale = 'de', endpoint = '/api/fleet-posit
   }
 
   return (
-    <div class="relative flex flex-col items-center" style={{ minHeight: '300px' }}>
+    <div class="relative flex flex-col items-center" style={{ minHeight: '300px', overflow: 'visible' }}>
       <canvas
         ref={canvasRef}
         class="max-w-full"
