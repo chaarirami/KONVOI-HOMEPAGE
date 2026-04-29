@@ -1,35 +1,74 @@
 // src/data/pricing.ts
-// Single source of truth for tier data and ROI formula assumptions.
-// Per PRICE-03: shared between pricing pages and RoiCalculator island.
-// SALES TEAM: update priceDisplay values and roiFormulas.monthlyPriceEur before launch.
+// Single source of truth for tier data, discount tables, and ROI formula assumptions.
+// Shared between pricing pages, PricingCalculator island, and RoiCalculator island.
 
 export interface PricingTier {
-  slug: 'standard' | 'camera-module' | 'logbook';
+  slug: 'damage' | 'standard' | 'camera' | 'enterprise';
   de: {
     name: string;
-    priceDisplay: string; // e.g. "auf Anfrage" — placeholder, user updates before launch
-    pricePeriod: string;  // "pro Trailer / Monat"
+    priceDisplay: string;
+    pricePeriod: string;
     features: { text: string; included: boolean }[];
-    badge?: string;       // "Empfohlen" — only on camera-module
+    badge?: string;
   };
   en: {
     name: string;
     priceDisplay: string;
-    pricePeriod: string;  // "per trailer / month"
+    pricePeriod: string;
     features: { text: string; included: boolean }[];
-    badge?: string;       // "Recommended" — only on camera-module
+    badge?: string;
   };
-  highlighted: boolean;  // true only for camera-module (D-02)
+  highlighted: boolean;
+  /** Base monthly price in EUR per system (netto). null = "auf Anfrage" */
+  baseMonthlyPrice: number | null;
+  /** Which volume discount schedule applies. null = no calculator pricing */
+  discountSchedule: 'standard' | 'camera' | null;
 }
 
 export const pricingTiers: PricingTier[] = [
   {
+    slug: 'damage',
+    highlighted: false,
+    baseMonthlyPrice: 75,
+    discountSchedule: 'standard',
+    de: {
+      name: 'KONVOI Damage',
+      priceDisplay: '75 €',
+      pricePeriod: 'pro System / Monat',
+      features: [
+        { text: 'GPS-Tracking', included: true },
+        { text: 'Schadenerkennung & Dokumentation', included: true },
+        { text: 'Schock- und Bewegungssensoren', included: false },
+        { text: 'KI-Klassifizierung', included: false },
+        { text: 'Alarmkette (Push, SMS, Anruf)', included: false },
+        { text: 'Cloud-Clips bei Ereignissen', included: false },
+        { text: 'PDF-Logbuch je Fahrt', included: false },
+      ],
+    },
+    en: {
+      name: 'KONVOI Damage',
+      priceDisplay: '€75',
+      pricePeriod: 'per system / month',
+      features: [
+        { text: 'GPS tracking', included: true },
+        { text: 'Damage detection & documentation', included: true },
+        { text: 'Shock and motion sensors', included: false },
+        { text: 'AI classification', included: false },
+        { text: 'Alarm chain (push, SMS, call)', included: false },
+        { text: 'Cloud clips on security events', included: false },
+        { text: 'PDF logbook per trip', included: false },
+      ],
+    },
+  },
+  {
     slug: 'standard',
     highlighted: false,
+    baseMonthlyPrice: 100,
+    discountSchedule: 'standard',
     de: {
       name: 'KONVOI Standard',
-      priceDisplay: 'auf Anfrage',
-      pricePeriod: 'pro Trailer / Monat',
+      priceDisplay: '100 €',
+      pricePeriod: 'pro System / Monat',
       features: [
         { text: 'GPS + LTE Tracking', included: true },
         { text: 'Schock- und Bewegungssensoren', included: true },
@@ -42,8 +81,8 @@ export const pricingTiers: PricingTier[] = [
     },
     en: {
       name: 'KONVOI Standard',
-      priceDisplay: 'on request',
-      pricePeriod: 'per trailer / month',
+      priceDisplay: '€100',
+      pricePeriod: 'per system / month',
       features: [
         { text: 'GPS + LTE tracking', included: true },
         { text: 'Shock and motion sensors', included: true },
@@ -56,46 +95,15 @@ export const pricingTiers: PricingTier[] = [
     },
   },
   {
-    slug: 'camera-module',
+    slug: 'camera',
     highlighted: true,
+    baseMonthlyPrice: 150,
+    discountSchedule: 'camera',
     de: {
-      name: '+ KONVOI Camera Module',
-      priceDisplay: 'auf Anfrage',
-      pricePeriod: 'pro Trailer / Monat',
+      name: 'KONVOI Camera + Logbook',
+      priceDisplay: '150 €',
+      pricePeriod: 'pro System / Monat',
       badge: 'Empfohlen',
-      features: [
-        { text: 'GPS + LTE Tracking', included: true },
-        { text: 'Schock- und Bewegungssensoren', included: true },
-        { text: 'KI-Klassifizierung', included: true },
-        { text: 'Alarmkette (Push, SMS, Anruf)', included: true },
-        { text: '7-Tage-Akku', included: true },
-        { text: 'Cloud-Clips bei Ereignissen', included: true },
-        { text: 'PDF-Logbuch je Fahrt', included: false },
-      ],
-    },
-    en: {
-      name: '+ KONVOI Camera Module',
-      priceDisplay: 'on request',
-      pricePeriod: 'per trailer / month',
-      badge: 'Recommended',
-      features: [
-        { text: 'GPS + LTE tracking', included: true },
-        { text: 'Shock and motion sensors', included: true },
-        { text: 'AI classification', included: true },
-        { text: 'Alarm chain (push, SMS, call)', included: true },
-        { text: '7-day battery', included: true },
-        { text: 'Cloud clips on security events', included: true },
-        { text: 'PDF logbook per trip', included: false },
-      ],
-    },
-  },
-  {
-    slug: 'logbook',
-    highlighted: false,
-    de: {
-      name: '+ KONVOI Logbook',
-      priceDisplay: 'auf Anfrage',
-      pricePeriod: 'pro Trailer / Monat',
       features: [
         { text: 'GPS + LTE Tracking', included: true },
         { text: 'Schock- und Bewegungssensoren', included: true },
@@ -107,9 +115,10 @@ export const pricingTiers: PricingTier[] = [
       ],
     },
     en: {
-      name: '+ KONVOI Logbook',
-      priceDisplay: 'on request',
-      pricePeriod: 'per trailer / month',
+      name: 'KONVOI Camera + Logbook',
+      priceDisplay: '€150',
+      pricePeriod: 'per system / month',
+      badge: 'Recommended',
       features: [
         { text: 'GPS + LTE tracking', included: true },
         { text: 'Shock and motion sensors', included: true },
@@ -121,38 +130,159 @@ export const pricingTiers: PricingTier[] = [
       ],
     },
   },
+  {
+    slug: 'enterprise',
+    highlighted: false,
+    baseMonthlyPrice: null,
+    discountSchedule: null,
+    de: {
+      name: 'KONVOI Enterprise',
+      priceDisplay: 'auf Anfrage',
+      pricePeriod: 'individuell',
+      features: [
+        { text: 'GPS + LTE Tracking', included: true },
+        { text: 'Schock- und Bewegungssensoren', included: true },
+        { text: 'KI-Klassifizierung', included: true },
+        { text: 'Alarmkette (Push, SMS, Anruf)', included: true },
+        { text: 'Cloud-Clips bei Ereignissen', included: true },
+        { text: 'PDF-Logbuch je Fahrt', included: true },
+        { text: '24/7 SLA', included: true },
+        { text: 'Integration zu Monitoring Center', included: true },
+        { text: 'Dedizierter Ansprechpartner', included: true },
+      ],
+    },
+    en: {
+      name: 'KONVOI Enterprise',
+      priceDisplay: 'on request',
+      pricePeriod: 'custom',
+      features: [
+        { text: 'GPS + LTE tracking', included: true },
+        { text: 'Shock and motion sensors', included: true },
+        { text: 'AI classification', included: true },
+        { text: 'Alarm chain (push, SMS, call)', included: true },
+        { text: 'Cloud clips on security events', included: true },
+        { text: 'PDF logbook per trip', included: true },
+        { text: '24/7 SLA', included: true },
+        { text: 'Monitoring center integration', included: true },
+        { text: 'Dedicated account manager', included: true },
+      ],
+    },
+  },
 ];
 
+// --- Discount tables ---
+
+export interface VolumeBreakpoint {
+  minUnits: number;
+  discount: number;
+}
+
+export const volumeDiscountSchedules: Record<'standard' | 'camera', VolumeBreakpoint[]> = {
+  standard: [
+    { minUnits: 0,   discount: 0 },
+    { minUnits: 50,  discount: 0.10 },
+    { minUnits: 100, discount: 0.12 },
+    { minUnits: 150, discount: 0.14 },
+    { minUnits: 200, discount: 0.16 },
+    { minUnits: 250, discount: 0.18 },
+    { minUnits: 300, discount: 0.20 },
+  ],
+  camera: [
+    { minUnits: 0,   discount: 0 },
+    { minUnits: 50,  discount: 0.10 },
+    { minUnits: 100, discount: 0.13 },
+    { minUnits: 150, discount: 0.16 },
+    { minUnits: 200, discount: 0.19 },
+    { minUnits: 250, discount: 0.22 },
+    { minUnits: 300, discount: 0.25 },
+  ],
+};
+
+export interface ContractBonus {
+  months: number;
+  bonus: number;
+}
+
+export const contractBonuses: ContractBonus[] = [
+  { months: 12, bonus: 0 },
+  { months: 24, bonus: 0.10 },
+  { months: 36, bonus: 0.15 },
+  { months: 48, bonus: 0.20 },
+  { months: 60, bonus: 0.25 },
+];
+
+// --- Calculation functions ---
+
+export function getVolumeDiscount(fleetSize: number, schedule: 'standard' | 'camera'): number {
+  const breakpoints = volumeDiscountSchedules[schedule];
+  let discount = 0;
+  for (const bp of breakpoints) {
+    if (fleetSize >= bp.minUnits) discount = bp.discount;
+    else break;
+  }
+  return discount;
+}
+
+export function getContractBonus(months: number): number {
+  for (const cb of contractBonuses) {
+    if (cb.months === months) return cb.bonus;
+  }
+  return 0;
+}
+
+export interface PriceCalculation {
+  basePrice: number;
+  volumeDiscount: number;
+  contractBonus: number;
+  totalDiscount: number;
+  finalMonthly: number;
+  finalYearly: number;
+  totalFleetMonthly: number;
+  totalFleetYearly: number;
+}
+
+export function calculatePrice(
+  basePrice: number,
+  fleetSize: number,
+  contractMonths: number,
+  schedule: 'standard' | 'camera',
+): PriceCalculation {
+  const volumeDiscount = getVolumeDiscount(fleetSize, schedule);
+  const contractBonus = getContractBonus(contractMonths);
+  const totalDiscount = Math.min(volumeDiscount + contractBonus, 1);
+  const finalMonthly = basePrice * (1 - totalDiscount);
+  return {
+    basePrice,
+    volumeDiscount,
+    contractBonus,
+    totalDiscount,
+    finalMonthly: Math.round(finalMonthly * 100) / 100,
+    finalYearly: Math.round(finalMonthly * 12 * 100) / 100,
+    totalFleetMonthly: Math.round(finalMonthly * fleetSize * 100) / 100,
+    totalFleetYearly: Math.round(finalMonthly * 12 * fleetSize * 100) / 100,
+  };
+}
+
+// --- ROI formulas (unchanged) ---
+
 export interface RoiVerticalFormula {
-  /** Annual theft cost per vehicle in EUR — TAPA €8B/yr extrapolated by vertical share */
   annualTheftCostPerVehicle: number;
-  /** Estimated % reduction in theft losses achievable with Konvoi */
   savingsRate: number;
 }
 
 export interface RoiFormulas {
-  /** Monthly price per vehicle in EUR — placeholder, update before launch */
   monthlyPriceEur: number;
-  /** De-minimis subsidy rate (0.8 = 80%) */
   deMinimisRate: number;
-  /** Max subsidy per vehicle in EUR (BALM 2026: €2,000) */
   deMinimisMaxPerVehicle: number;
-  /** Max subsidy per company per year in EUR (BALM 2026: €33,000) */
   deMinimisMaxPerCompany: number;
-  /** Formula assumptions per vertical */
   byVertical: Record<'high_value' | 'cooling' | 'intermodal' | 'other', RoiVerticalFormula>;
 }
 
-/**
- * ROI formula assumptions — industry averages from TAPA (€8B/yr cargo theft globally).
- * SALES TEAM: update monthlyPriceEur and byVertical values before launch.
- * These figures are conservative placeholders for the calculator.
- */
 export const roiFormulas: RoiFormulas = {
-  monthlyPriceEur: 150,        // placeholder — update before launch
-  deMinimisRate: 0.8,          // 80% (BALM 2026 — Förderprogramm Umweltschutz und Sicherheit)
-  deMinimisMaxPerVehicle: 2000, // €2,000 per vehicle (BALM 2026)
-  deMinimisMaxPerCompany: 33000, // €33,000 per company per year (BALM 2026)
+  monthlyPriceEur: 150,
+  deMinimisRate: 0.8,
+  deMinimisMaxPerVehicle: 2000,
+  deMinimisMaxPerCompany: 33000,
   byVertical: {
     high_value:  { annualTheftCostPerVehicle: 12000, savingsRate: 0.35 },
     cooling:     { annualTheftCostPerVehicle: 8000,  savingsRate: 0.30 },

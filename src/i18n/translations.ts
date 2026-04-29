@@ -86,12 +86,20 @@ export const translations: Record<Locale, Record<string, string>> = {
     // Pricing page
     'pricing.hero_tagline':           'Transparente Preisgestaltung',
     'pricing.hero_title':             'Das richtige Paket für Ihre Flotte',
-    'pricing.hero_subtitle':          'Drei Pakete — skalierbar nach Ihren Anforderungen. Alle Preise auf Anfrage.',
+    'pricing.hero_subtitle':          'Vier Pakete — skalierbar nach Ihren Anforderungen.',
     'pricing.tier_cta':               'Angebot anfragen',
     'pricing.tier_price_prefix':      'ab',
     'pricing.tier_price_period':      '/ Monat',
     'pricing.roi_section_title':      'Berechnen Sie Ihren ROI',
     'pricing.roi_section_subtitle':   'Ermitteln Sie Ihre jährlichen Ersparnisse und die Amortisationszeit für Ihre Flotte.',
+    'pricing.fleet_size_label':       'Flottengröße',
+    'pricing.fleet_size_unit':        'Systeme',
+    'pricing.contract_label':         'Vertragslaufzeit',
+    'pricing.months_abbrev':          'Mon.',
+    'pricing.per_system_month':       'pro System / Monat',
+    'pricing.per_system_year':        'pro System / Jahr',
+    'pricing.fleet_total':            'Flottenkosten gesamt',
+    'pricing.net_disclaimer':         'Alle Preise netto zzgl. Montagekosten.',
 
     // ROI calculator
     'roi.hero_tagline':               'Ihr ROI-Rechner',
@@ -308,12 +316,20 @@ export const translations: Record<Locale, Record<string, string>> = {
     // Pricing page
     'pricing.hero_tagline':           'Transparent Pricing',
     'pricing.hero_title':             'The right package for your fleet',
-    'pricing.hero_subtitle':          'Three packages — scalable to your requirements. All prices on request.',
+    'pricing.hero_subtitle':          'Four packages — scalable to your requirements.',
     'pricing.tier_cta':               'Request a quote',
     'pricing.tier_price_prefix':      'from',
     'pricing.tier_price_period':      '/ month',
     'pricing.roi_section_title':      'Calculate Your ROI',
     'pricing.roi_section_subtitle':   'Find out your annual savings and payback period for your fleet.',
+    'pricing.fleet_size_label':       'Fleet size',
+    'pricing.fleet_size_unit':        'systems',
+    'pricing.contract_label':         'Contract length',
+    'pricing.months_abbrev':          'mo.',
+    'pricing.per_system_month':       'per system / month',
+    'pricing.per_system_year':        'per system / year',
+    'pricing.fleet_total':            'Total fleet cost',
+    'pricing.net_disclaimer':         'All prices net, excl. installation costs.',
 
     // ROI calculator
     'roi.hero_tagline':               'Your ROI Calculator',

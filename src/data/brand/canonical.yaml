@@ -38,27 +38,34 @@ pricing:
   tiers:
     # IMPORTANT: Tier slugs are stable references for Phase 5 ROI calculator.
     # Do NOT rename slugs without updating the ROI calculator (REQUIREMENTS.md PRICE-03).
+    - slug: damage
+      de_name: "KONVOI Damage"
+      en_name: "KONVOI Damage"
+      de_price_display: "75 €"
+      en_price_display: "€75"
+      de_description: "GPS-Tracking, Schadenerkennung & Dokumentation"
+      en_description: "GPS tracking, damage detection & documentation"
     - slug: standard
       de_name: "KONVOI Standard"
       en_name: "KONVOI Standard"
-      de_price_display: "auf Anfrage"
-      en_price_display: "on request"
+      de_price_display: "100 €"
+      en_price_display: "€100"
       de_description: "GPS + LTE, Schock- und Bewegungssensoren, KI-Klassifizierung, Alarmkette"
       en_description: "GPS + LTE, shock and motion sensors, AI classification, alarm chain"
-    - slug: camera-module
-      de_name: "+ KONVOI Camera Module"
-      en_name: "+ KONVOI Camera Module"
+    - slug: camera
+      de_name: "KONVOI Camera + Logbook"
+      en_name: "KONVOI Camera + Logbook"
+      de_price_display: "150 €"
+      en_price_display: "€150"
+      de_description: "Alles aus Standard + Cloud-Clips + PDF-Logbuch"
+      en_description: "Everything in Standard + cloud clips + PDF logbook"
+    - slug: enterprise
+      de_name: "KONVOI Enterprise"
+      en_name: "KONVOI Enterprise"
       de_price_display: "auf Anfrage"
       en_price_display: "on request"
-      de_description: "Cloud-Clips bei Ereignissen"
-      en_description: "Cloud clips on security events"
-    - slug: logbook
-      de_name: "+ KONVOI Logbook"
-      en_name: "+ KONVOI Logbook"
-      de_price_display: "auf Anfrage"
-      en_price_display: "on request"
-      de_description: "PDF-Zusammenfassung der Stopps und Anomalien je Fahrt"
-      en_description: "PDF summary of stops and anomalies per trip"
+      de_description: "24/7 SLA, Integration zu Monitoring Center, dedizierter Ansprechpartner"
+      en_description: "24/7 SLA, monitoring center integration, dedicated account manager"
 
 funding:
   de_minimis_max_percent: 80

@@ -3,8 +3,8 @@ import PageLayout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
-import { pricingTiers } from '~/data/pricing';
 import { t } from '~/i18n/translations';
+import PricingCalculator from '~/components/islands/PricingCalculator';
 import RoiCalculator from '~/components/islands/RoiCalculator';
 import ConsultForm from '~/components/islands/ConsultForm';
 
@@ -20,47 +20,13 @@ const metadata = {
   <Hero
     tagline="Pricing"
     title="Invest in fleet security — up to 80% government-funded"
-    subtitle="Three tiers. One goal: protect your fleet from theft, sabotage and driver assaults."
+    subtitle="Four packages — scalable to your requirements."
   />
 
-  <!-- Pricing tier cards -->
+  <!-- Dynamic Pricing Calculator -->
   <WidgetWrapper id="pricing">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6">
-      <div class="grid gap-8 md:grid-cols-3">
-        {pricingTiers.map((tier) => (
-          <div class={[
-            'flex flex-col rounded-2xl border p-8',
-            tier.highlighted
-              ? 'border-primary border-2 relative'
-              : 'border-slate-200 dark:border-slate-700',
-          ].join(' ')}>
-            {tier.en.badge && (
-              <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-sm font-semibold text-white">
-                {tier.en.badge}
-              </span>
-            )}
-            <h2 class="text-xl font-bold font-heading mb-2">{tier.en.name}</h2>
-            <p class="text-3xl font-bold font-heading mb-1">{tier.en.priceDisplay}</p>
-            <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">{tier.en.pricePeriod}</p>
-            <ul class="flex-1 space-y-3 mb-8">
-              {tier.en.features.map((f) => (
-                <li class="flex items-start gap-2 text-sm">
-                  <span class={f.included ? 'text-green-600 font-bold' : 'text-slate-400'} aria-hidden="true">
-                    {f.included ? '✓' : '—'}
-                  </span>
-                  <span class={f.included ? '' : 'text-slate-400'}>{f.text}</span>
-                </li>
-              ))}
-            </ul>
-            <a
-              href="#consult-form"
-              class="block w-full rounded-lg bg-primary px-6 py-3 text-center text-white font-semibold hover:bg-primary/90 transition-colors"
-            >
-              {t('cta.book_consult', locale)}
-            </a>
-          </div>
-        ))}
-      </div>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <PricingCalculator client:visible locale={locale} />
     </div>
   </WidgetWrapper>
 
