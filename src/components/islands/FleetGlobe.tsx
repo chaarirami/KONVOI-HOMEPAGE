@@ -23,9 +23,9 @@ export default function FleetGlobe({ locale = 'de', endpoint = '/api/fleet-posit
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const globeRef = useRef<{ update: (state: Record<string, unknown>) => void; destroy: () => void } | null>(null);
   const rafRef = useRef<number>(0);
-  const phiRef = useRef(0.2);
-  const thetaRef = useRef(0.35);
-  const scaleRef = useRef(1);
+  const phiRef = useRef(0.15);
+  const thetaRef = useRef(0.45);
+  const scaleRef = useRef(1.1);
   const dragRef = useRef({ active: false, startX: 0, startY: 0, startPhi: 0, startTheta: 0 });
   const velocityRef = useRef({ phi: 0, theta: 0 });
   const pinchRef = useRef({ active: false, startDist: 0, startScale: 1 });

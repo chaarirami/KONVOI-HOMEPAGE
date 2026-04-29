@@ -76,7 +76,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
         longitude,
         ROW_NUMBER() OVER (PARTITION BY client_id ORDER BY timestamp DESC) AS rn
       FROM gps
-      WHERE timestamp > now() - INTERVAL 1 HOUR
+      WHERE timestamp > now() - INTERVAL 24 HOUR
         AND latitude != 0
         AND longitude != 0
         AND latitude BETWEEN -90 AND 90
