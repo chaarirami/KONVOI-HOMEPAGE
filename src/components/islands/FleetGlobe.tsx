@@ -30,7 +30,6 @@ export default function FleetGlobe({ locale = 'de', endpoint = '/api/fleet-posit
   const velocityRef = useRef({ phi: 0, theta: 0 });
   const pinchRef = useRef({ active: false, startDist: 0, startScale: 1 });
   const positionsRef = useRef<Position[]>([]);
-  const [count, setCount] = useState<number | null>(null);
   const [hasWebGL, setHasWebGL] = useState(true);
 
   const fetchPositions = useCallback(async () => {
@@ -40,7 +39,6 @@ export default function FleetGlobe({ locale = 'de', endpoint = '/api/fleet-posit
       if (!res.ok) return;
       const data = await res.json() as { positions: Position[]; count: number };
       positionsRef.current = data.positions;
-      setCount(data.count);
     } catch {
       // Globe keeps spinning, just no markers
     }
@@ -187,7 +185,7 @@ export default function FleetGlobe({ locale = 'de', endpoint = '/api/fleet-posit
         glowColor: [0.15, 0.15, 0.25],
         markers: positionsRef.current.map((p) => ({
           location: [p.lat, p.lng] as [number, number],
-          size: 0.04,
+          size: 0.08,
         })),
       });
 
@@ -216,7 +214,7 @@ export default function FleetGlobe({ locale = 'de', endpoint = '/api/fleet-posit
           scale: scaleRef.current,
           markers: positionsRef.current.map((p) => ({
             location: [p.lat, p.lng] as [number, number],
-            size: 0.04,
+            size: 0.08,
           })),
         });
         rafRef.current = requestAnimationFrame(animate);
@@ -259,11 +257,8 @@ export default function FleetGlobe({ locale = 'de', endpoint = '/api/fleet-posit
     return (
       <div class="flex flex-col items-center justify-center" style={{ width: '300px', height: '300px' }}>
         <div class="rounded-full bg-gray-800 flex items-center justify-center" style={{ width: '200px', height: '200px' }}>
-          <span class="text-4xl text-blue-400 font-bold">{count ?? '—'}</span>
+          <span class="text-2xl text-blue-400 font-bold">🌐</span>
         </div>
-        <p class="mt-4 text-sm text-gray-400">
-          {locale === 'de' ? 'Aktive Geräte' : 'Active devices'}
-        </p>
       </div>
     );
   }
@@ -277,12 +272,6 @@ export default function FleetGlobe({ locale = 'de', endpoint = '/api/fleet-posit
         height={700}
         style={{ width: '700px', height: '700px', maxWidth: '100%', aspectRatio: '1' }}
       />
-      {count !== null && (
-        <p class="mt-4 text-sm text-gray-400 tabular-nums">
-          <span class="text-lg font-semibold text-blue-400">{count}</span>{' '}
-          {locale === 'de' ? 'aktive Geräte' : 'active devices'}
-        </p>
-      )}
     </div>
   );
 }

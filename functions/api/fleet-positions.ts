@@ -67,8 +67,8 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 
   const query = `
     SELECT
-      round(latitude, 1) AS lat,
-      round(longitude, 1) AS lng
+      round(latitude, 2) AS lat,
+      round(longitude, 2) AS lng
     FROM (
       SELECT
         client_id,
