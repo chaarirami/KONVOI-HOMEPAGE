@@ -1,0 +1,477 @@
+# =============================================================================
+# Decap CMS configuration — KONVOI Homepage
+# =============================================================================
+
+backend:
+  name: github
+  repo: KONVOI-HH/KONVOI-HOMEPAGE
+  branch: main
+  base_url: https://konvoi-homepage.pages.dev/api
+  auth_endpoint: /auth
+
+publish_mode: editorial_workflow
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: '-'
+
+# =============================================================================
+# Shared field definition (YAML anchor — works for single objects)
+# =============================================================================
+
+_metadata_fields: &metadata_fields
+  label: SEO Metadata
+  name: metadata
+  widget: object
+  required: false
+  collapsed: true
+  fields:
+    - { label: Meta Title, name: title, widget: string, required: false }
+    - { label: Meta Description, name: description, widget: text, required: false }
+
+# =============================================================================
+# Collections
+# =============================================================================
+
+collections:
+
+  # ---------------------------------------------------------------------------
+  # Blog Posts (DE)
+  # ---------------------------------------------------------------------------
+  - name: post-de
+    label: 'Blog Posts (DE)'
+    label_singular: 'Blog Post (DE)'
+    folder: src/content/post/de
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    fields:
+      - { label: Locale, name: locale, widget: hidden, default: de }
+      - label: Translation Key
+        name: translationKey
+        widget: string
+        hint: 'Unique key shared with the EN version. Use kebab-case, e.g. "cargo-crime-europe-2024"'
+      - label: Canonical Key
+        name: canonicalKey
+        widget: string
+        hint: 'URL slug for this post. Use kebab-case.'
+      - { label: Title, name: title, widget: string }
+      - { label: Excerpt, name: excerpt, widget: text, required: false }
+      - { label: Publish Date, name: publishDate, widget: datetime, required: false }
+      - { label: Update Date, name: updateDate, widget: datetime, required: false }
+      - { label: Draft, name: draft, widget: boolean, default: false, required: false }
+      - { label: Image, name: image, widget: image, required: false }
+      - { label: Category, name: category, widget: string, required: false }
+      - label: Tags
+        name: tags
+        widget: list
+        required: false
+        field: { label: Tag, name: tag, widget: string }
+      - { label: Author, name: author, widget: string, required: false, default: 'KONVOI Redaktion' }
+      - *metadata_fields
+      - { label: Body, name: body, widget: markdown }
+
+  # ---------------------------------------------------------------------------
+  # Blog Posts (EN)
+  # ---------------------------------------------------------------------------
+  - name: post-en
+    label: 'Blog Posts (EN)'
+    label_singular: 'Blog Post (EN)'
+    folder: src/content/post/en
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    fields:
+      - { label: Locale, name: locale, widget: hidden, default: en }
+      - label: Translation Key
+        name: translationKey
+        widget: string
+        hint: 'Must match the DE version exactly.'
+      - label: Canonical Key
+        name: canonicalKey
+        widget: string
+        hint: 'URL slug for this post. Use kebab-case.'
+      - { label: Title, name: title, widget: string }
+      - { label: Excerpt, name: excerpt, widget: text, required: false }
+      - { label: Publish Date, name: publishDate, widget: datetime, required: false }
+      - { label: Update Date, name: updateDate, widget: datetime, required: false }
+      - { label: Draft, name: draft, widget: boolean, default: false, required: false }
+      - { label: Image, name: image, widget: image, required: false }
+      - { label: Category, name: category, widget: string, required: false }
+      - label: Tags
+        name: tags
+        widget: list
+        required: false
+        field: { label: Tag, name: tag, widget: string }
+      - { label: Author, name: author, widget: string, required: false, default: 'KONVOI Editorial' }
+      - *metadata_fields
+      - { label: Body, name: body, widget: markdown }
+
+  # ---------------------------------------------------------------------------
+  # Case Studies (DE)
+  # ---------------------------------------------------------------------------
+  - name: caseStudy-de
+    label: 'Fallstudien (DE)'
+    label_singular: 'Fallstudie (DE)'
+    folder: src/content/caseStudy/de
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    fields:
+      - { label: Locale, name: locale, widget: hidden, default: de }
+      - label: Translation Key
+        name: translationKey
+        widget: string
+        hint: 'Unique key shared with the EN version. Use kebab-case.'
+      - label: Canonical Key
+        name: canonicalKey
+        widget: string
+        hint: 'URL slug for this case study. Use kebab-case.'
+      - { label: Title, name: title, widget: string }
+      - { label: Customer, name: customer, widget: string }
+      - { label: Vertical, name: vertical, widget: string }
+      - { label: Problem, name: problem, widget: text }
+      - { label: Approach, name: approach, widget: text }
+      - { label: Outcome, name: outcome, widget: text }
+      - { label: Quote, name: quote, widget: text, required: false }
+      - { label: Quote Attribution, name: quoteAttribution, widget: string, required: false }
+      - { label: Logo, name: logo, widget: image, required: false }
+      - { label: Cover Image, name: coverImage, widget: image, required: false }
+      - { label: Publish Date, name: publishDate, widget: datetime, required: false }
+      - *metadata_fields
+      - { label: Body, name: body, widget: markdown, required: false }
+
+  # ---------------------------------------------------------------------------
+  # Case Studies (EN)
+  # ---------------------------------------------------------------------------
+  - name: caseStudy-en
+    label: 'Case Studies (EN)'
+    label_singular: 'Case Study (EN)'
+    folder: src/content/caseStudy/en
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    fields:
+      - { label: Locale, name: locale, widget: hidden, default: en }
+      - label: Translation Key
+        name: translationKey
+        widget: string
+        hint: 'Must match the DE version exactly.'
+      - label: Canonical Key
+        name: canonicalKey
+        widget: string
+        hint: 'URL slug for this case study. Use kebab-case.'
+      - { label: Title, name: title, widget: string }
+      - { label: Customer, name: customer, widget: string }
+      - { label: Vertical, name: vertical, widget: string }
+      - { label: Problem, name: problem, widget: text }
+      - { label: Approach, name: approach, widget: text }
+      - { label: Outcome, name: outcome, widget: text }
+      - { label: Quote, name: quote, widget: text, required: false }
+      - { label: Quote Attribution, name: quoteAttribution, widget: string, required: false }
+      - { label: Logo, name: logo, widget: image, required: false }
+      - { label: Cover Image, name: coverImage, widget: image, required: false }
+      - { label: Publish Date, name: publishDate, widget: datetime, required: false }
+      - *metadata_fields
+      - { label: Body, name: body, widget: markdown, required: false }
+
+  # ---------------------------------------------------------------------------
+  # Use Cases (DE)
+  # ---------------------------------------------------------------------------
+  - name: useCase-de
+    label: 'Anwendungen (DE)'
+    label_singular: 'Anwendung (DE)'
+    folder: src/content/useCase/de
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    fields:
+      - { label: Locale, name: locale, widget: hidden, default: de }
+      - label: Translation Key
+        name: translationKey
+        widget: string
+        hint: 'Unique key shared with the EN version. Use kebab-case.'
+      - label: Canonical Key
+        name: canonicalKey
+        widget: string
+        hint: 'URL slug for this use case. Use kebab-case.'
+      - { label: Title, name: title, widget: string }
+      - label: Slug
+        name: slug
+        widget: string
+        hint: 'URL-safe identifier, e.g. "ladungsdiebstahl"'
+      - { label: Problem Statement, name: problemStatement, widget: text, required: false }
+      - { label: Cost Anchor, name: costAnchor, widget: text, required: false }
+      - { label: KONVOI Approach, name: konvoiApproach, widget: text, required: false }
+      - label: Related Industries
+        name: relatedIndustries
+        widget: list
+        required: false
+        field: { label: Industry Slug, name: industry, widget: string }
+      - { label: Publish Date, name: publishDate, widget: datetime, required: false }
+      - *metadata_fields
+      - { label: Body, name: body, widget: markdown, required: false }
+
+  # ---------------------------------------------------------------------------
+  # Use Cases (EN)
+  # ---------------------------------------------------------------------------
+  - name: useCase-en
+    label: 'Use Cases (EN)'
+    label_singular: 'Use Case (EN)'
+    folder: src/content/useCase/en
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    fields:
+      - { label: Locale, name: locale, widget: hidden, default: en }
+      - label: Translation Key
+        name: translationKey
+        widget: string
+        hint: 'Must match the DE version exactly.'
+      - label: Canonical Key
+        name: canonicalKey
+        widget: string
+        hint: 'URL slug for this use case. Use kebab-case.'
+      - { label: Title, name: title, widget: string }
+      - label: Slug
+        name: slug
+        widget: string
+        hint: 'URL-safe identifier, e.g. "cargo-theft"'
+      - { label: Problem Statement, name: problemStatement, widget: text, required: false }
+      - { label: Cost Anchor, name: costAnchor, widget: text, required: false }
+      - { label: KONVOI Approach, name: konvoiApproach, widget: text, required: false }
+      - label: Related Industries
+        name: relatedIndustries
+        widget: list
+        required: false
+        field: { label: Industry Slug, name: industry, widget: string }
+      - { label: Publish Date, name: publishDate, widget: datetime, required: false }
+      - *metadata_fields
+      - { label: Body, name: body, widget: markdown, required: false }
+
+  # ---------------------------------------------------------------------------
+  # Industries (DE)
+  # ---------------------------------------------------------------------------
+  - name: industry-de
+    label: 'Branchen (DE)'
+    label_singular: 'Branche (DE)'
+    folder: src/content/industry/de
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    fields:
+      - { label: Locale, name: locale, widget: hidden, default: de }
+      - label: Translation Key
+        name: translationKey
+        widget: string
+        hint: 'Unique key shared with the EN version. Use kebab-case.'
+      - label: Canonical Key
+        name: canonicalKey
+        widget: string
+        hint: 'URL slug for this industry. Use kebab-case.'
+      - { label: Title, name: title, widget: string }
+      - label: Slug
+        name: slug
+        widget: string
+        hint: 'URL-safe identifier, e.g. "hochwertige-gueter"'
+      - { label: Risk Profile, name: riskProfile, widget: text, required: false }
+      - label: Related Use Cases
+        name: relatedUseCases
+        widget: list
+        required: false
+        field: { label: Use Case Slug, name: useCase, widget: string }
+      - { label: Publish Date, name: publishDate, widget: datetime, required: false }
+      - *metadata_fields
+      - { label: Body, name: body, widget: markdown, required: false }
+
+  # ---------------------------------------------------------------------------
+  # Industries (EN)
+  # ---------------------------------------------------------------------------
+  - name: industry-en
+    label: 'Industries (EN)'
+    label_singular: 'Industry (EN)'
+    folder: src/content/industry/en
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    fields:
+      - { label: Locale, name: locale, widget: hidden, default: en }
+      - label: Translation Key
+        name: translationKey
+        widget: string
+        hint: 'Must match the DE version exactly.'
+      - label: Canonical Key
+        name: canonicalKey
+        widget: string
+        hint: 'URL slug for this industry. Use kebab-case.'
+      - { label: Title, name: title, widget: string }
+      - label: Slug
+        name: slug
+        widget: string
+        hint: 'URL-safe identifier, e.g. "high-value"'
+      - { label: Risk Profile, name: riskProfile, widget: text, required: false }
+      - label: Related Use Cases
+        name: relatedUseCases
+        widget: list
+        required: false
+        field: { label: Use Case Slug, name: useCase, widget: string }
+      - { label: Publish Date, name: publishDate, widget: datetime, required: false }
+      - *metadata_fields
+      - { label: Body, name: body, widget: markdown, required: false }
+
+  # ---------------------------------------------------------------------------
+  # Job Listings (DE)
+  # ---------------------------------------------------------------------------
+  - name: job-de
+    label: 'Stellenanzeigen (DE)'
+    label_singular: 'Stellenanzeige (DE)'
+    folder: src/content/job/de
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    fields:
+      - { label: Locale, name: locale, widget: hidden, default: de }
+      - label: Translation Key
+        name: translationKey
+        widget: string
+        hint: 'Unique key shared with the EN version. Use kebab-case.'
+      - label: Canonical Key
+        name: canonicalKey
+        widget: string
+        hint: 'URL slug for this job listing. Use kebab-case.'
+      - { label: Title, name: title, widget: string }
+      - { label: Department, name: department, widget: string, required: false }
+      - label: Type
+        name: type
+        widget: select
+        required: false
+        options:
+          - { label: Full-time, value: fulltime }
+          - { label: Internship, value: internship }
+          - { label: Initiative, value: initiative }
+      - { label: Apply Email, name: applyEmail, widget: string, required: false, default: 'applications@konvoi.eu' }
+      - { label: Publish Date, name: publishDate, widget: datetime, required: false }
+      - { label: Active, name: active, widget: boolean, default: true }
+      - label: PDF File
+        name: pdfFile
+        widget: string
+        required: false
+        hint: 'Path to PDF, e.g. /jobs/data-scientist-ft.pdf'
+      - *metadata_fields
+      - { label: Body, name: body, widget: markdown, required: false }
+
+  # ---------------------------------------------------------------------------
+  # Job Listings (EN)
+  # ---------------------------------------------------------------------------
+  - name: job-en
+    label: 'Job Listings (EN)'
+    label_singular: 'Job Listing (EN)'
+    folder: src/content/job/en
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    fields:
+      - { label: Locale, name: locale, widget: hidden, default: en }
+      - label: Translation Key
+        name: translationKey
+        widget: string
+        hint: 'Must match the DE version exactly.'
+      - label: Canonical Key
+        name: canonicalKey
+        widget: string
+        hint: 'URL slug for this job listing. Use kebab-case.'
+      - { label: Title, name: title, widget: string }
+      - { label: Department, name: department, widget: string, required: false }
+      - label: Type
+        name: type
+        widget: select
+        required: false
+        options:
+          - { label: Full-time, value: fulltime }
+          - { label: Internship, value: internship }
+          - { label: Initiative, value: initiative }
+      - { label: Apply Email, name: applyEmail, widget: string, required: false, default: 'applications@konvoi.eu' }
+      - { label: Publish Date, name: publishDate, widget: datetime, required: false }
+      - { label: Active, name: active, widget: boolean, default: true }
+      - label: PDF File
+        name: pdfFile
+        widget: string
+        required: false
+        hint: 'Path to PDF, e.g. /jobs/data-scientist-ft.pdf'
+      - *metadata_fields
+      - { label: Body, name: body, widget: markdown, required: false }
+
+  # ---------------------------------------------------------------------------
+  # Team Members (bilingual single-file)
+  # ---------------------------------------------------------------------------
+  - name: team
+    label: Team
+    label_singular: Team Member
+    folder: src/content/team
+    create: true
+    slug: '{{fields.name.de}}'
+    extension: md
+    fields:
+      - label: Name
+        name: name
+        widget: object
+        fields:
+          - { label: 'Name (DE)', name: de, widget: string }
+          - { label: 'Name (EN)', name: en, widget: string }
+      - label: Job Title
+        name: title
+        widget: object
+        fields:
+          - { label: 'Title (DE)', name: de, widget: string }
+          - { label: 'Title (EN)', name: en, widget: string }
+      - label: Bio
+        name: bio
+        widget: object
+        fields:
+          - { label: 'Bio (DE)', name: de, widget: text }
+          - { label: 'Bio (EN)', name: en, widget: text }
+      - label: Photo
+        name: photo
+        widget: string
+        required: false
+        hint: 'Filename only, e.g. "rami.png". File must exist in src/assets/images/team/.'
+      - { label: Email, name: email, widget: string, required: false }
+      - { label: Phone, name: phone, widget: string, required: false }
+      - label: Display Order
+        name: order
+        widget: number
+        required: false
+        hint: 'Lower number = shown first.'
+
+  # ---------------------------------------------------------------------------
+  # Events (bilingual single-file)
+  # ---------------------------------------------------------------------------
+  - name: event
+    label: Events
+    label_singular: Event
+    folder: src/content/event
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    fields:
+      - label: Name
+        name: name
+        widget: object
+        fields:
+          - { label: 'Name (DE)', name: de, widget: string }
+          - { label: 'Name (EN)', name: en, widget: string }
+      - label: Description
+        name: description
+        widget: object
+        required: false
+        fields:
+          - { label: 'Description (DE)', name: de, widget: text }
+          - { label: 'Description (EN)', name: en, widget: text }
+      - { label: Start Date, name: startDate, widget: datetime }
+      - { label: End Date, name: endDate, widget: datetime, required: false }
+      - { label: Location, name: location, widget: string, required: false }
+      - { label: URL, name: url, widget: string, required: false }
