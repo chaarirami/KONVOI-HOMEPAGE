@@ -59,8 +59,13 @@ function postMessageHTML(status: 'success' | 'error', content: string): string {
   return `<!doctype html>
 <html><body><script>
 (function() {
-  window.opener.postMessage(${JSON.stringify(message)}, window.origin);
-  window.close();
+  function sendMessage(e) {
+    window.opener.postMessage(${JSON.stringify(message)}, e.origin);
+    window.removeEventListener("message", sendMessage);
+    window.close();
+  }
+  window.addEventListener("message", sendMessage, false);
+  window.opener.postMessage("authorizing:github", "*");
 })();
 </script></body></html>`;
 }
